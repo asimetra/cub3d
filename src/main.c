@@ -6,7 +6,13 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/05/12 00:21:32 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/05/12 10:46:24 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+int	main(int argc, char **argv)
+{
+	(void)argc;
+	(void)argv;
+	return (0);
+}

@@ -1,12 +1,14 @@
 NAME = cub3D
 
-MAIN = srcs/main.c
+MAIN = src/main.c
 
-SRC =
+SRC = libs/memory_allocator/allocator.c \
+	libs/memory_allocator/aborter.c \
 
 CC = cc
 CFLAGS = -Wall -Wextra -g #-Werror
 LIBFT = libs/libft/libft.a
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
