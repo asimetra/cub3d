@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   allocator.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:24:09 by hsamir            #+#    #+#             */
-/*   Updated: 2025/03/05 19:18:38 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/16 15:17:51 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/memory_allocator.h"
+#include "../../includes/memory_allocator.h"
 #include <stdlib.h>
 
 t_memory_block	**get_memory_head(t_mem_type mem_type)
@@ -20,21 +20,34 @@ t_memory_block	**get_memory_head(t_mem_type mem_type)
 	return (&mem_blocks[mem_type]);
 }
 
-void	*safe_malloc(size_t size, t_mem_type mem_type)
+void	safe_register_malloc(void *alloc_mem, t_mem_type mem_type)
 {
 	t_memory_block	**head;
 	t_memory_block	*mem_block;
 
-	mem_block = malloc(sizeof(t_memory_block) + size);
+	mem_block = malloc(sizeof(t_memory_block));
 	if (!mem_block)
+	{
+		free(alloc_mem);
 		safe_abort(STD_EXIT);
+	}
 	head = get_memory_head(mem_type);
 	*mem_block = (t_memory_block){
-		.data = mem_block + 1,
+		.data = alloc_mem,
 		.next = *head
 	};
 	*head = mem_block;
-	return (mem_block + 1);
+}
+
+void	*safe_malloc(size_t size, t_mem_type mem_type)
+{
+	void			*alloc_mem;
+
+	alloc_mem = malloc(size);
+	if (!alloc_mem)
+		safe_abort(STD_EXIT);
+	safe_register_malloc(alloc_mem, mem_type);
+	return (alloc_mem);
 }
 
 void	*safe_talloc(size_t size)

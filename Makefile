@@ -6,7 +6,7 @@ SRC = libs/memory_allocator/allocator.c \
 	libs/memory_allocator/aborter.c \
 
 CC = cc
-CFLAGS = -Wall -Wextra -g #-Werror
+CFLAGS = -Wall -Wextra -g -Werror
 LIBFT = libs/libft/libft.a
 OBJ = $(SRC:.c=.o)
 

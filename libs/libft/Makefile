@@ -1,6 +1,6 @@
 NAME = libft.a
 
-CFLAGS = -g -Wall -Werror -Wextra
+CFLAGS = -g -Wall -Werror -Wextra -I./libs -I./includes
 
 FILES = ft_isalpha.c \
 				ft_isdigit.c \
@@ -54,7 +54,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 %.o : %.c
-	clang $(CFLAGS) -c $< -o $@
+	cc $(CFLAGS) -c $< -o $@
 
 bonus: $(NAME)
 
