@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/16 15:20:59 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/16 15:53:22 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,4 @@ int	main(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 
-	safe_talloc(10000);
-
-	safe_abort(2);
 }
