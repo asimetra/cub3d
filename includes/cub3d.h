@@ -6,12 +6,14 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:40:41 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/18 13:43:43 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/18 16:15:09 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+
+/* ************************************************************************** */
 
 typedef enum e_direction
 {
@@ -36,6 +38,11 @@ typedef struct s_texture {
 typedef struct s_graphics {
 	t_mlx	mlx;
 	t_texture textures;
-}	t_graphics;
+}		t_graphics;
+
+/* ************************************************************************** */
+
+typedef void	(*t_state)(char *input, int *i);
+
 
 #endif

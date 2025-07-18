@@ -1,32 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   classify.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/18 16:16:20 by hsamir           ###   ########.fr       */
+/*   Created: 2025/07/18 18:37:35 by hsamir            #+#    #+#             */
+/*   Updated: 2025/07/18 18:37:36 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "memory_allocator.h"
-
-void cub_main(void)
-{
-
-}
-
-
-int	main(int argc, char **argv)
-{
-
-	(void)argc;
-	(void)argv;
-	if (argc != 2)
-		;//Todo exit and print error
-
-	
-	cub_main();
-}
 
