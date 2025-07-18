@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   string_utils.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/18 14:47:01 by hsamir           ###   ########.fr       */
+/*   Created: 2025/07/18 14:49:27 by hsamir            #+#    #+#             */
+/*   Updated: 2025/07/18 14:51:16 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/memory_allocator.h"
+#ifndef STRING_UTILS_H
+# define STRING_UTILS_H
 
-void cub_main(void)
-{
+char	*str_arr_join(char	**strings, int count);
+void	str_arr_free(char	**strings, int count);
 
-}
-
-
-int	main(int argc, char **argv)
-{
-
-	(void)argc;
-	(void)argv;
-
-}
-
+#endif

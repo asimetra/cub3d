@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/18 14:47:01 by hsamir           ###   ########.fr       */
+/*   Created: 2025/07/18 14:50:26 by hsamir            #+#    #+#             */
+/*   Updated: 2025/07/18 14:50:28 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/memory_allocator.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-void cub_main(void)
-{
+# include <stdlib.h>
 
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
+char	*get_next_line(int fd);
 
-int	main(int argc, char **argv)
-{
-
-	(void)argc;
-	(void)argv;
-
-}
-
+#endif

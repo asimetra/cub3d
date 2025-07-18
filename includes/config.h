@@ -1,28 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/18 14:47:01 by hsamir           ###   ########.fr       */
+/*   Created: 2025/07/18 13:43:59 by hsamir            #+#    #+#             */
+/*   Updated: 2025/07/18 13:44:22 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/memory_allocator.h"
-
-void cub_main(void)
-{
-
-}
+#ifndef CONFIG_H
+# define CONFIG_H
 
 
-int	main(int argc, char **argv)
-{
-
-	(void)argc;
-	(void)argv;
-
-}
-
+#endif

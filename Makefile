@@ -2,10 +2,12 @@ NAME = cub3D
 
 SRC = libs/memory_allocator/allocator.c \
 	libs/memory_allocator/aborter.c \
+	libs/get_next_line/get_next_line.c \
+	src/utils/string_utils/str_arr_operations.c \
 	src/main.c \
 
 CC = cc
-CFLAGS = -Wall -Wextra -g -Werror
+CFLAGS = -Wall -Wextra -g -Werror  -I./libs -I./includes -I./libs/libft
 
 MINILBX = libs/minilibx/libmlx.a
 MINILBX_P = libs/minilibx
