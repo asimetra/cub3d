@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/19 09:34:27 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/19 12:03:22 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,12 @@ int	main(int argc, char **argv)
 	(void)argv;
 	token = NULL;
 	if (argc != 2)
-		safe_exit("Duplicate texture type found");
-	config_fd = open(argv[1], O_RDONLY); //
+		safe_exit("Usage: ./cub3D <config_file>", NULL, 0);
+	config_fd = open(argv[1], O_RDONLY);
 	token = tokenize_file(config_fd);
+	close(config_fd);
 	debug_tokens(token);
 	cub_main();
-	close(config_fd);
 	return (0);
 }
 

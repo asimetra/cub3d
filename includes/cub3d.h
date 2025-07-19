@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:40:41 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/18 23:23:42 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/19 11:18:42 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ typedef struct s_graphics {
 	t_texture textures;
 }		t_graphics;
 
-void	safe_exit(const char *message);
+void	safe_exit(char *message, char *line, int line_number);
 
 #endif
