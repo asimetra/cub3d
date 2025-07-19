@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 18:30:44 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/19 14:11:41 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/19 14:24:29 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 # define FLAG_TEXTURE (T_NORTH | T_SOUTH | T_WEST | T_EAST)
 # define FLAG_COLOR (T_FLOOR | T_CEIL)
 # define FLAG_ALL	(FLAG_TEXTURE | FLAG_COLOR | T_MAP)
+
+# define INVALID_ERR "Invalid token found"
+# define DUPTEXTURE_ERR "Duplicate texture type found"
+# define DUPCOLOR_ERR "Duplicate color type found"
+# define MAP_ERR "Map must be last token"
+# define MAPCHARS_ERR "Invalid map start or characters"
 
 typedef enum e_token_type
 {
