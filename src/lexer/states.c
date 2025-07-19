@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:10:09 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/19 14:10:52 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/19 14:17:48 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int	map_state(char *input, void *head_token, int seen_mask, int line)
 	t_token	new_token;
 
 	if ((seen_mask | T_MAP) != FLAG_ALL)
-		invalid_state(input, "Map must be last token", seen_mask, line);
+		invalid_state(input, "Map must be last token", T_INVALID, line);
 	if (!is_map_chars(input))
-		invalid_state(input, "Invalid map start or characters", seen_mask, line);
+		invalid_state(input, "Invalid map start or characters", T_INVALID, line);
 	new_token.line = line;
 	new_token.type = T_MAP;
 	new_token.content = ft_strtrim(input,"\n");
