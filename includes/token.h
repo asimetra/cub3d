@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 18:30:44 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/18 23:25:23 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/19 07:24:17 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_token
 	struct s_token	*next;
 }					t_token;
 
-typedef void		(*t_state)(char *input, t_token **head_token, int *seen_mask);
+typedef int		(*t_state)(char *input, t_token **head_token, int seen_mask);
 
 t_token				*get_last_token(t_token *head_token);
 t_token				*create_token(t_token new_token);
@@ -51,5 +51,8 @@ void				insert_tokens(t_token **prev_token, t_token *tokens);
 int					is_texture(char *input);
 int					is_color(char *input);
 int					is_empty(char *input);
+
+t_token_type		get_texture_type(char *input);
+t_token_type		get_color_type(char *input);
 
 #endif

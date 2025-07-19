@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 23:13:15 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/18 23:15:09 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/19 07:24:09 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,11 @@ t_token_type	get_texture_type(char *input)
 	else if (ft_strncmp(input, "EA ", 3) == 0)
 		return (T_EAST);
 	return (T_INVALID);
+}
+
+t_token_type	get_color_type(char *input)
+{
+	if (ft_strncmp(input, "F ", 2) == 0)
+		return (T_FLOOR);
+	return (T_CEIL);
 }

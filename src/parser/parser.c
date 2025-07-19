@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 16:03:55 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/18 23:30:30 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/19 07:29:34 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,48 @@
 #include "token.h"
 #include <stddef.h>
 #include <stdbool.h>
+#include "memory_allocator.h"
 #include "get_next_line.h"
 #include "libft.h"
 
-void	texture_state(char *input, t_token **head_token, int *seen_mask)
+int	texture_state(char *input, t_token **head_token, int seen_mask)
 {
 	t_token	new_token;
 
 	new_token.type = get_texture_type(input);
-	if (*seen_mask & new_token.type)
+	if (seen_mask & new_token.type)
 		safe_exit("Duplicate texture type found");
-	new_token.content = ft_strtrim(input, " \n");
-	prepend_token(
-		head_token,
-		create_token(new_token)
-	);
-	*seen_mask |= new_token.type;
+	new_token.content = ft_strtrim(input + 3, " \n"); //NE ./test
+	prepend_token(head_token, create_token(new_token));
+	return (new_token.type);
 }
 
-void	color_state(char *input, t_token **head_token, int *seen_mask)
+int	color_state(char *input, t_token **head_token, int seen_mask)
 {
 	t_token	new_token;
 
 	new_token.type = get_color_type(input);
-	if (*seen_mask & new_token.type)
+	if (seen_mask & new_token.type)
 		safe_exit("Duplicate color type found");
-	new_token.content = ft_strtrim(input, " \n");
-	prepend_token(
-		head_token,
-		create_token(new_token)
-	);
-	*seen_mask |= new_token.type;
+	new_token.content = ft_strtrim(input + 2, " \n");
+	prepend_token(head_token,create_token(new_token));
+	return (new_token.type);
 }
 
-void	map_state(char *input, t_token **head_token, int *seen_mask)
+int	map_state(char *input, t_token **head_token, int seen_mask)
 {
 	t_token	new_token;
 
-	new_token.type = T_MAP;
-	if (*seen_mask != (FLAG_TEXTURE | FLAG_COLOR))
+
+	if (seen_mask != ~T_MAP)
 		safe_exit("Map must be last token");
+	new_token.type = T_MAP;
+	new_token.content = ft_strtrim(input,"\n");
+	while (true)
+	{
+
+	}
+
 }
 
 t_state	get_parser_state(char *input)
@@ -83,7 +85,8 @@ t_token	*parse_file(int fd)
 			break;
 		state = get_parser_state(line);
 		if (state != NULL)
-			state(line, &head_token, &seen_mask);
+			seen_mask |= state(line, &head_token, seen_mask);
+		safe_talloc(line);
 	}
 	return (head_token);
 }
