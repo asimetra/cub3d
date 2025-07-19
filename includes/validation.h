@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   config.h                                           :+:      :+:    :+:   */
+/*   validation.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 13:43:59 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/19 14:13:50 by sdaban           ###   ########.fr       */
+/*   Created: 2025/07/19 13:58:25 by sdaban            #+#    #+#             */
+/*   Updated: 2025/07/19 14:01:58 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONFIG_H
-# define CONFIG_H
+#ifndef VALIDATION_H
+#define VALIDATION_H
 
-# define WIDHT 2500
-# define HEIGHT 1600
-# define FOV 90
+#include <stdbool.h>
+
+
+bool		v_color_value(int value);
+bool		v_map();
+bool		v_fc_colors(int floor, int ceiling); // floor and ceiling
+bool		v_directions();
+
 
 #endif

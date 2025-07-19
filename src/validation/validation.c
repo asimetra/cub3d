@@ -1,20 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   config.h                                           :+:      :+:    :+:   */
+/*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 13:43:59 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/19 14:13:50 by sdaban           ###   ########.fr       */
+/*   Created: 2025/07/19 14:00:05 by sdaban            #+#    #+#             */
+/*   Updated: 2025/07/19 14:14:53 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONFIG_H
-# define CONFIG_H
+#include <stdbool.h>
+#include "../includes/validation.h"
 
-# define WIDHT 2500
-# define HEIGHT 1600
-# define FOV 90
+bool	is_in_range(int value)
+{
+	(void)value;
+	return (value >= 0 && value <= 255);
+}
 
-#endif
+bool	v_fc_colors(int floor, int ceiling)
+{
+	(void)floor;
+	(void)ceiling;
+	return (false);
+}
+
+bool	v_directions(void)
+{
+	return (false);
+}
+
+bool	v_map(void)
+{
+	return (false);
+}
+
+bool	v_color_value(int value)
+{
+	(void)value;
+	return (false);
+}
