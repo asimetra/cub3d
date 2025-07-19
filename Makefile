@@ -9,6 +9,7 @@ SRC = libs/memory_allocator/allocator.c \
 	src/token/operations.c \
 	src/token/token_list.c \
 	src/token/token_type.c \
+	src/lexer/states.c \
 	src/lexer/classify.c \
 	src/lexer/tokenizer.c \
 	src/validation/validation.c \
