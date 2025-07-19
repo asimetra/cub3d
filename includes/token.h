@@ -6,14 +6,17 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 18:30:44 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/18 19:25:11 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/18 23:25:23 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TOKEN_H
 # define TOKEN_H
 
+# define MAP_CHR	"01NSEW "
 # define FLAG_ALL -1
+# define FLAG_TEXTURE (T_NORTH | T_SOUTH | T_WEST | T_EAST)
+# define FLAG_COLOR (T_FLOOR | T_CEIL)
 
 typedef enum e_token_type
 {
@@ -34,7 +37,7 @@ typedef struct s_token
 	struct s_token	*next;
 }					t_token;
 
-typedef void		(*t_state)(char *input, t_token **head_token);
+typedef void		(*t_state)(char *input, t_token **head_token, int *seen_mask);
 
 t_token				*get_last_token(t_token *head_token);
 t_token				*create_token(t_token new_token);
@@ -45,5 +48,8 @@ void				remove_token(t_token **head, t_token *prev, t_token *token);
 void				remove_token_by_flags(t_token **head_token, int flags);
 void				insert_tokens(t_token **prev_token, t_token *tokens);
 
+int					is_texture(char *input);
+int					is_color(char *input);
+int					is_empty(char *input);
 
 #endif

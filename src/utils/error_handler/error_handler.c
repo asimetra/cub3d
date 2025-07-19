@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_utils.h                                     :+:      :+:    :+:   */
+/*   error_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 14:49:27 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/18 22:50:51 by hsamir           ###   ########.fr       */
+/*   Created: 2025/07/18 23:21:25 by hsamir            #+#    #+#             */
+/*   Updated: 2025/07/18 23:29:30 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRING_UTILS_H
-# define STRING_UTILS_H
+#include "memory_allocator.h"
 
-char	*str_arr_join(char	**strings, int count);
-void	str_arr_free(char	**strings, int count);
-
-int		includes(char *str, char c);
-int		str_equal(char *s1, char *s2);
-
-#endif
+void	safe_exit(const char *message)
+{
+	ft_putendl_fd("Error", 2);
+	if (message)
+		ft_putendl_fd(message, 2);
+	safe_abort(1);
+}
