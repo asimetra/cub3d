@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 16:03:55 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/19 12:34:08 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/19 13:07:49 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	texture_state(char *input, t_token **head_token, int s_mask, int line)
 	new_token.type = get_texture_type(input);
 	if (s_mask & new_token.type)
 		safe_exit("Duplicate texture type found", input, line);
+	new_token.line = line;
 	new_token.content = ft_strtrim(input + 3, " \n"); //NO ./test
 	prepend_token(head_token, create_token(new_token));
 	return (new_token.type);
@@ -37,6 +38,7 @@ int	color_state(char *input, t_token **head_token, int s_mask, int line)
 	new_token.type = get_color_type(input);
 	if (s_mask & new_token.type)
 		safe_exit("Duplicate color type found", input, line);
+	new_token.line = line;
 	new_token.content = ft_strtrim(input + 2, " \n");
 	prepend_token(head_token, create_token(new_token));
 	return (new_token.type);
@@ -50,6 +52,7 @@ int	map_state(char *input, t_token **head_token, int seen_mask, int line)
 		safe_exit("Map must be last token", input, line);
 	if (!is_map_chars(input))
 		safe_exit("Invalid map start or characters", input, line);
+	new_token.line = line;
 	new_token.type = T_MAP;
 	new_token.content = ft_strtrim(input,"\n");
 	prepend_token(head_token, create_token(new_token));

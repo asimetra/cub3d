@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 18:30:44 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/19 11:53:09 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/19 13:05:17 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ typedef struct s_token
 {
 	t_token_type	type;
 	char			*content;
+	int				line;
 	struct s_token	*next;
+
 }					t_token;
 
 typedef int		(*t_state)(char *input, t_token **head_token, int seen_mask, int line_number);
