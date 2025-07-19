@@ -4,7 +4,13 @@ SRC = libs/memory_allocator/allocator.c \
 	libs/memory_allocator/aborter.c \
 	libs/get_next_line/get_next_line.c \
 	src/utils/string_utils/str_arr_operations.c \
+	src/utils/string_utils/str_operations.c \
 	src/utils/error_handler/error_handler.c \
+	src/token/operations.c \
+	src/token/token_list.c \
+	src/token/token_type.c \
+	src/lexer/classify.c \
+	src/lexer/tokenizer.c \
 	src/main.c \
 
 CC = cc

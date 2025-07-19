@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 18:37:35 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/18 23:15:20 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/19 09:18:34 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	is_empty(char *input)
 	'N','S','E','W' for player starting positions,
 	' ' space are valid part and are up to you to handle
 */
-int	is_map(char *input)
+int	is_map_chars(char *input)
 {
 	int	index;
 
@@ -51,4 +51,10 @@ int	is_map(char *input)
 		index++;
 	}
 	return (1);
+}
+
+
+int	is_map_start(char *input)
+{
+	return (input[0] == '1' || input[0] == ' ');
 }

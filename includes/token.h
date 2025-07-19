@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 18:30:44 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/19 07:24:17 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/19 10:04:55 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define TOKEN_H
 
 # define MAP_CHR	"01NSEW "
-# define FLAG_ALL -1
 # define FLAG_TEXTURE (T_NORTH | T_SOUTH | T_WEST | T_EAST)
 # define FLAG_COLOR (T_FLOOR | T_CEIL)
+# define FLAG_ALL	(FLAG_TEXTURE | FLAG_COLOR | T_MAP)
 
 typedef enum e_token_type
 {
@@ -51,8 +51,13 @@ void				insert_tokens(t_token **prev_token, t_token *tokens);
 int					is_texture(char *input);
 int					is_color(char *input);
 int					is_empty(char *input);
+int					is_map_start(char *input);
+int					is_map_chars(char *input);
+int					is_empty(char *input);
 
 t_token_type		get_texture_type(char *input);
 t_token_type		get_color_type(char *input);
+
+t_token				*tokenize_file(int fd);
 
 #endif
