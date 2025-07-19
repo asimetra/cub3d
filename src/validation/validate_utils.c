@@ -1,20 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   config.h                                           :+:      :+:    :+:   */
+/*   validate_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 13:43:59 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/19 14:13:50 by sdaban           ###   ########.fr       */
+/*   Created: 2025/07/19 14:07:22 by sdaban            #+#    #+#             */
+/*   Updated: 2025/07/19 14:08:18 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONFIG_H
-# define CONFIG_H
-
-# define WIDHT 2500
-# define HEIGHT 1600
-# define FOV 90
-
-#endif
+void	asd(void);

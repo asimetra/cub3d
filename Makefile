@@ -11,6 +11,7 @@ SRC = libs/memory_allocator/allocator.c \
 	src/token/token_type.c \
 	src/lexer/classify.c \
 	src/lexer/tokenizer.c \
+	src/validation/validation.c \
 	src/main.c \
 
 CC = cc
