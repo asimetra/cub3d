@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 18:30:44 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/19 14:24:29 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/19 17:40:15 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define DUPTEXTURE_ERR "Duplicate texture type found"
 # define DUPCOLOR_ERR "Duplicate color type found"
 # define MAP_ERR "Map must be last token"
-# define MAPCHARS_ERR "Invalid map start or characters"
+# define MAPCHARS_ERR "Invalid map characters"
 
 typedef enum e_token_type
 {

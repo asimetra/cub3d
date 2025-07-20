@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:40:41 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/19 11:18:42 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/19 21:39:32 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,28 @@ typedef struct s_graphics {
 	t_mlx	mlx;
 	t_texture textures;
 }		t_graphics;
+
+typedef	struct s_map {
+	char	**map;
+	int		width;
+	int		height;
+}	t_map;
+
+typedef struct s_position {
+	float	x;
+	float	y;
+}		t_position;
+
+typedef struct s_player {
+	float		angle;
+	t_position	player_pos;
+}		t_player;
+
+typedef struct s_game {
+	t_graphics	graphics;
+	t_map		map;
+	t_player	player;
+}		t_game;
 
 void	safe_exit(char *message, char *line, int line_number);
 
