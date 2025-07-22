@@ -16,6 +16,7 @@
 #include <stddef.h>
 
 # define MAP_CHR	"01NSEW "
+# define PLAYER_CHR	"NSEW"
 # define FLAG_TEXTURE (T_NORTH | T_SOUTH | T_WEST | T_EAST)
 # define FLAG_COLOR (T_FLOOR | T_CEIL)
 # define FLAG_ALL	(FLAG_TEXTURE | FLAG_COLOR | T_MAP)
@@ -30,7 +31,7 @@ typedef enum e_element_type
 	T_CEIL = 1 << 5,
 	T_MAP = 1 << 6,
 	T_INVALID = 1 << 7,
-	T_EMPTY = 1 << 8
+	T_PLAYER = 1 << 8
 }					t_element_type;
 
 typedef struct s_element
@@ -49,6 +50,7 @@ typedef struct s_line
 
 t_element			*create_element(t_element new_element);
 t_element			*reverse_element_list(t_element *head);
+t_element			*get_element(t_element *element, t_element_type type);
 
 void				prepend_element(t_element **head, t_element *new_element);
 
@@ -61,6 +63,7 @@ int					is_empty(char *input);
 
 t_element_type		get_texture_type(char *input);
 t_element_type		get_color_type(char *input);
+t_element_type		get_player_type(char *input);
 
 
 typedef t_element_type		(*t_state)(t_element **head, t_line line, int s_mask);

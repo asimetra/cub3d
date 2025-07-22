@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/22 19:15:34 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/22 20:30:52 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,15 @@ int	main(int argc, char **argv)
 
 	elements = NULL;
 	if (argc != 2)
-		safe_exit("Usage: ./cub3D <config_file>", NULL, 0);
+		safe_exit(USAGE_ERR, NULL, 0);
 	if (!is_valid_file_extension(argv[1]))
-		safe_exit("Invalid file extension", NULL, 0);
+		safe_exit(INVALID_EXT_ERR, NULL, 0);
 	map_fd = open(argv[1], O_RDONLY);
 	if (map_fd == -1)
-		safe_exit("Invalid map file", NULL, 0);
+		safe_exit(INVALID_FILE_ERR, NULL, 0);
 	elements = parse_file(map_fd);
 	if (elements == NULL)
-		safe_exit("Invalid map file", NULL, 0);
+		safe_exit(INVALID_FILE_ERR, NULL, 0);
 	close(map_fd);
 	debug_tokens(elements);
 	cub_main();
