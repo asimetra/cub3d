@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 19:54:48 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/18 22:50:22 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/22 19:46:17 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,19 @@ int	str_equal(char *s1, char *s2)
 	if (s1_len != ft_strlen(s2))
 		return (0);
 	return (ft_strncmp(s1, s2, s1_len) == 0);
+}
+
+int	ends_with(char *str, char *suffix)
+{
+	size_t	suf_len;
+	size_t	str_len;
+
+	if (!str || !suffix)
+		return (0);
+	suf_len = ft_strlen(suffix);
+	str_len = ft_strlen(str);
+	if (str_len < suf_len)
+		return (0);
+	return (ft_strncmp(str + str_len - suf_len, suffix, str_len) == 0);
+
 }

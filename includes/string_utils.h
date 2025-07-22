@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 14:49:27 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/18 22:50:51 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/22 19:46:32 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@ void	str_arr_free(char	**strings, int count);
 
 int		includes(char *str, char c);
 int		str_equal(char *s1, char *s2);
+int		ends_with(char *str, char *suffix);
 
 #endif
