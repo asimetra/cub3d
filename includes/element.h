@@ -23,6 +23,7 @@
 
 typedef enum e_element_type
 {
+	T_EMPTY = 0,
 	T_NORTH = 1 << 0,
 	T_SOUTH = 1 << 1,
 	T_WEST = 1 << 2,

@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:52:02 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/22 22:27:32 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/22 22:50:03 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,21 @@ t_state	get_next_state(char *input)
 	return (invalid_state);
 }
 
+t_element_type	parse_line(t_element **elements, t_line line, int s_mask)
+{
+	t_state	next_state;
+
+	next_state = get_next_state(line.content);
+	if (next_state != NULL)
+		return (next_state(elements, line, s_mask));
+	if (s_mask & T_MAP)
+		safe_exit(INVALID_ELEMENT_ERR, line.content, line.number);
+	return (T_EMPTY);
+}
+
 t_element	*parse_file(int fd)
 {
 	t_element	*elements;
-	t_state		next_state;
 	char		*line;
 	int			line_number;
 	int			seen_mask;
@@ -46,10 +57,7 @@ t_element	*parse_file(int fd)
 		line = get_next_line(fd);
 		if (line == NULL)
 			break;
-		line_number++;
-		next_state = get_next_state(line);
-		if (next_state != NULL)
-			seen_mask |= next_state(&elements,(t_line){line, line_number}, seen_mask);
+		seen_mask |= parse_line(&elements,(t_line){line, ++line_number}, seen_mask);
 		safe_free_ptr(line, TEMPORARY);
 	}
 	if ((seen_mask & FLAG_ALL) != FLAG_ALL)
