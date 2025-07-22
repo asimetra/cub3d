@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token_type.c                                       :+:      :+:    :+:   */
+/*   element_type.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 23:13:15 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/19 09:44:43 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/22 14:51:02 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "token.h"
+#include "element.h"
 #include "libft.h"
 
-t_token_type	get_texture_type(char *input)
+t_element_type	get_texture_type(char *input)
 {
 	if (ft_strncmp(input, "NO ", 3) == 0)
 		return (T_NORTH);
@@ -26,7 +26,7 @@ t_token_type	get_texture_type(char *input)
 	return (T_INVALID);
 }
 
-t_token_type	get_color_type(char *input)
+t_element_type	get_color_type(char *input)
 {
 	if (ft_strncmp(input, "F ", 2) == 0)
 		return (T_FLOOR);

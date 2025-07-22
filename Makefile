@@ -6,13 +6,12 @@ SRC = libs/memory_allocator/allocator.c \
 	src/utils/string_utils/str_arr_operations.c \
 	src/utils/string_utils/str_operations.c \
 	src/utils/error_handler/error_handler.c \
-	src/token/operations.c \
-	src/token/token_list.c \
-	src/token/token_type.c \
-	src/lexer/states.c \
-	src/lexer/classify.c \
-	src/lexer/tokenizer.c \
-	src/validation/validation.c \
+	src/element/element_list.c \
+	src/element/element_type.c \
+	src/parser/states.c \
+	src/parser/classify.c \
+	src/parser/parser.c \
+	src/validation/validate_elements.c \
 	src/validation/validate_file.c \
 	src/main.c \
 

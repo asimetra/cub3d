@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenizer.c                                        :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 16:03:55 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/21 21:50:03 by hsamir           ###   ########.fr       */
+/*   Created: 2025/07/22 14:52:02 by hsamir            #+#    #+#             */
+/*   Updated: 2025/07/22 19:28:28 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include "token.h"
-#include <stddef.h>
+#include "element.h"
 #include <stdbool.h>
 #include "memory_allocator.h"
+#include "cub3d.h"
+#include "validation.h"
 #include "get_next_line.h"
-#include "libft.h"
 
 t_state	get_next_state(char *input)
 {
@@ -31,37 +30,29 @@ t_state	get_next_state(char *input)
 	return (invalid_state);
 }
 
-t_token_type	lex_line(t_token **head_token, char *input, int line)
+t_element	*parse_file(int fd)
 {
-	t_token	*token;
-	t_state	next_state;
+	t_element	*elements;
+	t_state		next_state;
+	char		*line;
+	int			line_number;
+	int			seen_mask;
 
-	next_state = get_next_state(input);
-	if (next_state == NULL)
-		return (T_EMPTY);
-	token = next_state(input, line);
-	prepend_token(head_token, token);
-	return (token->type);
-}
-
-t_token	*tokenize_file(int fd)
-{
-	t_token	*head_token;
-	t_token_type type;
-	int		line_number;
-	char	*line;
-
-	head_token = NULL;
+	elements = NULL;
 	line_number = 0;
+	seen_mask = 0;
 	while (true)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
 			break;
-		type = lex_line(&head_token, line, ++line_number);
-		if (type & T_INVALID)
-			break;
+		line_number++;
+		next_state = get_next_state(line);
+		if (next_state != NULL)
+			seen_mask |= next_state(&elements,(t_line){line, line_number}, seen_mask);
 		safe_free_ptr(line, TEMPORARY);
 	}
-	return (reverse_token_list(head_token));
+	if (seen_mask != FLAG_ALL)
+		safe_exit("missing elements in file", NULL, 0);
+	return (reverse_element_list(elements));
 }

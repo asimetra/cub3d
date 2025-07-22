@@ -6,13 +6,13 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 18:37:35 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/19 19:12:58 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/22 15:01:24 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string_utils.h"
 #include "libft.h"
-#include "token.h"
+#include "element.h"
 
 int	is_texture(char *input)
 {

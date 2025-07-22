@@ -6,19 +6,19 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/21 22:23:17 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/22 19:15:34 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memory_allocator.h"
 #include "cub3d.h"
-#include "token.h"
+#include "element.h"
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>
 #include "validation.h"
 
-const char *token_type_str(t_token_type t)
+const char *token_type_str(t_element_type t)
 {
 	switch (t) {
 		case T_NORTH: return "T_NORTH";
@@ -32,7 +32,7 @@ const char *token_type_str(t_token_type t)
 	}
 }
 
-void	debug_tokens(t_token *tokens)
+void	debug_tokens(t_element *tokens)
 {
 	printf("\x1b[34m┌──────────────────────────────────────────────────── DEBUG TOKENS ─────────────────────────────────────────────────────┐\x1b[0m\n");
 	while(tokens)
@@ -53,10 +53,10 @@ void cub_main(void)
 
 int	main(int argc, char **argv)
 {
-	t_token	*token;
+	t_element	*elements;
 	int		map_fd;
 
-	token = NULL;
+	elements = NULL;
 	if (argc != 2)
 		safe_exit("Usage: ./cub3D <config_file>", NULL, 0);
 	if (!is_valid_file_extension(argv[1]))
@@ -64,11 +64,11 @@ int	main(int argc, char **argv)
 	map_fd = open(argv[1], O_RDONLY);
 	if (map_fd == -1)
 		safe_exit("Invalid map file", NULL, 0);
-	token = tokenize_file(map_fd);
-	if (token == NULL)
+	elements = parse_file(map_fd);
+	if (elements == NULL)
 		safe_exit("Invalid map file", NULL, 0);
 	close(map_fd);
-	debug_tokens(token);
+	debug_tokens(elements);
 	cub_main();
 	return (0);
 }

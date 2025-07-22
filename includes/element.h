@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token.h                                            :+:      :+:    :+:   */
+/*   element.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,20 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOKEN_H
-# define TOKEN_H
+#ifndef ELEMENT_H
+# define ELEMENT_H
+
+#include <stddef.h>
 
 # define MAP_CHR	"01NSEW "
 # define FLAG_TEXTURE (T_NORTH | T_SOUTH | T_WEST | T_EAST)
 # define FLAG_COLOR (T_FLOOR | T_CEIL)
 # define FLAG_ALL	(FLAG_TEXTURE | FLAG_COLOR | T_MAP)
 
-# define INVALID_ERR "Unrecognized element type identifier"
-# define DUP_ERR "Duplicated  element"
-# define MAP_ERR "Map must be last element"
-# define MAPCHARS_ERR "Invalid map characters"
-
-typedef enum e_token_type
+typedef enum e_element_type
 {
 	T_NORTH = 1 << 0,
 	T_SOUTH = 1 << 1,
@@ -34,27 +31,26 @@ typedef enum e_token_type
 	T_MAP = 1 << 6,
 	T_INVALID = 1 << 7,
 	T_EMPTY = 1 << 8
-}					t_token_type;
+}					t_element_type;
 
-typedef struct s_token
+typedef struct s_element
 {
-	t_token_type	type;
+	t_element_type	type;
 	char			*content;
 	int				line;
-	struct s_token	*next;
+	struct s_element	*next;
+}					t_element;
 
-}					t_token;
+typedef struct s_line
+{
+	char			*content;
+	int				number;
+}					t_line;
 
-typedef t_token		*(*t_state)(char *input, int line);
+t_element			*create_element(t_element new_element);
+t_element			*reverse_element_list(t_element *head);
 
-t_token				*get_last_token(t_token *head_token);
-t_token				*create_token(t_token new_token);
-t_token				*reverse_token_list(t_token *token);
-
-void				prepend_token(t_token **head_token, t_token *new_token);
-void				remove_token(t_token **head, t_token *prev, t_token *token);
-void				remove_token_by_flags(t_token **head_token, int flags);
-void				insert_tokens(t_token **prev_token, t_token *tokens);
+void				prepend_element(t_element **head, t_element *new_element);
 
 int					is_texture(char *input);
 int					is_color(char *input);
@@ -63,14 +59,17 @@ int					is_map_start(char *input);
 int					is_map_chars(char *input);
 int					is_empty(char *input);
 
-t_token				*invalid_state(char *input, int line);
-t_token				*texture_state(char *input, int line);
-t_token				*color_state(char *input,  int line);
-t_token				*map_state(char *input,  int line);
+t_element_type		get_texture_type(char *input);
+t_element_type		get_color_type(char *input);
 
-t_token_type		get_texture_type(char *input);
-t_token_type		get_color_type(char *input);
 
-t_token				*tokenize_file(int fd);
+typedef t_element_type		(*t_state)(t_element **head, t_line line, int s_mask);
+
+t_element_type				texture_state(t_element **head, t_line line, int s_mask);
+t_element_type				color_state(t_element **head, t_line line, int s_mask);
+t_element_type				map_state(t_element **head, t_line line, int s_mask);
+t_element_type				invalid_state(t_element **head, t_line line, int s_mask);
+
+t_element					*parse_file(int fd);
 
 #endif
