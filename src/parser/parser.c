@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:52:02 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/22 19:28:28 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/22 22:27:32 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_element	*parse_file(int fd)
 			seen_mask |= next_state(&elements,(t_line){line, line_number}, seen_mask);
 		safe_free_ptr(line, TEMPORARY);
 	}
-	if (seen_mask != FLAG_ALL)
-		safe_exit("missing elements in file", NULL, 0);
+	if ((seen_mask & FLAG_ALL) != FLAG_ALL)
+		safe_exit(MISSING_ERR, NULL, 0);
 	return (reverse_element_list(elements));
 }

@@ -3,11 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   validate_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:07:22 by sdaban            #+#    #+#             */
-/*   Updated: 2025/07/19 14:08:18 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/07/22 22:25:21 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	asd(void);
+#include "libft.h"
+#include "element.h"
+#include "string_utils.h"
+
+int	is_valid_player_count(char *input)
+{
+	int index;
+	int	p_count;
+
+	index = 0;
+	p_count = 0;
+	while (input[index])
+	{
+		if (ft_strchr(PLAYER_CHR, input[index]))
+			p_count++;
+		index++;
+	}
+	return (p_count == 1 || p_count == 0);
+}
+
+int	is_valid_file_extension(char *file_path)
+{
+	return (ends_with(file_path, ".cub"));
+}

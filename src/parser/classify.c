@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 18:37:35 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/22 15:01:24 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/22 22:02:52 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,3 +57,4 @@ int	is_map_start(char *input)
 {
 	return (input[0] == '1' || input[0] == ' ');
 }
+
