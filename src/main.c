@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/19 12:03:22 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/21 22:23:17 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>
+#include "validation.h"
 
 const char *token_type_str(t_token_type t)
 {
@@ -53,15 +54,20 @@ void cub_main(void)
 int	main(int argc, char **argv)
 {
 	t_token	*token;
-	int		config_fd;
+	int		map_fd;
 
-	(void)argv;
 	token = NULL;
 	if (argc != 2)
 		safe_exit("Usage: ./cub3D <config_file>", NULL, 0);
-	config_fd = open(argv[1], O_RDONLY);
-	token = tokenize_file(config_fd);
-	close(config_fd);
+	if (!is_valid_file_extension(argv[1]))
+		safe_exit("Invalid file extension", NULL, 0);
+	map_fd = open(argv[1], O_RDONLY);
+	if (map_fd == -1)
+		safe_exit("Invalid map file", NULL, 0);
+	token = tokenize_file(map_fd);
+	if (token == NULL)
+		safe_exit("Invalid map file", NULL, 0);
+	close(map_fd);
 	debug_tokens(token);
 	cub_main();
 	return (0);

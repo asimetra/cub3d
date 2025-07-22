@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 18:30:44 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/19 17:40:15 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/21 21:54:41 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@
 # define FLAG_COLOR (T_FLOOR | T_CEIL)
 # define FLAG_ALL	(FLAG_TEXTURE | FLAG_COLOR | T_MAP)
 
-# define INVALID_ERR "Invalid token found"
-# define DUPTEXTURE_ERR "Duplicate texture type found"
-# define DUPCOLOR_ERR "Duplicate color type found"
-# define MAP_ERR "Map must be last token"
+# define INVALID_ERR "Unrecognized element type identifier"
+# define DUP_ERR "Duplicated  element"
+# define MAP_ERR "Map must be last element"
 # define MAPCHARS_ERR "Invalid map characters"
 
 typedef enum e_token_type
@@ -33,7 +32,8 @@ typedef enum e_token_type
 	T_FLOOR = 1 << 4,
 	T_CEIL = 1 << 5,
 	T_MAP = 1 << 6,
-	T_INVALID = 1 << 7
+	T_INVALID = 1 << 7,
+	T_EMPTY = 1 << 8
 }					t_token_type;
 
 typedef struct s_token
@@ -45,7 +45,7 @@ typedef struct s_token
 
 }					t_token;
 
-typedef int		(*t_state)(char *input, void *head_token, int seen_mask, int line_number);
+typedef t_token		*(*t_state)(char *input, int line);
 
 t_token				*get_last_token(t_token *head_token);
 t_token				*create_token(t_token new_token);
@@ -63,10 +63,10 @@ int					is_map_start(char *input);
 int					is_map_chars(char *input);
 int					is_empty(char *input);
 
-int					invalid_state(char *input, void *error, int flag, int line);
-int					texture_state(char *input, void *head_token, int s_mask, int line);
-int					color_state(char *input, void *head_token, int s_mask, int line);
-int					map_state(char *input, void *head_token, int seen_mask, int line);
+t_token				*invalid_state(char *input, int line);
+t_token				*texture_state(char *input, int line);
+t_token				*color_state(char *input,  int line);
+t_token				*map_state(char *input,  int line);
 
 t_token_type		get_texture_type(char *input);
 t_token_type		get_color_type(char *input);

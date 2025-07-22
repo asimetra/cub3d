@@ -13,6 +13,7 @@ SRC = libs/memory_allocator/allocator.c \
 	src/lexer/classify.c \
 	src/lexer/tokenizer.c \
 	src/validation/validation.c \
+	src/validation/validate_file.c \
 	src/main.c \
 
 CC = cc

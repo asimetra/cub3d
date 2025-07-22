@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.h                                       :+:      :+:    :+:   */
+/*   validate_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 13:58:25 by sdaban            #+#    #+#             */
-/*   Updated: 2025/07/21 21:59:07 by hsamir           ###   ########.fr       */
+/*   Created: 2025/07/21 21:59:23 by hsamir            #+#    #+#             */
+/*   Updated: 2025/07/21 22:27:39 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALIDATION_H
-#define VALIDATION_H
+#include "libft.h"
+#include "string_utils.h"
 
-#include <stdbool.h>
+int	is_valid_file_extension(char *file_path)
+{
+	int	i;
 
-
-bool		v_color_value(int value);
-bool		v_map();
-bool		v_fc_colors(int floor, int ceiling); // floor and ceiling
-bool		v_directions();
-
-int			is_valid_file_extension(char *file_path);
-
-#endif
+	i = ft_strlen(file_path);
+	if (i >= 4 && str_equal(file_path + i - 4, ".cub"))
+		return (1);
+	return (0);
+}

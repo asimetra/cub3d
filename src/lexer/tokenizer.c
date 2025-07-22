@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 16:03:55 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/19 14:10:21 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/21 21:50:03 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,39 +18,49 @@
 #include "get_next_line.h"
 #include "libft.h"
 
-t_state	get_state(char *input, int seen_mask)
+t_state	get_next_state(char *input)
 {
 	if (is_texture(input))
 		return (texture_state);
 	else if (is_color(input))
 		return (color_state);
-	else if (is_empty(input) && !(seen_mask & T_MAP))
+	else if (is_empty(input))
 		return (NULL);
-	else if (is_map_start(input))
+	else if (is_map_start(input) && is_map_chars(input))
 		return (map_state);
 	return (invalid_state);
+}
+
+t_token_type	lex_line(t_token **head_token, char *input, int line)
+{
+	t_token	*token;
+	t_state	next_state;
+
+	next_state = get_next_state(input);
+	if (next_state == NULL)
+		return (T_EMPTY);
+	token = next_state(input, line);
+	prepend_token(head_token, token);
+	return (token->type);
 }
 
 t_token	*tokenize_file(int fd)
 {
 	t_token	*head_token;
-	t_state	state;
-	int		seen_mask;
+	t_token_type type;
 	int		line_number;
 	char	*line;
 
 	head_token = NULL;
-	seen_mask = 0;
 	line_number = 0;
 	while (true)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
 			break;
-		line_number++;
-		state = get_state(line, seen_mask);
-		if (state != NULL)
-			seen_mask |= state(line, &head_token, seen_mask, line_number);
+		type = lex_line(&head_token, line, ++line_number);
+		if (type & T_INVALID)
+			break;
 		safe_free_ptr(line, TEMPORARY);
 	}
 	return (reverse_token_list(head_token));
