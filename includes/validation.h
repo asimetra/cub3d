@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:58:25 by sdaban            #+#    #+#             */
-/*   Updated: 2025/07/23 17:52:35 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 02:11:49 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ typedef struct s_result
 #define DUP_PLAYER_ERR "duplicate player"
 #define MAP_PLAYER_ERR "invalid player count on map line"
 
+#define V_RANGE_ERR "value out of range"
+#define V_DIRECTION_ERR "invalid direction character"
+#define V_DUP_DIRECTION_ERR "duplicate direction character"
 
 bool		v_color_value(int value);
 bool		v_map();
