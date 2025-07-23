@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/23 17:59:29 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/23 18:00:33 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	main(int argc, char **argv)
 	close(map_fd);
 	debug_tokens(elements);
 	cub_main();
+	safe_abort(0);
 	return (0);
 }
 
