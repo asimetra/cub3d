@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:54:04 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/23 12:35:35 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/23 17:52:07 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ t_result	validate_color(t_element *element, int seen_mask)
 {
 	if (seen_mask & element->type)
 		return ((t_result) {.type = ERROR, .err = DUP_COLOR_ERR});
+	if (element->value.color == -1)
+		return ((t_result) {.type = ERROR, .err = INVALID_COLOR_ERR});
 	return ((t_result) {.type = OK, .err = NULL});
 }
 

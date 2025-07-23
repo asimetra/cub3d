@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:40:41 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/19 21:39:32 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/23 17:33:34 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,7 @@ typedef struct s_game {
 }		t_game;
 
 void	safe_exit(char *message, char *line, int line_number);
+
+int		str_to_rgb(char	*input);
 
 #endif

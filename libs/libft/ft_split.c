@@ -48,10 +48,10 @@ static char	**free_arr(char **arr, int i)
 {
 	while (i >= 0)
 	{
-		free(arr[i]);
+		safe_free_ptr(arr[i], TEMPORARY);
 		i--;
 	}
-	free(arr);
+	safe_free_ptr(arr, TEMPORARY);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:07:22 by sdaban            #+#    #+#             */
-/*   Updated: 2025/07/23 12:35:49 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/23 17:49:32 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,11 @@ int	is_valid_color_char(char c)
 	return (ft_isdigit(c) || c == ',' || c == ' ');
 }
 
+/*
+	all char is valid,
+	there are 2 comma,
+	the lenght of array that result of split is 3,
+	0-255,
 
-// int is_valid_color_format(char *input)
-// {
-// 	int	index;
-// 	int comma_count;
+*/
 
-// 	index = 0;
-// 	comma_count = 0;
-// 	while (input[index])
-// 	{
-// 		if (is_valid_color_char(input[index]))
-// 			return (0);
-// 		if (input[index] == ',' || input[index] == ' ')
-// 		{
-// 			comma_count++;
-// 			index = skip_comma(input, index);
-// 		}
-// 		index++;
-// 		}
-// }

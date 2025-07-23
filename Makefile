@@ -5,7 +5,8 @@ SRC = libs/memory_allocator/allocator.c \
 	libs/get_next_line/get_next_line.c \
 	src/utils/string_utils/str_arr_operations.c \
 	src/utils/string_utils/str_operations.c \
-	src/utils/error_handler/error_handler.c \
+	src/utils/error_handler.c \
+	src/utils/convertion_utils.c \
 	src/element/element_list.c \
 	src/element/element_type.c \
 	src/parser/states.c \

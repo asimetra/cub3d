@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/23 12:36:07 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/23 17:59:29 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,16 @@ void	debug_tokens(t_element *tokens)
 	printf("\x1b[34m┌──────────────────────────────────────────────────── DEBUG TOKENS ─────────────────────────────────────────────────────┐\x1b[0m\n");
 	while(tokens)
 	{
-        printf("│ \x1b[33m[%11s]\x1b[0m \x1b[32m\"%s\"\x1b[0m\n",
+		if (tokens->type & ~(T_FLOOR | T_CEIL))
+       		printf("│ \x1b[33m[%11s]\x1b[0m \x1b[32m\"%s\"\x1b[0m\n",
 			token_type_str(tokens->type),
 			tokens->value.content ? tokens->value.content : "(null)");
+		else
+			printf("│ \x1b[33m[%11s]\x1b[0m \x1b[32m\"%d,%d,%d\"\x1b[0m\n",
+			token_type_str(tokens->type),
+			tokens->value.color >> 16 & 0xFF,
+			tokens->value.color >> 8 & 0xFF,
+			tokens->value.color & 0xFF);
 		tokens = tokens->next;
 	}
 	printf("\x1b[34m└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘\x1b[0m\n");
@@ -50,13 +57,11 @@ void cub_main(void)
 
 }
 
-
 int	main(int argc, char **argv)
 {
 	t_element	*elements;
 	int		map_fd;
 
-	elements = NULL;
 	if (argc != 2)
 		safe_exit(USAGE_ERR, NULL, 0);
 	if (!is_valid_file_extension(argv[1]))

@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:58:25 by sdaban            #+#    #+#             */
-/*   Updated: 2025/07/22 22:33:22 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/23 17:52:35 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_result
 #define INVALID_TEXTURE_ERR "invalid texture path"
 
 #define DUP_COLOR_ERR "duplicate color"
+#define INVALID_COLOR_ERR "invalid color value"
 
 #define MAP_ERR "map is not last element"
 #define DUP_PLAYER_ERR "duplicate player"

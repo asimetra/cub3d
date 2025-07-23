@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:50:39 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/23 12:34:25 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/23 17:50:54 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_element_type	color_state(t_element **elements, t_line line, int s_mask)
 
 	new_element = (t_element) {
 		.type = get_color_type(line.content),
-		.value.content = ft_strtrim(line.content + 2, " \n"),
+		.value.color = str_to_rgb(ft_strtrim(line.content + 2, " \n")),
 		.line = line.number
 	};
 	result = validate_color(&new_element, s_mask);

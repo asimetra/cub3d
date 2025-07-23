@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 19:54:48 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/23 11:27:26 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/23 13:50:59 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,20 @@ int	ends_with(char *str, char *suffix)
 		return (0);
 	return (ft_strncmp(str + str_len - suf_len, suffix, str_len) == 0);
 
+}
+
+int	str_count(char *str, char c)
+{
+	int index;
+	int count;
+
+	index = 0;
+	count = 0;
+	while (str[index])
+	{
+		if (str[index] == c)
+			count++;
+		index++;
+	}
+	return (count);
 }
