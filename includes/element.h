@@ -35,10 +35,16 @@ typedef enum e_element_type
 	T_PLAYER = 1 << 8
 }					t_element_type;
 
+typedef union u_value
+{
+	char			*content;
+	int				color;
+}					t_value;
+
 typedef struct s_element
 {
 	t_element_type	type;
-	char			*content;
+	t_value			value;
 	int				line;
 	struct s_element	*next;
 }					t_element;

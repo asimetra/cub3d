@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/22 20:30:52 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/23 12:36:07 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	debug_tokens(t_element *tokens)
 	{
         printf("│ \x1b[33m[%11s]\x1b[0m \x1b[32m\"%s\"\x1b[0m\n",
 			token_type_str(tokens->type),
-			tokens->content ? tokens->content : "(null)");
+			tokens->value.content ? tokens->value.content : "(null)");
 		tokens = tokens->next;
 	}
 	printf("\x1b[34m└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘\x1b[0m\n");

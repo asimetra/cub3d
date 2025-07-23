@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:50:39 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/22 23:29:15 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/23 12:34:25 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_element_type	texture_state(t_element **elements, t_line line, int s_mask)
 
 	new_element = (t_element) {
 			.type = get_texture_type(line.content),
-			.content = ft_strtrim(line.content + 3, " \n"),
+			.value.content = ft_strtrim(line.content + 3, " \n"),
 			.line = line.number
 	};
 	result = validate_texture(&new_element, s_mask);
@@ -39,7 +39,7 @@ t_element_type	color_state(t_element **elements, t_line line, int s_mask)
 
 	new_element = (t_element) {
 		.type = get_color_type(line.content),
-		.content = ft_strtrim(line.content + 2, " \n"),
+		.value.content = ft_strtrim(line.content + 2, " \n"),
 		.line = line.number
 	};
 	result = validate_color(&new_element, s_mask);
@@ -56,7 +56,7 @@ t_element_type map_state(t_element **elements, t_line line, int s_mask)
 
 	new_element	= (t_element) {
 		.type = T_MAP | get_player_type(line.content),
-		.content = ft_strtrim(line.content, "\n"),
+		.value.content = ft_strtrim(line.content, "\n"),
 		.line = line.number
 	};
 	result = validate_map(&new_element, s_mask);
