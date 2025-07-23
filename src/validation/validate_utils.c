@@ -6,13 +6,14 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:07:22 by sdaban            #+#    #+#             */
-/*   Updated: 2025/07/22 22:25:21 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/23 06:01:12 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "element.h"
 #include "string_utils.h"
+#include "limits.h"
 
 int	is_valid_player_count(char *input)
 {
@@ -33,4 +34,9 @@ int	is_valid_player_count(char *input)
 int	is_valid_file_extension(char *file_path)
 {
 	return (ends_with(file_path, ".cub"));
+}
+
+int	is_in_unsigned_char_range(int value)
+{
+	return (value >= 0 && value <= UCHAR_MAX);
 }
