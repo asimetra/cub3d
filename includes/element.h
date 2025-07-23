@@ -20,6 +20,7 @@
 # define FLAG_TEXTURE (T_NORTH | T_SOUTH | T_WEST | T_EAST)
 # define FLAG_COLOR (T_FLOOR | T_CEIL)
 # define FLAG_ALL	(FLAG_TEXTURE | FLAG_COLOR | T_MAP)
+# define FLAG_PLAYER (T_PLAYER_N | T_PLAYER_S | T_PLAYER_E | T_PLAYER_W)
 
 typedef enum e_element_type
 {
@@ -32,7 +33,10 @@ typedef enum e_element_type
 	T_CEIL = 1 << 5,
 	T_MAP = 1 << 6,
 	T_INVALID = 1 << 7,
-	T_PLAYER = 1 << 8
+	T_PLAYER_N = 1 << 8,
+	T_PLAYER_S = 1 << 9,
+	T_PLAYER_E = 1 << 10,
+	T_PLAYER_W = 1 << 8
 }					t_element_type;
 
 typedef union u_value

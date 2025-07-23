@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 18:29:48 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/22 23:24:19 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/23 21:13:33 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_element	*get_element(t_element *element, t_element_type type)
 {
 	while (element != NULL)
 	{
-		if (element->type == type)
+		if (element->type & type)
 			return (element);
 		element = element->next;
 	}

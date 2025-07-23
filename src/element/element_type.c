@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 23:13:15 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/22 22:09:33 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/23 21:15:31 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,14 @@ t_element_type	get_player_type(char *input)
 	index = 0;
 	while (input[index])
 	{
-		if (ft_strchr(PLAYER_CHR, input[index]))
-			return (T_PLAYER);
+		if (input[index] == 'N')
+			return (T_PLAYER_N);
+		else if (input[index] == 'S')
+			return (T_PLAYER_S);
+		else if (input[index] == 'E')
+			return (T_PLAYER_E);
+		else if (input[index] == 'W')
+			return (T_PLAYER_W);
 		index++;
 	}
 	return (0);
