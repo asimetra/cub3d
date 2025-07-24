@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:12:06 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/24 10:27:25 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 10:29:46 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ void						safe_free_ptr(void *ptr, t_mem_type mem_type);
 void						safe_abort(int exit_code);
 
 
-void						register_finalizer_funct();
+void						register_finalizer_funct(t_fini finalizer);
 
 #endif
