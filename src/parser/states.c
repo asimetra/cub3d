@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:50:39 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/24 12:45:04 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 13:02:08 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_element_type	texture_state(t_element **elements, t_line line, int s_mask)
 			.value.content = ft_strtrim(line.content + 3, " \n"),
 			.line = line.number
 	};
+	new_element.val_len = ft_strlen(new_element.value.content);
 	result = validate_texture(&new_element, s_mask);
 	if (result.type == ERROR)
 		safe_exit(result.err, line.content, line.number);
@@ -58,10 +59,8 @@ t_element_type map_state(t_element **elements, t_line line, int s_mask)
 		.type = T_MAP | get_player_type(line.content),
 		.value.content = ft_strtrim(line.content, "\n"),
 		.line = line.number,
-		.val_len = ft_strlen(new_element.value.content)
 	};
-	#include "stdio.h"
-		printf("%ld\n", new_element.val_len);
+	new_element.val_len = ft_strlen(new_element.value.content);
 	result = validate_map(&new_element, s_mask);
 	if (result.type == ERROR)
 		safe_exit(result.err, line.content, line.number);
