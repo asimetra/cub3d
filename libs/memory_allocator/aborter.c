@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:24:14 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/24 10:26:28 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 11:55:45 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void register_finalizer_funct(t_fini finalizer)
 	*finalizer_func() = finalizer;
 }
 
-void	safe_abort(int exit_code)
+int	safe_abort(int exit_code)
 {
 	t_fini	finalizer;
 
@@ -82,4 +82,5 @@ void	safe_abort(int exit_code)
 	safe_free(PERSISTENT);
 	safe_free(TEMPORARY);
 	exit(exit_code);
+	return (exit_code);
 }

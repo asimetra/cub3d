@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/23 18:00:33 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 12:14:01 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include "validation.h"
+#include "minilibx/mlx.h"
 
 const char *token_type_str(t_element_type t)
 {
@@ -56,6 +57,12 @@ void cub_main(void)
 {
 
 }
+t_game	*game_object()
+{
+	static t_game game = {0};
+
+	return &game;
+}
 
 int	main(int argc, char **argv)
 {
@@ -75,6 +82,11 @@ int	main(int argc, char **argv)
 	close(map_fd);
 	debug_tokens(elements);
 	cub_main();
+	register_finalizer_funct(fini_graphics); //register mlx destroy function for aborter
+	init_graphics(elements);
+	// cub_main(elements);
+	mlx_hook(game_object()->graphics.mlx.mlx_win, 17, 1 << 17L, safe_abort, NULL);
+	mlx_loop(game_object()->graphics.mlx.mlx);
 	safe_abort(0);
 	return (0);
 }
