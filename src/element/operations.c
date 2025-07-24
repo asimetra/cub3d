@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 12:25:33 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/24 12:30:49 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 14:25:47 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 #include "element.h"
 #include "memory_allocator.h"
 
-size_t	element_size(t_element *element)
+size_t	element_count(t_element *element, t_element_type type)
 {
 	size_t len;
 
 	len = 0;
 	while (element != NULL)
 	{
-		len++;
+		if (element->type & type)
+			len++;
 		element = element->next;
 	}
 	return (len);
@@ -43,23 +44,21 @@ t_element	*reverse_element_list(t_element *element)
 	return (prev_element);
 }
 
-t_element	**element_to_arr(t_element *element)
+t_element	**element_to_arr(t_element *e, t_element_type type)
 {
-	t_element	**map_arr;
-	t_element	*map;
+	t_element	**arr;
 	size_t 		len;
 	size_t		index;
 
 	index = 0;
-	map = get_element(element, T_MAP);
-	len = element_size(map);
-	map_arr = safe_talloc(sizeof(t_element*) * (len + 1));
+	len = element_count(e, type);
+	arr = safe_talloc(sizeof(t_element*) * (len + 1));
 	while (index < len)
 	{
-		map_arr[index] = element;
-		map = map->next;
+		arr[index] = e;
+		e = e->next;
 		index++;
 	}
-	map_arr[index] = NULL;
-	return (map_arr);
+	arr[index] = NULL;
+	return (arr);
 }

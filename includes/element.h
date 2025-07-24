@@ -63,9 +63,9 @@ typedef struct s_line
 t_element			*create_element(t_element new_element);
 t_element			*reverse_element_list(t_element *head);
 t_element			*get_element(t_element *element, t_element_type type);
-t_element			**element_to_arr(t_element *element);
+t_element			**element_to_arr(t_element *e, t_element_type type);
 
-size_t				element_size(t_element *element);
+size_t				element_count(t_element *element, t_element_type type);
 
 void				prepend_element(t_element **head, t_element *new_element);
 
