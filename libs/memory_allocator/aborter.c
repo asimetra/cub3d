@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   aborter.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:24:14 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/16 15:21:52 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 10:26:28 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,25 @@ void	safe_free_ptr(void *ptr, t_mem_type mem_type)
 	}
 }
 
+t_fini *finalizer_func()
+{
+	static t_fini finalizer = NULL;
+
+	return (&finalizer);
+}
+
+void register_finalizer_funct(t_fini finalizer)
+{
+	*finalizer_func() = finalizer;
+}
+
 void	safe_abort(int exit_code)
 {
+	t_fini	finalizer;
+
+	finalizer = *finalizer_func();
+	if (finalizer != NULL)
+		finalizer();
 	safe_free(PERSISTENT);
 	safe_free(TEMPORARY);
 	exit(exit_code);
