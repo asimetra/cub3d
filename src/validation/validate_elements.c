@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_elements.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:54:04 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/24 02:01:02 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/07/24 13:28:47 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,9 @@
 
 t_result	validate_texture(t_element *element, int seen_mask)
 {
-	int len;
-
 	if (seen_mask & element->type)
 		return ((t_result) {.type = ERROR, .err = DUP_TEXTURE_ERR});
-	len = ft_strlen(element->value.content);
-	if (len == 0)
+	if (element->val_len == 0)
 		return ((t_result) {.type = ERROR, .err = EMPTY_TEXTURE_ERR});
 	if (!ends_with(element->value.content, ".xpm"))
 		return ((t_result) {.type = ERROR, .err = INVALID_TEXTURE_ERR});
@@ -47,4 +44,15 @@ t_result	validate_map(t_element *element, int seen_mask)
 	if (seen_mask & FLAG_PLAYER &&  element->type & FLAG_PLAYER)
 		return ((t_result) {.type = ERROR, .err = DUP_PLAYER_ERR});
 	return ((t_result) {.type = OK, .err = NULL});
+}
+
+t_result validate_elements(t_element *elements, int s_mask)
+{
+	if ((s_mask & FLAG_ALL) != FLAG_ALL)
+		return ((t_result) {.type = ERROR, .err = MISSING_ERR});
+	if (!(s_mask & FLAG_PLAYER))
+		return ((t_result) {.type = ERROR, .err = MISSING_PLAYER_ERR});
+	if (!is_valid_map(elements))
+		return ((t_result) {.err = INVALID_MAP_ERR, .type = ERROR});
+	return (t_result){.type = OK, .err = NULL};
 }

@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:40:41 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/23 18:24:09 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 14:34:53 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CUB3D_H
 
 /* ************************************************************************** */
+
+#include "element.h"
 
 typedef enum e_direction
 {
@@ -35,16 +37,18 @@ typedef struct s_texture {
 	void	*west;
 }	t_texture;
 
+typedef struct s_color {
+	int 		floor;
+	int 		ceiling;
+}				t_color;
+
 typedef struct s_graphics {
 	t_mlx	mlx;
 	t_texture textures;
+	t_color		colors;
 }		t_graphics;
 
-typedef	struct s_map {
-	char	**map;
-	int		width;
-	int		height;
-}	t_map;
+typedef	char** t_map;
 
 typedef struct s_position {
 	float	x;
@@ -56,20 +60,18 @@ typedef struct s_player {
 	t_position	player_pos;
 }		t_player;
 
-typedef struct s_color {
-	int 		floor;
-	int 		ceiling;
-}				t_color;
-
 typedef struct s_game {
 	t_graphics	graphics;
 	t_map		map;
 	t_player	player;
-	t_color		colors;
 }		t_game;
 
 void	safe_exit(char *message, char *line, int line_number);
 
 int		str_to_rgb(char	*input);
 
+t_game	*game_object();
+
+void	fini_graphics();
+void	init_graphics(t_element *e);
 #endif

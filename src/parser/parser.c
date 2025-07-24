@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:52:02 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/22 22:50:03 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 12:13:42 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ t_element	*parse_file(int fd)
 	char		*line;
 	int			line_number;
 	int			seen_mask;
+	t_result	result;
 
 	elements = NULL;
 	line_number = 0;
@@ -60,7 +61,8 @@ t_element	*parse_file(int fd)
 		seen_mask |= parse_line(&elements,(t_line){line, ++line_number}, seen_mask);
 		safe_free_ptr(line, TEMPORARY);
 	}
-	if ((seen_mask & FLAG_ALL) != FLAG_ALL)
-		safe_exit(MISSING_ERR, NULL, 0);
+	result = validate_elements(elements, seen_mask);
+	if (result.type == ERROR)
+		safe_exit(result.err, NULL, 0);
 	return (reverse_element_list(elements));
 }

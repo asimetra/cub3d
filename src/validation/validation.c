@@ -6,72 +6,38 @@
 /*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:00:05 by sdaban            #+#    #+#             */
-/*   Updated: 2025/07/24 16:38:19 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/07/19 14:14:53 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include "../includes/validation.h"
-#include "../includes/cub3d.h"
-#include "../includes/element.h"
-#include "../includes/string_utils.h"
-#include <limits.h>
 
-bool	v_color_value(int value)
+bool	is_in_range(int value)
 {
+	(void)value;
 	return (value >= 0 && value <= 255);
 }
 
-bool	v_fc_colors(t_color *colors)
+bool	v_fc_colors(int floor, int ceiling)
 {
-	if (!colors)
-		return (false);
-	return (
-		v_color_value((colors->floor >> 16) & 0xFF)
-		&& v_color_value((colors->floor >> 8) & 0xFF)
-		&& v_color_value(colors->floor & 0xFF)
-		&& v_color_value((colors->ceiling >> 16) & 0xFF)
-		&& v_color_value((colors->ceiling >> 8) & 0xFF)
-		&& v_color_value(colors->ceiling & 0xFF)
-	);
+	(void)floor;
+	(void)ceiling;
+	return (false);
 }
 
-bool	v_map(t_map *map)
+bool	v_directions(void)
 {
-	int	i;
-
-	if (!map || !map->map || map->height == 0)
-		return (false);
-	i = 0;
-	while (i < map->height)
-	{
-		if (!map->map[i] || map->map[i][0] == '\0')
-			return (false);
-		i++;
-	}
-	return (true);
+	return (false);
 }
 
-bool	v_directions(t_map *map)
+bool	v_map(void)
 {
-	int	i;
-	int	j;
-	int	player_count;
+	return (false);
+}
 
-	if (!map || !map->map || map->height == 0)
-		return (false);
-	player_count = 0;
-	i = 0;
-	while (i < map->height)
-	{
-		j = 0;
-		while (map->map[i][j])
-		{
-			if (includes(PLAYER_CHR, map->map[i][j]))
-				player_count++;
-			j++;
-		}
-		i++;
-	}
-	return (player_count == 1);
+bool	v_color_value(int value)
+{
+	(void)value;
+	return (false);
 }

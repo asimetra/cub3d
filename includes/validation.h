@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:58:25 by sdaban            #+#    #+#             */
-/*   Updated: 2025/07/24 16:39:06 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/07/24 12:13:30 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include <stdbool.h>
 #include "element.h"
-#include "cub3d.h"
 
 typedef enum e_result_type
 {
@@ -46,21 +45,21 @@ typedef struct s_result
 #define MAP_ERR "map is not last element"
 #define DUP_PLAYER_ERR "duplicate player"
 #define MAP_PLAYER_ERR "invalid player count on map line"
-
-#define V_RANGE_ERR "value out of range"
-#define V_DIRECTION_ERR "invalid direction character"
-#define V_DUP_DIRECTION_ERR "duplicate direction character"
+#define MISSING_PLAYER_ERR "missing player"
+#define INVALID_MAP_ERR "invalid map"
 
 bool		v_color_value(int value);
-bool		v_map(t_map *map);
-bool		v_fc_colors(t_color *colors); // floor and ceiling
-bool		v_directions(t_map *map);
+bool		v_map();
+bool		v_fc_colors(int floor, int ceiling); // floor and ceiling
+bool		v_directions();
 
 int			is_valid_file_extension(char *file_path);
 int			is_valid_player_count(char *input);
+int			is_valid_map(t_element *element);
 
 t_result	validate_color(t_element *element, int seen_mask);
 t_result	validate_texture(t_element *element, int seen_mask);
 t_result	validate_map(t_element *element, int seen_mask);
+t_result 	validate_elements(t_element *elements, int s_mask);
 
 #endif

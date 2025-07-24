@@ -8,12 +8,15 @@ SRC = libs/memory_allocator/allocator.c \
 	src/utils/error_handler.c \
 	src/utils/convertion_utils.c \
 	src/element/element_list.c \
+	src/element/operations.c \
 	src/element/element_type.c \
 	src/parser/states.c \
 	src/parser/classify.c \
 	src/parser/parser.c \
 	src/validation/validate_elements.c \
+	src/validation/validate_map.c \
 	src/validation/validate_utils.c \
+	src/graphics/init_graphics.c \
 	src/main.c \
 
 CC = cc

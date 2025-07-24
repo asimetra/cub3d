@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/23 18:00:33 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 14:45:20 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <unistd.h>
 #include <stdio.h>
 #include "validation.h"
+#include "minilibx/mlx.h"
+#include "string_utils.h"
 
 const char *token_type_str(t_element_type t)
 {
@@ -52,9 +54,57 @@ void	debug_tokens(t_element *tokens)
 	printf("\x1b[34m└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘\x1b[0m\n");
 }
 
-void cub_main(void)
+t_game	*game_object()
 {
+	static t_game game = {0};
 
+	return &game;
+}
+
+int	get_player_angle(t_element_type player)
+{
+	if (player & T_NORTH)
+		return (0);
+	if (player & T_EAST)
+		return (90);
+	if (player & T_SOUTH)
+		return (180);
+	if (player & T_WEST)
+		return (270);
+	return (0);
+}
+
+void	init_player(t_element *e)
+{
+	t_element	*player;
+	t_element	*map_line;
+
+	player = get_element(e, FLAG_PLAYER);
+	map_line = get_element(e, T_MAP);
+
+	game_object()->player = (t_player) {
+		.player_pos = (t_position) {
+			 .x = map_line->line - player->line,
+			 .y = find_chars_index(player->value.content, "NSWE"),
+		},
+		.angle = get_player_angle(player->type)
+	};
+}
+
+void	init_map(t_element *e)
+{
+	game_object()->map = element_map_to_str_arr(e);
+}
+
+void	cub_main(t_element *elements)
+{
+	register_finalizer_funct(fini_graphics); //register mlx destroy function for aborter
+	init_graphics(elements);
+	init_player(elements);
+	init_map(elements);
+	//todo add key hook -> W A S D L_ARROW R_ARROW
+	mlx_hook(game_object()->graphics.mlx.mlx_win, 17, 1 << 17L, safe_abort, NULL);
+	mlx_loop(game_object()->graphics.mlx.mlx);
 }
 
 int	main(int argc, char **argv)
@@ -74,7 +124,7 @@ int	main(int argc, char **argv)
 		safe_exit(INVALID_FILE_ERR, NULL, 0);
 	close(map_fd);
 	debug_tokens(elements);
-	cub_main();
+	cub_main(elements);
 	safe_abort(0);
 	return (0);
 }
