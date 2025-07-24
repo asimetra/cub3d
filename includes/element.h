@@ -49,6 +49,7 @@ typedef struct s_element
 {
 	t_element_type	type;
 	t_value			value;
+	size_t			val_len;
 	int				line;
 	struct s_element	*next;
 }					t_element;

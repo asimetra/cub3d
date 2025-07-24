@@ -19,7 +19,7 @@ SRC = libs/memory_allocator/allocator.c \
 	src/main.c \
 
 CC = cc
-CFLAGS = -Wall -Wextra -g -Werror  -I./libs -I./includes -I./libs/libft
+CFLAGS = -Wall -Wextra -g -Werror  -I./libs -I./includes -I./libs/libft -std=c99
 
 MINILBX = libs/minilibx/libmlx.a
 MINILBX_P = libs/minilibx

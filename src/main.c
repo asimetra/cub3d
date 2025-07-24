@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/24 11:43:21 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 12:16:25 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include "validation.h"
 #include "minilibx/mlx.h"
+#include "string_utils.h"
 
 const char *token_type_str(t_element_type t)
 {
@@ -84,7 +85,7 @@ void	init_player(t_element *e)
 	game_object()->player = (t_player) {
 		.player_pos = (t_position) {
 			 .x = map_line->line - player->line,
-			 .y = find_char_index(player->value.content, "NSWE"),
+			 .y = find_chars_index(player->value.content, "NSWE"),
 		},
 		.angle = get_player_angle(player->type)
 	};
@@ -96,6 +97,7 @@ void	cub_main(t_element *elements)
 	init_graphics(elements);
 	init_player(elements);
 	// init_map(elements);
+	//todo add key hook -> W A S D L_ARROW R_ARROW
 	mlx_hook(game_object()->graphics.mlx.mlx_win, 17, 1 << 17L, safe_abort, NULL);
 	mlx_loop(game_object()->graphics.mlx.mlx);
 }
