@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 19:54:48 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/23 13:50:59 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 12:03:32 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,3 +68,18 @@ int	str_count(char *str, char c)
 	}
 	return (count);
 }
+
+int	find_chars_index(char *str, char *chars)
+{
+	int index;
+
+	index = 0;
+	while (str[index])
+	{
+		if (includes(chars, str[index]))
+			return (index);
+		index++;
+	}
+	return (-1);
+}
+

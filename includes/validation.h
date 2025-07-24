@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:58:25 by sdaban            #+#    #+#             */
-/*   Updated: 2025/07/23 17:52:35 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 12:13:30 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ typedef struct s_result
 #define MAP_ERR "map is not last element"
 #define DUP_PLAYER_ERR "duplicate player"
 #define MAP_PLAYER_ERR "invalid player count on map line"
-
+#define MISSING_PLAYER_ERR "missing player"
+#define INVALID_MAP_ERR "invalid map"
 
 bool		v_color_value(int value);
 bool		v_map();
@@ -54,9 +55,11 @@ bool		v_directions();
 
 int			is_valid_file_extension(char *file_path);
 int			is_valid_player_count(char *input);
+int			is_valid_map(t_element *element);
 
 t_result	validate_color(t_element *element, int seen_mask);
 t_result	validate_texture(t_element *element, int seen_mask);
 t_result	validate_map(t_element *element, int seen_mask);
+t_result 	validate_elements(t_element *elements, int s_mask);
 
 #endif

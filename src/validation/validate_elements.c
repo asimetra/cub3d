@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:54:04 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/23 21:18:00 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 12:14:03 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,14 @@ t_result	validate_map(t_element *element, int seen_mask)
 	return ((t_result) {.type = OK, .err = NULL});
 }
 
-
+t_result validate_elements(t_element *elements, int s_mask)
+{
+	if ((s_mask & FLAG_ALL) != FLAG_ALL)
+		return ((t_result) {.type = ERROR, .err = MISSING_ERR});
+	if (!(s_mask & FLAG_PLAYER))
+		return ((t_result) {.type = ERROR, .err = MISSING_PLAYER_ERR});
+	(void)elements;
+	// if (!is_valid_map(elements))
+	// 	return ((t_result) {.err = INVALID_MAP_ERR, .type = ERROR});
+	return (t_result){.type = OK, .err = NULL};
+}
