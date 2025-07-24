@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:58:25 by sdaban            #+#    #+#             */
-/*   Updated: 2025/07/24 02:11:49 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/07/24 16:39:06 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <stdbool.h>
 #include "element.h"
+#include "cub3d.h"
 
 typedef enum e_result_type
 {
@@ -51,9 +52,9 @@ typedef struct s_result
 #define V_DUP_DIRECTION_ERR "duplicate direction character"
 
 bool		v_color_value(int value);
-bool		v_map();
-bool		v_fc_colors(int floor, int ceiling); // floor and ceiling
-bool		v_directions();
+bool		v_map(t_map *map);
+bool		v_fc_colors(t_color *colors); // floor and ceiling
+bool		v_directions(t_map *map);
 
 int			is_valid_file_extension(char *file_path);
 int			is_valid_player_count(char *input);

@@ -6,63 +6,68 @@
 /*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:00:05 by sdaban            #+#    #+#             */
-/*   Updated: 2025/07/24 02:28:05 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/07/24 16:38:19 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include "../includes/validation.h"
+#include "../includes/cub3d.h"
+#include "../includes/element.h"
+#include "../includes/string_utils.h"
+#include <limits.h>
 
 bool	v_color_value(int value)
 {
 	return (value >= 0 && value <= 255);
 }
 
-bool	v_fc_colors(int floor, int ceiling)
+bool	v_fc_colors(t_color *colors)
 {
-	return (v_color_value((floor >> 16) & 0xFF)
-		&& v_color_value((floor >> 8) & 0xFF)
-		&& v_color_value(floor & 0xFF)
-		&& v_color_value((ceiling >> 16) & 0xFF)
-		&& v_color_value((ceiling >> 8) & 0xFF)
-		&& v_color_value(ceiling & 0xFF));
+	if (!colors)
+		return (false);
+	return (
+		v_color_value((colors->floor >> 16) & 0xFF)
+		&& v_color_value((colors->floor >> 8) & 0xFF)
+		&& v_color_value(colors->floor & 0xFF)
+		&& v_color_value((colors->ceiling >> 16) & 0xFF)
+		&& v_color_value((colors->ceiling >> 8) & 0xFF)
+		&& v_color_value(colors->ceiling & 0xFF)
+	);
 }
 
-bool	v_map(void)
+bool	v_map(t_map *map)
 {
-	extern char	**g_map;
-	extern int	g_map_height;
-	int			i;
+	int	i;
 
-	if (!g_map || g_map_height == 0)
+	if (!map || !map->map || map->height == 0)
 		return (false);
 	i = 0;
-	while (i < g_map_height)
+	while (i < map->height)
 	{
-		if (!g_map[i] || g_map[i][0] == '\0')
+		if (!map->map[i] || map->map[i][0] == '\0')
 			return (false);
 		i++;
 	}
 	return (true);
 }
 
-bool	v_directions(void)
+bool	v_directions(t_map *map)
 {
-	extern char	**g_map;
-	extern int	g_map_height;
-	int			i;
-	int			j;
-	int			player_count;
+	int	i;
+	int	j;
+	int	player_count;
 
+	if (!map || !map->map || map->height == 0)
+		return (false);
 	player_count = 0;
 	i = 0;
-	while (i < g_map_height)
+	while (i < map->height)
 	{
 		j = 0;
-		while (g_map[i][j])
+		while (map->map[i][j])
 		{
-			if (g_map[i][j] == 'N' || g_map[i][j] == 'S'
-				|| g_map[i][j] == 'E' || g_map[i][j] == 'W')
+			if (includes(PLAYER_CHR, map->map[i][j]))
 				player_count++;
 			j++;
 		}
