@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:40:41 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/24 14:34:53 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 22:40:06 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ typedef struct s_color {
 }				t_color;
 
 typedef struct s_graphics {
-	t_mlx	mlx;
-	t_texture textures;
-	t_color		colors;
-}		t_graphics;
+	t_mlx			mlx;
+	t_texture		textures;
+	t_color			colors;
+	unsigned long	frame_time;
+}					t_graphics;
 
 typedef	char** t_map;
 
@@ -74,4 +75,8 @@ t_game	*game_object();
 
 void	fini_graphics();
 void	init_graphics(t_element *e);
+
+unsigned long	current_time_ms(void);
+int				game_loop(void *param);
+
 #endif
