@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:52:02 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/22 22:50:03 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 06:58:39 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_element	*parse_file(int fd)
 		seen_mask |= parse_line(&elements,(t_line){line, ++line_number}, seen_mask);
 		safe_free_ptr(line, TEMPORARY);
 	}
-	if ((seen_mask & FLAG_ALL) != FLAG_ALL)
+	if ((seen_mask & FLAG_ALL) != FLAG_ALL || !(seen_mask & FLAG_PLAYER)) /*XXX I think validate_sthing add func here*/
 		safe_exit(MISSING_ERR, NULL, 0);
 	return (reverse_element_list(elements));
 }
