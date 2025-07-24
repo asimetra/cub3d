@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:58:25 by sdaban            #+#    #+#             */
-/*   Updated: 2025/07/24 12:13:30 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 17:13:37 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,6 @@ typedef struct s_result
 #define MAP_PLAYER_ERR "invalid player count on map line"
 #define MISSING_PLAYER_ERR "missing player"
 #define INVALID_MAP_ERR "invalid map"
-
-bool		v_color_value(int value);
-bool		v_map();
-bool		v_fc_colors(int floor, int ceiling); // floor and ceiling
-bool		v_directions();
 
 int			is_valid_file_extension(char *file_path);
 int			is_valid_player_count(char *input);
