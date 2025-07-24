@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/24 12:16:25 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 14:45:20 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,17 @@ void	init_player(t_element *e)
 	};
 }
 
+void	init_map(t_element *e)
+{
+	game_object()->map = element_map_to_str_arr(e);
+}
+
 void	cub_main(t_element *elements)
 {
 	register_finalizer_funct(fini_graphics); //register mlx destroy function for aborter
 	init_graphics(elements);
 	init_player(elements);
-	// init_map(elements);
+	init_map(elements);
 	//todo add key hook -> W A S D L_ARROW R_ARROW
 	mlx_hook(game_object()->graphics.mlx.mlx_win, 17, 1 << 17L, safe_abort, NULL);
 	mlx_loop(game_object()->graphics.mlx.mlx);

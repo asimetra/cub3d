@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:07:22 by sdaban            #+#    #+#             */
-/*   Updated: 2025/07/24 13:03:39 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 14:39:14 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,4 @@ int	is_valid_file_extension(char *file_path)
 	return (ends_with(file_path, ".cub"));
 }
 
-int	is_in_uchar_range(int value)
-{
-	return (value >= 0 && value <= UCHAR_MAX);
-}
-
-int	is_valid_color_char(char c)
-{
-	return (ft_isdigit(c) || c == ',' || c == ' ');
-}
 

@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:40:41 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/24 10:36:20 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 14:34:53 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,7 @@ typedef struct s_graphics {
 	t_color		colors;
 }		t_graphics;
 
-typedef	struct s_map {
-	char	**map;
-	int		width;
-	int		height;
-}	t_map;
+typedef	char** t_map;
 
 typedef struct s_position {
 	float	x;
