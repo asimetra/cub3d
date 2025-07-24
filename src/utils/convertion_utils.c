@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:19:10 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/23 17:49:20 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 07:11:04 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	str_to_rgb(char	*input)
 		rgb[index] = str_to_ubyte(temp);
 		str_arr_free((char*[]) {temp, rgb_str[index]}, 2);
 		if (rgb[index] == -1)
-			return (-1);
+			return (-1);  /*XXX we dont care about free cuz if is not valida we will call to safe_abort */
 		index++;
 	}
 	if (index != 3)
