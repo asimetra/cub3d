@@ -1,0 +1,16 @@
+NO ./assets/path_to_the_north_texture.xpm
+SO ./assets/path_to_the_south_texture.xpm
+WE ./assets/path_to_the_west_texture.xpm
+EA ./assets/path_to_the_east_texture.xpm
+
+F 221, 0 ,00
+C 225,30    ,0
+
+         1
+      111011
+     1000W001
+      111011
+        101
+        101
+        101
+         1
