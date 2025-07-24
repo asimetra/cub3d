@@ -8,6 +8,7 @@ SRC = libs/memory_allocator/allocator.c \
 	src/utils/error_handler.c \
 	src/utils/convertion_utils.c \
 	src/element/element_list.c \
+	src/element/operations.c \
 	src/element/element_type.c \
 	src/parser/states.c \
 	src/parser/classify.c \
