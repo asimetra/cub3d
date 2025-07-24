@@ -14,6 +14,7 @@ SRC = libs/memory_allocator/allocator.c \
 	src/parser/parser.c \
 	src/validation/validate_elements.c \
 	src/validation/validate_utils.c \
+	src/graphics/init_graphics.c \
 	src/main.c \
 
 CC = cc
