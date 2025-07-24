@@ -14,12 +14,13 @@ SRC = libs/memory_allocator/allocator.c \
 	src/parser/classify.c \
 	src/parser/parser.c \
 	src/validation/validate_elements.c \
+	src/validation/validate_map.c \
 	src/validation/validate_utils.c \
 	src/graphics/init_graphics.c \
 	src/main.c \
 
 CC = cc
-CFLAGS = -Wall -Wextra -g -Werror  -I./libs -I./includes -I./libs/libft -std=c99
+CFLAGS = -Wall -Wextra -g -Werror  -I./libs -I./includes -I./libs/libft
 
 MINILBX = libs/minilibx/libmlx.a
 MINILBX_P = libs/minilibx

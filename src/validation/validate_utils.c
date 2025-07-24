@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:07:22 by sdaban            #+#    #+#             */
-/*   Updated: 2025/07/24 12:43:17 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 13:03:39 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,4 @@ int	is_valid_color_char(char c)
 {
 	return (ft_isdigit(c) || c == ',' || c == ' ');
 }
-
-// int	is_valid_map(t_element *element)
-// {
-// 	char		**map_arr;
-
-// 	map_arr = element_to_arr(element);
-
-// }
 
