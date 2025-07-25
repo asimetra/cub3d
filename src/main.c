@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/24 22:57:21 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/25 10:51:19 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,6 @@ int	main(int argc, char **argv)
 	if (map_fd == -1)
 		safe_exit(INVALID_FILE_ERR, NULL, 0);
 	elements = parse_file(map_fd);
-	if (elements == NULL)
-		safe_exit(INVALID_FILE_ERR, NULL, 0);
 	close(map_fd);
 	debug_tokens(elements);
 	cub_main(elements);
