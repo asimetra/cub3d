@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:40:41 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/25 14:50:36 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/25 15:05:12 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ typedef struct s_vector {
 }		t_vector;
 
 typedef struct s_player {
-	float		angle;
-	t_vector	player_pos;
+	t_vector	dir;
+	t_vector	pos;
 }		t_player;
 
 typedef struct s_game {

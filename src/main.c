@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/25 10:51:19 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/25 15:05:19 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,16 @@ t_game	*game_object()
 	return &game;
 }
 
-int	get_player_angle(t_element_type player)
+t_vector	get_player_angle(t_element_type player)
 {
 	if (player & T_NORTH)
-		return (0);
-	if (player & T_EAST)
-		return (90);
-	if (player & T_SOUTH)
-		return (180);
-	if (player & T_WEST)
-		return (270);
-	return (0);
+		return ((t_vector){.x = 0, .y = 1});
+	else if (player & T_SOUTH)
+		return ((t_vector){.x = 0, .y = -1});
+	else if (player & T_EAST)
+		return ((t_vector){.x = 1, .y = 0});
+	else
+		return ((t_vector){.x = 0, .y = -1});
 }
 
 void	init_player(t_element *e)
@@ -83,11 +82,11 @@ void	init_player(t_element *e)
 	map_line = get_element(e, T_MAP);
 
 	game_object()->player = (t_player) {
-		.player_pos = (t_position) {
+		.pos = (t_vector) {
 			 .x = map_line->line - player->line,
 			 .y = find_chars_index(player->value.content, "NSWE"),
 		},
-		.angle = get_player_angle(player->type)
+		.dir = get_player_angle(player->type)
 	};
 }
 
