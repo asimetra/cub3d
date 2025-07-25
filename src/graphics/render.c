@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:32:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/24 23:05:03 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 23:05:30 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ unsigned int fps ()
 	unsigned long *last_frame_time;
 	unsigned int fps;
 
-	usleep((1000 / 500)* 1000);
 	current_time = current_time_ms();
 	last_frame_time = &game_object()->graphics.frame_time;
 	fps = 1000 / (current_time - *last_frame_time);
