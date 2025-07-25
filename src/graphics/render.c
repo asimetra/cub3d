@@ -6,30 +6,32 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:32:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/24 22:42:53 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/24 23:05:03 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "element.h"
 #include "cub3d.h"
 #include <stdio.h>
+#include <unistd.h>
 
 unsigned int fps ()
 {
 	unsigned long current_time;
-	unsigned long last_frame_time;
+	unsigned long *last_frame_time;
 	unsigned int fps;
 
+	usleep((1000 / 500)* 1000);
 	current_time = current_time_ms();
-	last_frame_time = game_object()->graphics.frame_time;
-	fps = 1000 / (current_time - last_frame_time);
-	game_object()->graphics.frame_time = current_time;
+	last_frame_time = &game_object()->graphics.frame_time;
+	fps = 1000 / (current_time - *last_frame_time);
+	*last_frame_time = current_time;
 	return fps;
 }
 
 int game_loop(void *param)
 {
 	(void)param;
-	printf("FPS: %u\n", fps());
+	// printf("FPS: %u\n", fps());
 	return (0);
 }

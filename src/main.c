@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/25 10:50:03 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/25 10:51:19 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ void	cub_main(t_element *elements)
 	init_player(elements);
 	init_map(elements);
 	//todo add key hook -> W A S D L_ARROW R_ARROW
+	mlx_loop_hook(game_object()->graphics.mlx.mlx, &game_loop, NULL);
 	mlx_hook(game_object()->graphics.mlx.mlx_win, 17, 1 << 17L, safe_abort, NULL);
-	mlx_loop_hook(game_object()->graphics.mlx.mlx_win, &game_loop, NULL);
 	mlx_loop(game_object()->graphics.mlx.mlx);
 }
 
