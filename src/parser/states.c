@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:50:39 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/24 13:02:08 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/26 11:32:58 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 #include "libft.h"
 #include "validation.h"
 
+/*
+	I think my state machine is not good at dry principle.
+	Maybe I should use factory pattern to create elements.
+	Factory pattern: instead of create object directly, use a helper function to create it.
+*/
 t_element_type	texture_state(t_element **elements, t_line line, int s_mask)
 {
 	t_element	new_element;
