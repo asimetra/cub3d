@@ -19,6 +19,9 @@ SRC = libs/memory_allocator/allocator.c \
 	src/validation/validate_utils.c \
 	src/graphics/init_graphics.c \
 	src/graphics/render.c \
+	src/event/key_events.c \
+	src/event/init_events.c \
+	test/draw.c \
 	src/main.c \
 
 CC = cc

@@ -1,0 +1,96 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   key_events.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/26 16:13:03 by hsamir            #+#    #+#             */
+/*   Updated: 2025/07/27 13:16:20 by hsamir           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cub3d.h"
+#include "memory_allocator.h"
+#include "config.h"
+#include "math.h"
+#include "stdio.h"
+
+int	key_press_event(int keycode, t_event *event)
+{
+	if (keycode == E_UP)
+		event->up = 1;
+	else if (keycode == E_DOWN)
+		event->down = 1;
+	else if (keycode == E_LEFT)
+		event->left = 1;
+	else if (keycode == E_RIGHT)
+		event->right = 1;
+	else if (keycode == E_LEFT_ARROW)
+		event->left_arrow = 1;
+	else if (keycode == E_RIGHT_ARROW)
+		event->right_arrow = 1;
+	else if (keycode == E_ESC)
+		event->esc = 1;
+	return (0);
+}
+
+int	key_release_event(int keycode, t_event *event)
+{
+	if (keycode == E_UP)
+		event->up = 0;
+	else if (keycode == E_DOWN)
+		event->down = 0;
+	else if (keycode == E_LEFT)
+		event->left = 0;
+	else if (keycode == E_RIGHT)
+		event->right = 0;
+	else if (keycode == E_LEFT_ARROW)
+		event->left_arrow = 0;
+	else if (keycode == E_RIGHT_ARROW)
+		event->right_arrow = 0;
+	else if (keycode == E_ESC)
+		event->esc = 0;
+	return (0);
+}
+
+/*
+	UP  -> {x,-y},
+	DOWN  -> {-x,y} rotate 180 degrees,
+	LEFT  -> {-y,-x} rotate 90 degrees,
+	RIGHT -> {y,x} rotate -90 degrees,
+	LEFT_ARROW -> {
+		x′=cos(φ-θ) = cosφ * cosθ + sinφ * sinθ = x * cosθ + y * sinθ,
+		y′=sin(φ-θ) = sinφ * cosθ - cosφ * sinθ= x * sinθ - y * cosθ.
+	},
+	RIGHT_ARROW -> {
+		x′=cos(φ+θ) = cosφ * cosθ - sinφ * sinθ = x * cosθ - y * sinθ,
+		y′=sin(φ+θ) = sinφ * cosθ + cosφ * sinθ= x * sinθ + y * cosθ.
+	}
+*/
+void	key_event_handler(void)
+{
+	t_player	*p;
+	t_event		*event;
+
+
+	p = &game_object()->player;
+	event = &game_object()->graphics.mlx.events;
+	if (event->up)
+		p->pos = (t_vector){ p->pos.x + p->dir.x * SPEED, p->pos.y + p->dir.y * SPEED};
+	if (event->down)
+		p->pos = (t_vector){ p->pos.x - p->dir.x * SPEED, p->pos.y - p->dir.y * SPEED};
+	if (event->left)
+		p->pos = (t_vector){ p->pos.x + p->dir.y * SPEED, p->pos.y - p->dir.x * SPEED};
+	if (event->right)
+		p->pos = (t_vector){ p->pos.x - p->dir.y * SPEED, p->pos.y + p->dir.x * SPEED};
+	if (event->left_arrow)
+		p->dir = (t_vector) { p->dir.x * cos(-ROTATION_ANGLE) - p->dir.y * sin(-ROTATION_ANGLE),
+							  p->dir.x * sin(-ROTATION_ANGLE) + p->dir.y * cos(-ROTATION_ANGLE)};
+	if (event->right_arrow)
+		p->dir = (t_vector) { p->dir.x * cos(ROTATION_ANGLE) - p->dir.y * sin(ROTATION_ANGLE),
+							  p->dir.x * sin(ROTATION_ANGLE) + p->dir.y * cos(ROTATION_ANGLE)};
+	if (event->esc)
+		safe_abort(0);
+	printf("Player Position: (%.2f, %.2f)   Dir: (%.2f, %.2f)\n", p->pos.x, p->pos.y, p->dir.x, p->dir.y);
+}
