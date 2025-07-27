@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 12:02:09 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/27 13:39:56 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/27 14:03:30 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ typedef struct s_event {
 	int		esc;
 }	t_event;
 
-int				key_press_event(int keycode, t_event *event);
-int				key_release_event(int keycode, t_event *event);
-void			key_event_handler(void);
+int			key_press_hook(int keycode, t_event *event);
+int			key_release_hook(int keycode, t_event *event);
+void		key_event_handler(void);
 
-void			init_mlx_event_hooks(void);
+void		init_mlx_event_hooks(void);
 
 #endif

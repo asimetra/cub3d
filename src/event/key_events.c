@@ -6,17 +6,17 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:13:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/27 13:16:20 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/27 14:46:15 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "memory_allocator.h"
 #include "config.h"
-#include "math.h"
+#include <math.h>
 #include "stdio.h"
 
-int	key_press_event(int keycode, t_event *event)
+int	key_press_hook(int keycode, t_event *event)
 {
 	if (keycode == E_UP)
 		event->up = 1;
@@ -35,7 +35,7 @@ int	key_press_event(int keycode, t_event *event)
 	return (0);
 }
 
-int	key_release_event(int keycode, t_event *event)
+int	key_release_hook(int keycode, t_event *event)
 {
 	if (keycode == E_UP)
 		event->up = 0;
@@ -55,18 +55,36 @@ int	key_release_event(int keycode, t_event *event)
 }
 
 /*
-	UP  -> {x,-y},
-	DOWN  -> {-x,y} rotate 180 degrees,
-	LEFT  -> {-y,-x} rotate 90 degrees,
-	RIGHT -> {y,x} rotate -90 degrees,
 	LEFT_ARROW -> {
-		x′=cos(φ-θ) = cosφ * cosθ + sinφ * sinθ = x * cosθ + y * sinθ,
+		x′=cos(φ-θ) = cosφ * cosθ + sinφ * sinθ = x * cosθ + y * sinθ,si
 		y′=sin(φ-θ) = sinφ * cosθ - cosφ * sinθ= x * sinθ - y * cosθ.
 	},
 	RIGHT_ARROW -> {
 		x′=cos(φ+θ) = cosφ * cosθ - sinφ * sinθ = x * cosθ - y * sinθ,
 		y′=sin(φ+θ) = sinφ * cosθ + cosφ * sinθ= x * sinθ + y * cosθ.
 	}
+		cos is a even function, sin is an odd function so that,
+		 * cos(-θ) = cos(θ) and sin(-θ) = -sin(θ).
+	we can use one formule for both left and right arrow keys,
+	{
+		x′ = x * cos(rotation_speed) + y * sin(rotation_speed),
+		y′ = x * sin(rotation_speed) - y * cos(rotation_speed)
+	}
+*/
+t_vector	set_rotation(t_vector dir, double angle)
+{
+	return ((t_vector) {
+		.x = dir.x * cos(angle) - dir.y * sin(angle),
+		.y = dir.x * sin(angle) + dir.y * cos(angle)
+	});
+}
+
+/*
+	UP  -> {x,-y},
+	DOWN  -> {-x,y} rotate 180 degrees,
+	LEFT  -> {-y,-x} rotate 90 degrees,
+	RIGHT -> {y,x} rotate -90 degrees,
+
 */
 void	key_event_handler(void)
 {
@@ -85,12 +103,21 @@ void	key_event_handler(void)
 	if (event->right)
 		p->pos = (t_vector){ p->pos.x - p->dir.y * SPEED, p->pos.y + p->dir.x * SPEED};
 	if (event->left_arrow)
-		p->dir = (t_vector) { p->dir.x * cos(-ROTATION_ANGLE) - p->dir.y * sin(-ROTATION_ANGLE),
-							  p->dir.x * sin(-ROTATION_ANGLE) + p->dir.y * cos(-ROTATION_ANGLE)};
+		p->dir = set_rotation(p->dir, -ROTATION_ANGLE);
 	if (event->right_arrow)
-		p->dir = (t_vector) { p->dir.x * cos(ROTATION_ANGLE) - p->dir.y * sin(ROTATION_ANGLE),
-							  p->dir.x * sin(ROTATION_ANGLE) + p->dir.y * cos(ROTATION_ANGLE)};
-	if (event->esc)
-		safe_abort(0);
+		p->dir = set_rotation(p->dir, ROTATION_ANGLE);
 	printf("Player Position: (%.2f, %.2f)   Dir: (%.2f, %.2f)\n", p->pos.x, p->pos.y, p->dir.x, p->dir.y);
 }
+
+
+t_vector	set_position(t_vector pos, t_vector dir)
+{
+	t_vector	new_pos;
+
+	new_pos = (t_vector) {
+		.x = pos.x + dir.x * SPEED,
+		.y = pos.y + dir.y * SPEED
+	};
+
+}
+
