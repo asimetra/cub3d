@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:32:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/24 23:05:30 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/26 15:41:29 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,3 +34,17 @@ int game_loop(void *param)
 	// printf("FPS: %u\n", fps());
 	return (0);
 }
+
+
+// #include "config.h"
+// void render()
+// {
+// 	int x;
+
+// 	x = 0;
+// 	while (x < HEIGHT)
+// 	{
+// 		draw_line(x);
+// 		x++;
+// 	}
+// }
