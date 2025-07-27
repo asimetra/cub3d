@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 09:07:00 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/24 11:38:41 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/26 16:29:45 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,5 @@ void	init_graphics(t_element *e)
 		.ceiling = get_element(e, T_CEIL)->value.color,
 		.floor = get_element(e, T_FLOOR)->value.color,
 	};
+	graphics->mlx.events = (t_event){0};
 }

@@ -36,7 +36,7 @@ typedef enum e_element_type
 	T_PLAYER_N = 1 << 8,
 	T_PLAYER_S = 1 << 9,
 	T_PLAYER_E = 1 << 10,
-	T_PLAYER_W = 1 << 8
+	T_PLAYER_W = 1 << 11
 }					t_element_type;
 
 typedef union u_value

@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:40:41 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/25 15:05:12 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/27 12:04:07 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,13 @@
 /* ************************************************************************** */
 
 #include "element.h"
+#include "event.h"
 
-typedef enum e_direction
-{
-	UP = 119,
-	DOWN = 115,
-	LEFT = 97,
-	RIGHT = 100
-}	t_direction;
 
 typedef struct s_mlx {
 	void	*mlx;
 	void	*mlx_win;
+	t_event	events;
 }	t_mlx;
 
 typedef struct s_texture {
@@ -69,14 +64,13 @@ typedef struct s_game {
 
 void	safe_exit(char *message, char *line, int line_number);
 
-int		str_to_rgb(char	*input);
-
 t_game	*game_object();
-
 void	fini_graphics();
 void	init_graphics(t_element *e);
 
 unsigned long	current_time_ms(void);
 int				game_loop(void *param);
+
+int				render_windows(void* pr);
 
 #endif
