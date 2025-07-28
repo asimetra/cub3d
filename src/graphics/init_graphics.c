@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_graphics.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 09:07:00 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/26 16:29:45 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/28 14:26:37 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_mlx	load_mlx_object()
 	mlx.mlx = mlx_init();
 	if (mlx.mlx == NULL)
 		safe_exit("Failed to initialize MLX", NULL, 0);
-	mlx.mlx_win = mlx_new_window(mlx.mlx, WIDHT, HEIGHT, TITLE);
+	mlx.mlx_win = mlx_new_window(mlx.mlx, WIDTH, HEIGHT, TITLE);
 	if (mlx.mlx_win == NULL)
 		safe_exit("Failed to create MLX window", NULL, 0);
 	return (mlx);

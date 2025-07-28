@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_events.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:13:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/27 14:46:15 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/28 14:29:32 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include "memory_allocator.h"
 #include "config.h"
 #include <math.h>
-#include "stdio.h"
+#include <stdio.h>
+#include "../includes/config.h"
 
 int	key_press_hook(int keycode, t_event *event)
 {
@@ -94,6 +95,8 @@ void	key_event_handler(void)
 
 	p = &game_object()->player;
 	event = &game_object()->graphics.mlx.events;
+	if (event->esc)
+		safe_abort(1);
 	if (event->up)
 		p->pos = (t_vector){ p->pos.x + p->dir.x * SPEED, p->pos.y + p->dir.y * SPEED};
 	if (event->down)
@@ -110,7 +113,7 @@ void	key_event_handler(void)
 }
 
 
-t_vector	set_position(t_vector pos, t_vector dir)
+t_vector	set_position(t_vector pos, t_vector dir) // currently not used
 {
 	t_vector	new_pos;
 
@@ -118,6 +121,7 @@ t_vector	set_position(t_vector pos, t_vector dir)
 		.x = pos.x + dir.x * SPEED,
 		.y = pos.y + dir.y * SPEED
 	};
-
+	if (new_pos.x < 0 || new_pos.y < 0 || new_pos.x >= WIDTH || new_pos.y >= HEIGHT)
+		return pos;
+	return new_pos;
 }
-

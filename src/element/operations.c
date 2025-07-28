@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 12:25:33 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/24 14:44:42 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/28 14:24:29 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 size_t	element_count(t_element *element, t_element_type type)
 {
-	size_t len;
+	size_t	len;
 
 	len = 0;
 	while (element != NULL)
@@ -47,7 +47,7 @@ t_element	*reverse_element_list(t_element *element)
 t_element	**element_map_to_arr(t_element *e)
 {
 	t_element	**arr;
-	size_t 		len;
+	size_t		len;
 	size_t		index;
 
 	index = 0;
