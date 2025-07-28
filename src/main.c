@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/27 13:41:07 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/28 17:21:27 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,41 +63,6 @@ t_game	*game_object()
 }
 
 #include "stdio.h"
-t_vector	get_player_angle(t_element_type player)
-{
-	if (player & T_PLAYER_N)
-		return ((t_vector){.x = 0, .y = -1});
-	else if (player & T_PLAYER_S)
-		return ((t_vector){.x = 0, .y = 1});
-	else if (player & T_PLAYER_E)
-		return ((t_vector){.x = 1, .y = 0});
-	else if (player & T_PLAYER_W)
-		return ((t_vector){.x = -1, .y = 0});
-	else
-		return ((t_vector){.x = 0, .y = 0});
-}
-
-void	init_player(t_element *e)
-{
-	t_element	*player;
-	t_element	*map_line;
-
-	player = get_element(e, FLAG_PLAYER);
-	map_line = get_element(e, T_MAP);
-
-	game_object()->player = (t_player) {
-		.pos = (t_vector) {
-			 .x = player->line - map_line->line,
-			 .y = find_chars_index(player->value.content, "NSWE"),
-		},
-		.dir = get_player_angle(player->type)
-	};
-}
-
-void	init_map(t_element *e)
-{
-	game_object()->map = element_map_to_str_arr(get_element(e, T_MAP));
-}
 
 void	cub_main(t_element *elements)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_events.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:13:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/28 14:29:32 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/07/28 18:03:39 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 #include "memory_allocator.h"
 #include "config.h"
 #include <math.h>
-#include <stdio.h>
-#include "../includes/config.h"
+#include "stdio.h"
 
 int	key_press_hook(int keycode, t_event *event)
 {
@@ -68,8 +67,8 @@ int	key_release_hook(int keycode, t_event *event)
 		 * cos(-θ) = cos(θ) and sin(-θ) = -sin(θ).
 	we can use one formule for both left and right arrow keys,
 	{
-		x′ = x * cos(rotation_speed) + y * sin(rotation_speed),
-		y′ = x * sin(rotation_speed) - y * cos(rotation_speed)
+		x′ = x * cos(rotation_speed) - y * sin(rotation_speed),
+		y′ = x * sin(rotation_speed) + y * cos(rotation_speed)
 	}
 */
 t_vector	set_rotation(t_vector dir, double angle)
@@ -79,6 +78,32 @@ t_vector	set_rotation(t_vector dir, double angle)
 		.y = dir.x * sin(angle) + dir.y * cos(angle)
 	});
 }
+
+int	is_valid_position(int x, int y)
+{
+	t_map	*m;
+
+	m = &game_object()->map;
+	printf("map-len %c", m->lines[y].line[x]);
+	return (m->len > y && y >= 0
+		&& m->lines[y].len > x && x >= 0
+		&& m->lines[y].line[x] != '1');
+}
+
+
+t_vector	set_position(t_vector pos, t_vector dir)
+{
+	t_vector	new_pos;
+
+	new_pos = (t_vector) {
+		.x = pos.x + dir.x * SPEED,
+		.y = pos.y + dir.y * SPEED
+	};
+	if (is_valid_position(new_pos.x, new_pos.y))
+		return new_pos;
+	return pos;
+}
+
 
 /*
 	UP  -> {x,-y},
@@ -95,16 +120,14 @@ void	key_event_handler(void)
 
 	p = &game_object()->player;
 	event = &game_object()->graphics.mlx.events;
-	if (event->esc)
-		safe_abort(1);
 	if (event->up)
-		p->pos = (t_vector){ p->pos.x + p->dir.x * SPEED, p->pos.y + p->dir.y * SPEED};
+		p->pos = set_position(p->pos, (t_vector) { p->dir.x,  p->dir.y});
 	if (event->down)
-		p->pos = (t_vector){ p->pos.x - p->dir.x * SPEED, p->pos.y - p->dir.y * SPEED};
+		p->pos = set_position(p->pos, (t_vector) { -p->dir.x,  -p->dir.y});
 	if (event->left)
-		p->pos = (t_vector){ p->pos.x + p->dir.y * SPEED, p->pos.y - p->dir.x * SPEED};
+		p->pos = set_position(p->pos, (t_vector) { p->dir.y,  -p->dir.x});
 	if (event->right)
-		p->pos = (t_vector){ p->pos.x - p->dir.y * SPEED, p->pos.y + p->dir.x * SPEED};
+		p->pos = set_position(p->pos, (t_vector) { -p->dir.y,  p->dir.x});
 	if (event->left_arrow)
 		p->dir = set_rotation(p->dir, -ROTATION_ANGLE);
 	if (event->right_arrow)
@@ -113,15 +136,3 @@ void	key_event_handler(void)
 }
 
 
-t_vector	set_position(t_vector pos, t_vector dir) // currently not used
-{
-	t_vector	new_pos;
-
-	new_pos = (t_vector) {
-		.x = pos.x + dir.x * SPEED,
-		.y = pos.y + dir.y * SPEED
-	};
-	if (new_pos.x < 0 || new_pos.y < 0 || new_pos.x >= WIDTH || new_pos.y >= HEIGHT)
-		return pos;
-	return new_pos;
-}

@@ -64,7 +64,6 @@ t_element			*create_element(t_element new_element);
 t_element			*reverse_element_list(t_element *head);
 t_element			*get_element(t_element *element, t_element_type type);
 t_element			**element_map_to_arr(t_element *e);
-char				**element_map_to_str_arr(t_element *e);
 
 size_t				element_count(t_element *element, t_element_type type);
 

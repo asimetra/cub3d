@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:40:41 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/27 12:04:07 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/28 17:45:16 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,15 @@ typedef struct s_graphics {
 	unsigned long	frame_time;
 }					t_graphics;
 
-typedef	char** t_map;
+typedef struct s_map_line {
+	char	*line;
+	int		len;
+}		t_map_line;
+
+typedef struct s_map {
+	t_map_line	*lines;
+	int			len;
+}		t_map;
 
 typedef struct s_vector {
 	float	x;
@@ -72,5 +80,8 @@ unsigned long	current_time_ms(void);
 int				game_loop(void *param);
 
 int				render_windows(void* pr);
+void			init_player(t_element *e);
+void			init_map(t_element *e);
+
 
 #endif

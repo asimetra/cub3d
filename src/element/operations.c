@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 12:25:33 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/28 14:24:29 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/07/28 17:20:52 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include "element.h"
 #include "memory_allocator.h"
+#include "cub3d.h"
 
 size_t	element_count(t_element *element, t_element_type type)
 {
@@ -56,25 +57,6 @@ t_element	**element_map_to_arr(t_element *e)
 	while (index < len)
 	{
 		arr[index] = e;
-		e = e->next;
-		index++;
-	}
-	arr[index] = NULL;
-	return (arr);
-}
-
-char	**element_map_to_str_arr(t_element *e)
-{
-	char		**arr;
-	size_t 		len;
-	size_t		index;
-
-	index = 0;
-	len = element_count(get_element(e, T_MAP), T_MAP);
-	arr = safe_talloc(sizeof(char*) * (len + 1));
-	while (index < len)
-	{
-		arr[index] = e->value.content;
 		e = e->next;
 		index++;
 	}
