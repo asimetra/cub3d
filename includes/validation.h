@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:58:25 by sdaban            #+#    #+#             */
-/*   Updated: 2025/07/24 12:13:30 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/28 18:06:45 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ bool		v_directions();
 int			is_valid_file_extension(char *file_path);
 int			is_valid_player_count(char *input);
 int			is_valid_map(t_element *element);
+int			is_valid_position(int x, int y);
+
 
 t_result	validate_color(t_element *element, int seen_mask);
 t_result	validate_texture(t_element *element, int seen_mask);

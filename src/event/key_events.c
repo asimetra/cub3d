@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:13:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/28 18:03:39 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/28 18:07:03 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "memory_allocator.h"
 #include "config.h"
 #include <math.h>
+#include "validation.h"
 #include "stdio.h"
 
 int	key_press_hook(int keycode, t_event *event)
@@ -78,18 +79,6 @@ t_vector	set_rotation(t_vector dir, double angle)
 		.y = dir.x * sin(angle) + dir.y * cos(angle)
 	});
 }
-
-int	is_valid_position(int x, int y)
-{
-	t_map	*m;
-
-	m = &game_object()->map;
-	printf("map-len %c", m->lines[y].line[x]);
-	return (m->len > y && y >= 0
-		&& m->lines[y].len > x && x >= 0
-		&& m->lines[y].line[x] != '1');
-}
-
 
 t_vector	set_position(t_vector pos, t_vector dir)
 {
