@@ -6,18 +6,17 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:40:41 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/28 20:31:07 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/29 10:43:22 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-/* ************************************************************************** */
-
 #include "element.h"
 #include "event.h"
 
+#define PI 3.14159265358979323846
 
 typedef struct s_mlx {
 	void	*mlx;

@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:13:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/29 10:35:20 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/29 10:58:10 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,10 @@ void	key_event_handler(void)
 	if (event->right_arrow)
 		p->dir = set_rotation(p->dir, ROTATION_ANGLE);
 	if (event->left_arrow || event->right_arrow)
-		p->camera = (t_vector) {p->dir.y, -p->dir.x};
+		p->camera = (t_vector) {
+			.x = p->dir.y * tan(FOV * PI / 360), /*XXX FOV/2 * PI/180 */
+			.y = -p->dir.x * tan(FOV * PI / 360)
+		};
 	printf("Player Position: (%.2f, %.2f)   Dir: (%.2f, %.2f)\n", p->pos.x, p->pos.y, p->dir.x, p->dir.y);
 }
 

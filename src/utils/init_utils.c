@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 17:20:36 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/28 17:58:28 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/29 10:55:05 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "cub3d.h"
 #include "memory_allocator.h"
 #include "string_utils.h"
+#include <math.h>
+#include "config.h"
 
 t_vector	get_player_angle(t_element_type player)
 {
@@ -52,18 +54,23 @@ t_map	element_to_map(t_element *e)
 
 void	init_player(t_element *e)
 {
-	t_element	*player;
+	t_element	*p;
 	t_element	*map_line;
+	t_player	*player;
 
-	player = get_element(e, FLAG_PLAYER);
+	p = get_element(e, FLAG_PLAYER);
 	map_line = get_element(e, T_MAP);
-
-	game_object()->player = (t_player) {
+	player = &game_object()->player;
+	*player = (t_player) {
 		.pos = (t_vector) {
-			 .x = player->line - map_line->line,
-			 .y = find_chars_index(player->value.content, "NSWE"),
+			 .x = p->line - map_line->line,
+			 .y = find_chars_index(p->value.content, "NSWE"),
 		},
-		.dir = get_player_angle(player->type)
+		.dir = get_player_angle(p->type),
+	};
+	player->camera = (t_vector) {
+		.x = player->dir.y * tan(FOV * PI / 360), /*XXX FOV/2 * PI/180 */
+		.y = -player->dir.x * tan(FOV * PI / 3600)
 	};
 }
 
