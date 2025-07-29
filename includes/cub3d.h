@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:40:41 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/28 17:45:16 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/28 20:31:07 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_vector {
 typedef struct s_player {
 	t_vector	dir;
 	t_vector	pos;
+	t_vector	camera;
 }		t_player;
 
 typedef struct s_game {

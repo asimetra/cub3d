@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 15:26:09 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/28 17:45:57 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/28 20:10:47 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int render_windows(void* pr)
     // {
     //     return -1; // Out of bounds
     // }
-        draw_map(&game->map);
+    draw_map(&game->map);
 
 	draw_line(start, end, 0xFFFFFF); // White color
     mlx_put_image_to_window(game->graphics.mlx.mlx, game->graphics.mlx.mlx_win, game->graphics.textures.north, (int)start.x - TS/2, (int)start.y - TS/2); // Draw a red pixel at (100, 100)

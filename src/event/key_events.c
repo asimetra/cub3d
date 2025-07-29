@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:13:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/28 18:07:03 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/28 20:28:01 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ t_vector	set_position(t_vector pos, t_vector dir)
 	return pos;
 }
 
-
 /*
 	UP  -> {x,-y},
 	DOWN  -> {-x,y} rotate 180 degrees,
@@ -106,17 +105,16 @@ void	key_event_handler(void)
 	t_player	*p;
 	t_event		*event;
 
-
 	p = &game_object()->player;
 	event = &game_object()->graphics.mlx.events;
 	if (event->up)
-		p->pos = set_position(p->pos, (t_vector) { p->dir.x,  p->dir.y});
+		p->pos = set_position(p->pos, (t_vector) { p->dir.x, p->dir.y});
 	if (event->down)
-		p->pos = set_position(p->pos, (t_vector) { -p->dir.x,  -p->dir.y});
+		p->pos = set_position(p->pos, (t_vector) { -p->dir.x, -p->dir.y});
 	if (event->left)
-		p->pos = set_position(p->pos, (t_vector) { p->dir.y,  -p->dir.x});
+		p->pos = set_position(p->pos, (t_vector) { p->dir.y, -p->dir.x});
 	if (event->right)
-		p->pos = set_position(p->pos, (t_vector) { -p->dir.y,  p->dir.x});
+		p->pos = set_position(p->pos, (t_vector) { -p->dir.y, p->dir.x});
 	if (event->left_arrow)
 		p->dir = set_rotation(p->dir, -ROTATION_ANGLE);
 	if (event->right_arrow)
