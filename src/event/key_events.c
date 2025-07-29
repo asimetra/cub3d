@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:13:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/28 20:28:01 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/29 10:35:20 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ t_vector	set_position(t_vector pos, t_vector dir)
 		.x = pos.x + dir.x * SPEED,
 		.y = pos.y + dir.y * SPEED
 	};
-	if (is_valid_position(new_pos.x, new_pos.y))
-		return new_pos;
-	return pos;
+	if (!is_valid_position(new_pos.x, new_pos.y))
+		return pos;
+	return new_pos;
 }
 
 /*
@@ -119,6 +119,8 @@ void	key_event_handler(void)
 		p->dir = set_rotation(p->dir, -ROTATION_ANGLE);
 	if (event->right_arrow)
 		p->dir = set_rotation(p->dir, ROTATION_ANGLE);
+	if (event->left_arrow || event->right_arrow)
+		p->camera = (t_vector) {p->dir.y, -p->dir.x};
 	printf("Player Position: (%.2f, %.2f)   Dir: (%.2f, %.2f)\n", p->pos.x, p->pos.y, p->dir.x, p->dir.y);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 15:26:09 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/28 20:10:47 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/29 10:32:54 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int render_windows(void* pr)
 	t_game *game = game_object();
 	t_vector start = {game->player.pos.x*TS + TS/2, game->player.pos.y*TS + TS/2};
 	t_vector end = {start.x + game->player.dir.x  * 100, start.y + game->player.dir.y * 100};
+    t_vector end2 = {start.x + game->player.camera.x  * 100, start.y + game->player.camera.y * 100};
 
     mlx_clear_window(game->graphics.mlx.mlx, game->graphics.mlx.mlx_win);
 	// Draw a simple line across the screen
@@ -74,6 +75,8 @@ int render_windows(void* pr)
     draw_map(&game->map);
 
 	draw_line(start, end, 0xFFFFFF); // White color
+    draw_line(start, end2, 0xa1a1a1); // White color
+
     mlx_put_image_to_window(game->graphics.mlx.mlx, game->graphics.mlx.mlx_win, game->graphics.textures.north, (int)start.x - TS/2, (int)start.y - TS/2); // Draw a red pixel at (100, 100)
 	// You can add more drawing logic here
 	// For example, drawing walls, sprites, etc.
