@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 13:43:59 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/29 10:54:56 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/29 13:34:36 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@
 # define HEIGHT 480
 # define FOV 66
 # define SPEED 0.004f
-# define ROTATION_ANGLE 0.001f
+# define ROTATION_ANGLE 0.004f
 
 #endif

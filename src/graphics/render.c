@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:32:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/26 15:41:29 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/29 13:34:47 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "cub3d.h"
 #include <stdio.h>
 #include <unistd.h>
+#include "math.h"
+#include "config.h"
 
 unsigned int fps ()
 {
@@ -35,6 +37,17 @@ int game_loop(void *param)
 	return (0);
 }
 
+t_vector	get_ray_direction(int x, t_vector camera, t_vector dir)
+{
+	double offset;
+
+	offset = 2 * x / (double)WIDTH - 1;
+	return ((t_vector) {
+		.x = dir.x + camera.x * offset,
+		.y = dir.y + camera.y * offset
+	});
+}
+
 
 // #include "config.h"
 // void render()
@@ -42,8 +55,9 @@ int game_loop(void *param)
 // 	int x;
 
 // 	x = 0;
-// 	while (x < HEIGHT)
+// 	while (x < WIDTH)
 // 	{
+// 		get_ray();
 // 		draw_line(x);
 // 		x++;
 // 	}

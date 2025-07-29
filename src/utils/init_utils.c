@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 17:20:36 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/29 10:55:05 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/29 12:57:17 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	init_player(t_element *e)
 		.dir = get_player_angle(p->type),
 	};
 	player->camera = (t_vector) {
-		.x = player->dir.y * tan(FOV * PI / 360), /*XXX FOV/2 * PI/180 */
-		.y = -player->dir.x * tan(FOV * PI / 3600)
+		.x = -player->dir.y * tan(FOV * PI / 360), /*XXX FOV/2 * PI/180 */
+		.y = player->dir.x * tan(FOV * PI / 3600)
 	};
 }
 
