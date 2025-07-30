@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:13:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/29 12:57:06 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/29 19:35:29 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ void	key_event_handler(void)
 			.x = -p->dir.y * tan(FOV * PI / 360), /*XXX FOV/2 * PI/180 */
 			.y = p->dir.x * tan(FOV * PI / 360)
 		};
-	printf("Player Position: (%.2f, %.2f)   Dir: (%.2f, %.2f)\n", p->pos.x, p->pos.y, p->dir.x, p->dir.y);
+	printf("Player Position: (%.2f, %.2f)   Dir: (%.2f, %.2f)\n", p->pos.y, p->pos.x, p->dir.x, p->dir.y);
 }
 
 

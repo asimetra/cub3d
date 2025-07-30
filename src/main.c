@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/28 17:21:27 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/29 19:12:35 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void	cub_main(t_element *elements)
 {
 	register_finalizer_funct(fini_graphics); //register mlx destroy function for aborter
 	init_graphics(elements);
-	init_player(elements);
 	init_map(elements);
+	init_player(elements);
 	init_mlx_event_hooks();
 }
 

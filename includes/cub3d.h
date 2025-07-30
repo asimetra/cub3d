@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:40:41 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/29 13:27:31 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/29 18:33:13 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ void			init_player(t_element *e);
 void			init_map(t_element *e);
 
 t_vector		get_ray_direction(int x, t_vector camera, t_vector dir);
+double				do_dda(t_vector p, t_vector ray);
 
 #endif
