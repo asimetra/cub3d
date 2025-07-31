@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:12:06 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/31 21:24:55 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/31 21:31:38 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,6 @@ typedef struct s_memory_block
 	void					*data;
 	struct s_memory_block	*next;
 }							t_memory_block;
-
-typedef enum e_mem_type
-{
-	TEMPORARY = 0,
-	PERSISTENT = 1
-}							t_mem_type;
 
 typedef void				(*t_fini)(void);
 
