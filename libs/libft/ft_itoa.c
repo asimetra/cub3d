@@ -41,7 +41,7 @@ char	*ft_itoa(int n)
 		len++;
 		nbr = nbr * -1;
 	}
-	str = safe_talloc(len + 1);
+	str = safe_malloc(len + 1);
 	if (!str)
 		return (0);
 	str[len] = 0;

@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   allocator.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:24:09 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/16 15:17:51 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/31 21:24:35 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/memory_allocator.h"
 #include <stdlib.h>
 
-t_memory_block	**get_memory_head(t_mem_type mem_type)
+t_memory_block	**get_memory_head()
 {
-	static t_memory_block	*mem_blocks[2] = {0};
+	static t_memory_block	*mem_block = {0};
 
-	return (&mem_blocks[mem_type]);
+	return (&mem_block);
 }
 
-void	safe_register_malloc(void *alloc_mem, t_mem_type mem_type)
+void	safe_register_malloc(void *alloc_mem)
 {
 	t_memory_block	**head;
 	t_memory_block	*mem_block;
@@ -31,7 +31,7 @@ void	safe_register_malloc(void *alloc_mem, t_mem_type mem_type)
 		free(alloc_mem);
 		safe_abort(STD_EXIT);
 	}
-	head = get_memory_head(mem_type);
+	head = get_memory_head();
 	*mem_block = (t_memory_block){
 		.data = alloc_mem,
 		.next = *head
@@ -39,23 +39,13 @@ void	safe_register_malloc(void *alloc_mem, t_mem_type mem_type)
 	*head = mem_block;
 }
 
-void	*safe_malloc(size_t size, t_mem_type mem_type)
+void	*safe_malloc(size_t size)
 {
-	void			*alloc_mem;
+	void	*alloc_mem;
 
 	alloc_mem = malloc(size);
 	if (!alloc_mem)
 		safe_abort(STD_EXIT);
-	safe_register_malloc(alloc_mem, mem_type);
+	safe_register_malloc(alloc_mem);
 	return (alloc_mem);
-}
-
-void	*safe_talloc(size_t size)
-{
-	return (safe_malloc(size, TEMPORARY));
-}
-
-void	*safe_palloc(size_t size)
-{
-	return (safe_malloc(size, PERSISTENT));
 }

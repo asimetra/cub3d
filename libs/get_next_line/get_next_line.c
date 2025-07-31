@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 14:44:08 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/18 15:24:59 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/31 21:27:16 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ char	*fill_buffer(int fd, char *str)
 			break ;
 		if (read_bytes == -1)
 		{
-			safe_free_ptr(str, TEMPORARY);
+			safe_free_ptr(str);
 			return (NULL);
 		}
 		buffer[read_bytes] = '\0';
 		temp = str;
 		str = str_arr_join((char *[]){str, buffer}, 2);
-		safe_free_ptr(temp, TEMPORARY);
+		safe_free_ptr(temp);
 	}
 	return (str);
 }
@@ -51,7 +51,7 @@ char	*get_part_until_nl(char *input)
 		index++;
 	if (input[index] == '\n')
 		index++;
-	line = safe_talloc(index + 1);
+	line = safe_malloc(index + 1);
 	if (line == NULL)
 		return (NULL);
 	ft_memcpy(line, input, index);
@@ -83,12 +83,12 @@ char	*get_next_line(int fd)
 	next_line = get_part_until_nl(leftover);
 	if (next_line == NULL)
 	{
-		safe_free_ptr(leftover, TEMPORARY);
+		safe_free_ptr(leftover);
 		leftover = NULL;
 		return (NULL);
 	}
 	temp = leftover;
 	leftover = get_leftover(leftover);
-	safe_free_ptr(temp, TEMPORARY);
+	safe_free_ptr(temp);
 	return (next_line);
 }

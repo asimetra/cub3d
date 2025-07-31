@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:19:10 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/24 07:11:04 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/31 21:26:13 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,6 @@ int	str_to_rgb(char	*input)
 	}
 	if (index != 3)
 		return (-1);
-	safe_free_ptr(rgb_str, TEMPORARY);
+	safe_free_ptr(rgb_str);
 	return (rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
 }

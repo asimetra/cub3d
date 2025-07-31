@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 17:20:36 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/29 19:22:03 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/31 21:27:33 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_map	element_to_map(t_element *e)
 
 	index = 0;
 	len = element_count(get_element(e, T_MAP), T_MAP);
-	map_line = safe_talloc(sizeof(t_map_line) * len);
+	map_line = safe_malloc(sizeof(t_map_line) * len);
 	while (index < len)
 	{
 		map_line[index] = (t_map_line) {

@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 14:45:30 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/18 14:45:37 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/31 21:27:25 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*str_arr_join(char	**strings, int count)
 	}
 	if (len == 0)
 		return (ft_strdup(""));
-	new_str = (char *)safe_talloc(len + 1);
+	new_str = (char *)safe_malloc(len + 1);
 	i = 0;
 	offset = 0;
 	while (i < count)
@@ -50,5 +50,5 @@ void	str_arr_free(char	**strings, int count)
 
 	i = 0;
 	while (i < count)
-		safe_free_ptr(strings[i++], TEMPORARY);
+		safe_free_ptr(strings[i++]);
 }

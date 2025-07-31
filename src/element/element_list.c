@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   element_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 18:29:48 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/28 14:23:44 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/07/31 21:27:40 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_element	*create_element(t_element new_element)
 {
 	t_element	*element;
 
-	element = safe_talloc(sizeof(t_element));
+	element = safe_malloc(sizeof(t_element));
 	if (element == NULL)
 		return (NULL);
 	*element = new_element;

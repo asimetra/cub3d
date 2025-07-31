@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 13:03:45 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/25 10:49:37 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/31 21:26:22 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ int	is_valid_map(t_element *element)
 		{
 			if (is_floor(line[x]) && !is_valid_floor_block(map_arr, x, y))
 			{
-				safe_free_ptr(map_arr, TEMPORARY);
+				safe_free_ptr(map_arr);
 				return (0);
 			}
 			x++;
 		}
 		y++;
 	}
-	safe_free_ptr(map_arr, TEMPORARY);
+	safe_free_ptr(map_arr);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:24:14 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/24 11:40:27 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/07/31 21:25:17 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ t_fini *finalizer_func()
 	return (&finalizer);
 }
 
-void	safe_free(t_mem_type mem_type)
+void	safe_free()
 {
 	t_memory_block	**head;
 	t_memory_block	*mem_block;
 	t_memory_block	*next_mem_block;
 
-	head = get_memory_head(mem_type);
+	head = get_memory_head();
 	mem_block = *head;
 	while (mem_block)
 	{
@@ -38,7 +38,7 @@ void	safe_free(t_mem_type mem_type)
 	*head = NULL;
 }
 
-void	safe_free_ptr(void *ptr, t_mem_type mem_type)
+void	safe_free_ptr(void *ptr)
 {
 	t_memory_block	**head;
 	t_memory_block	*mem_block;
@@ -46,7 +46,7 @@ void	safe_free_ptr(void *ptr, t_mem_type mem_type)
 
 	if (ptr == NULL)
 		return ;
-	head = get_memory_head(mem_type);
+	head = get_memory_head();
 	mem_block = *head;
 	prev_mem_block = NULL;
 	while (mem_block)
@@ -78,8 +78,7 @@ int	safe_abort(int exit_code)
 	finalizer = *finalizer_func();
 	if (finalizer != NULL)
 		finalizer();
-	safe_free(PERSISTENT);
-	safe_free(TEMPORARY);
+	safe_free();
 	exit(exit_code);
 	return (exit_code);
 }
