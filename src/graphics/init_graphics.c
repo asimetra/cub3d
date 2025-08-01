@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_graphics.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 09:07:00 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/01 19:43:56 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/08/02 00:16:33 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_image	load_frame_object()
 	if (img.ptr == NULL)
 		safe_exit("Failed to load frame", NULL, 0);
 	img.data_addr = mlx_get_data_addr(
-		&img.ptr,
+		img.ptr,
 		&img.bits_per_pixel,
 		&img.size_line,
 		&img.endian
@@ -78,20 +78,18 @@ t_image	load_frame_object()
 t_image	load_image_object(t_element *e)
 {
 	t_image	img;
-	int		h;
-	int		w;
 
 	img = (t_image) {0};
 	img.ptr = mlx_xpm_file_to_image(
 		game_object()->graphics.mlx.mlx,
 		e->value.content,
-		&h,
-		&w
+		&img.width,
+		&img.height
 	);
 	if (img.ptr == NULL)
 		safe_exit("Failed to load image", e->value.content, e->line);
 	img.data_addr = mlx_get_data_addr(
-		&img.ptr,
+		img.ptr,
 		&img.bits_per_pixel,
 		&img.size_line,
 		&img.endian
