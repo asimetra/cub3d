@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:40:41 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/01 19:14:09 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/01 23:18:29 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_image {
 	int		bits_per_pixel;
 	int		size_line;
 	int		endian;
+	int 	width;
+	int 	height;
 }	t_image;
 
 typedef struct s_texture {
@@ -89,10 +91,12 @@ unsigned long	current_time_ms(void);
 int				game_loop(void *param);
 
 int				render_windows(void* pr);
+
+void 			render_frame();
 void			init_player(t_element *e);
 void			init_map(t_element *e);
 
 t_vector		get_ray_direction(int x, t_vector camera, t_vector dir);
-double				do_dda(t_vector p, t_vector ray);
+double				do_dda(t_vector p, t_vector ray, int* side);
 
 #endif
