@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_graphics.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 09:07:00 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/01 19:36:47 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/01 19:43:56 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	fini_graphics(void)
 		mlx_destroy_image(graphics->mlx.mlx, graphics->textures.east.ptr);
 	if (graphics->textures.west.ptr)
 		mlx_destroy_image(graphics->mlx.mlx, graphics->textures.west.ptr);
+	if (graphics->frame.ptr)
+		mlx_destroy_image(graphics->mlx.mlx, graphics->frame.ptr);
 	if (graphics->mlx.mlx)
 	{
 		mlx_destroy_display(graphics->mlx.mlx);

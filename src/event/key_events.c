@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_events.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:13:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/29 19:35:29 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/01 19:42:27 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ void	key_event_handler(void)
 
 	p = &game_object()->player;
 	event = &game_object()->graphics.mlx.events;
+	if (event->esc)
+		safe_exit(NULL, NULL, 0);
 	if (event->up)
 		p->pos = set_position(p->pos, (t_vector) { p->dir.x, p->dir.y});
 	if (event->down)
