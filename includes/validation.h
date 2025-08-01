@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:58:25 by sdaban            #+#    #+#             */
-/*   Updated: 2025/07/28 18:06:45 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/01 10:52:06 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,6 @@ typedef struct s_result
 #define MISSING_PLAYER_ERR "missing player"
 #define INVALID_MAP_ERR "invalid map"
 
-bool		v_color_value(int value);
-bool		v_map();
-bool		v_fc_colors(int floor, int ceiling); // floor and ceiling
-bool		v_directions();
 
 int			is_valid_file_extension(char *file_path);
 int			is_valid_player_count(char *input);

@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:40:41 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/29 18:33:13 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/01 18:40:30 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,19 @@ typedef struct s_mlx {
 	t_event	events;
 }	t_mlx;
 
+typedef struct s_image {
+	void	*ptr;
+	char	*data_addr;
+	int		*bits_per_pixel;
+	int		*size_line;
+	int		*endian;
+}	t_image;
+
 typedef struct s_texture {
-	void	*north;
-	void	*east;
-	void	*south;
-	void	*west;
+	t_image	north;
+	t_image	east;
+	t_image	south;
+	t_image	west;
 }	t_texture;
 
 typedef struct s_color {
@@ -40,6 +48,7 @@ typedef struct s_graphics {
 	t_mlx			mlx;
 	t_texture		textures;
 	t_color			colors;
+	t_image			frame;
 	unsigned long	frame_time;
 }					t_graphics;
 

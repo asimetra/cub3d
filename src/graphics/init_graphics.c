@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_graphics.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 09:07:00 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/28 14:26:37 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/08/01 18:44:11 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void	fini_graphics(void)
 	graphics = &game_object()->graphics;
 	if (graphics->mlx.mlx)
 		mlx_destroy_window(graphics->mlx.mlx, graphics->mlx.mlx_win);
-	if (graphics->textures.north)
-		mlx_destroy_image(graphics->mlx.mlx, graphics->textures.north);
-	if (graphics->textures.south)
-		mlx_destroy_image(graphics->mlx.mlx, graphics->textures.south);
-	if (graphics->textures.east)
-		mlx_destroy_image(graphics->mlx.mlx, graphics->textures.east);
-	if (graphics->textures.west)
-		mlx_destroy_image(graphics->mlx.mlx, graphics->textures.west);
+	if (graphics->textures.north.ptr)
+		mlx_destroy_image(graphics->mlx.mlx, graphics->textures.north.ptr);
+	if (graphics->textures.south.ptr)
+		mlx_destroy_image(graphics->mlx.mlx, graphics->textures.south.ptr);
+	if (graphics->textures.east.ptr)
+		mlx_destroy_image(graphics->mlx.mlx, graphics->textures.east.ptr);
+	if (graphics->textures.west.ptr)
+		mlx_destroy_image(graphics->mlx.mlx, graphics->textures.west.ptr);
 	if (graphics->mlx.mlx)
 	{
 		mlx_destroy_display(graphics->mlx.mlx);
@@ -52,17 +52,39 @@ t_mlx	load_mlx_object()
 	return (mlx);
 }
 
-void	*load_image_object(t_element *e)
+t_image	load_frame_object()
 {
-	void	*img;
+	t_image	img;
+
+	img.ptr = mlx_new_image(game_object()->graphics.mlx.mlx, WIDTH, HEIGHT);
+	if (img.ptr == NULL)
+		safe_exit("Failed to load frame", NULL, 0);
+	img.data_addr = mlx_get_data_addr(
+		img.ptr,
+		img.bits_per_pixel,
+		img.size_line,
+		img.endian
+	);
+	return (img);
+}
+
+t_image	load_image_object(t_element *e)
+{
+	t_image	img;
 	int		h;
 	int		w;
 
-	img = mlx_xpm_file_to_image(
+	img.ptr = mlx_xpm_file_to_image(
 			game_object()->graphics.mlx.mlx,
 			e->value.content, &h, &w);
-	if (img == NULL)
+	if (img.ptr == NULL)
 		safe_exit("Failed to load image", e->value.content, e->line);
+	img.data_addr = mlx_get_data_addr(
+		img.ptr,
+		img.bits_per_pixel,
+		img.size_line,
+		img.endian
+	);
 	return (img);
 }
 
@@ -78,6 +100,7 @@ void	init_graphics(t_element *e)
 		.east = load_image_object(get_element(e, T_EAST)),
 		.west = load_image_object(get_element(e, T_WEST))
 	};
+	graphics->frame = load_frame_object();
 	graphics->colors = (t_color){
 		.ceiling = get_element(e, T_CEIL)->value.color,
 		.floor = get_element(e, T_FLOOR)->value.color,

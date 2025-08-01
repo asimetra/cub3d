@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:32:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/30 16:53:03 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/01 18:31:45 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "math.h"
 #include "config.h"
 #include "validation.h"
+
 unsigned int fps ()
 {
 	unsigned long current_time;
@@ -69,8 +70,8 @@ double	do_dda(t_vector p, t_vector ray)
 	map_x = p.x;
 	map_y = p.y;
 
-	delta_x = sqrt(1 + pow(ray.y/ray.x, 2));
-	delta_y = sqrt(1 + pow(ray.x/ray.y, 2)); // 1/ray.x
+	delta_x = fabs(1/ray.x); // delta_x = sqrt(1 + pow(ray.y/ray.x, 2));
+	delta_y =  fabs(1/ray.y); // delta_y = sqrt(1 + pow(ray.x/ray.y, 2)); // 1/ray.x
 
 	step_x = ray.x > 0 ? 1 : -1;
 	step_y = ray.y > 0 ? 1 : -1 ;

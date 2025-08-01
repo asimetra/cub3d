@@ -31,6 +31,8 @@ using namespace QuickCG;
 
 /*
 g++ *.cpp -lSDL -O3 -W -Wall -ansi -pedantic
+c++ raycaster_textured.cpp quickcg.cpp -lSDL
+
 g++ *.cpp -lSDL
 */
 
