@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 15:26:09 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/30 16:28:06 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/01 19:11:03 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int draw_map(t_map *map)
         {
             if (map->lines[y].line[x] == '1') // Assuming '1' represents a wall
             {
-               mlx_put_image_to_window(game->graphics.mlx.mlx, game->graphics.mlx.mlx_win, game->graphics.textures.west, x * TS, y * TS); // Draw wall texture
+               mlx_put_image_to_window(game->graphics.mlx.mlx, game->graphics.mlx.mlx_win, game->graphics.textures.west.ptr, x * TS, y * TS); // Draw wall texture
             }
         }
     }

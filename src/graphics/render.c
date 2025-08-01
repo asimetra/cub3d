@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:32:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/01 18:31:45 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/01 19:30:18 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ unsigned int fps ()
 int game_loop(void *param)
 {
 	(void)param;
-	// printf("FPS: %u\n", fps());
+	render_frame();
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:40:41 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/01 18:40:30 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/01 19:14:09 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ typedef struct s_mlx {
 typedef struct s_image {
 	void	*ptr;
 	char	*data_addr;
-	int		*bits_per_pixel;
-	int		*size_line;
-	int		*endian;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
 }	t_image;
 
 typedef struct s_texture {
