@@ -1,7 +1,7 @@
-NO assets/hcoskun.xpm
-SO assets/wanted_bsoykan.xpm
-WE assets/wanted_hcoskun.xpm
-EA assets/bsoykan.xpm
+NO ./assets/w1.xpm
+SO ./assets/w2.xpm
+WE ./assets/w3.xpm
+EA ./assets/w4.xpm
 
 F 220,100,0
 C 225,30,0
