@@ -1,7 +1,7 @@
-NO ./assets/Player.xpm
+NO ./assets/path_to_the_south_texture.xpm
 SO ./assets/path_to_the_south_texture.xpm
-WE ./assets/path_to_the_west_texture.xpm
-EA ./assets/path_to_the_east_texture.xpm
+WE ./assets/path_to_the_south_texture.xpm
+EA ./assets/path_to_the_south_texture.xpm
 
 F 20, 0 ,00
 C 100,30    ,0
