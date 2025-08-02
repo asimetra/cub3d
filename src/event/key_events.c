@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_events.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:13:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/02 15:22:51 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/08/02 17:31:20 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	key_event_handler(void)
 	p = &game_object()->player;
 	event = &game_object()->graphics.mlx.events;
 	if (event->esc)
-		safe_exit(NULL, NULL, 0);
+		safe_abort(0);
 	if (event->up)
 		p->pos = set_position(p->pos, (t_vector){p->dir.x, p->dir.y});
 	if (event->down)
@@ -127,5 +127,5 @@ void	key_event_handler(void)
 			.x = -p->dir.y * tan(FOV * PI / 360), /*XXX FOV/2 * PI/180 */
 			.y = p->dir.x * tan(FOV * PI / 360)
 		};
-	printf("Player Position: (%.2f, %.2f)   Dir: (%.2f, %.2f)\n", p->pos.y, p->pos.x, p->dir.x, p->dir.y);
+	// printf("Player Position: (%.2f, %.2f)   Dir: (%.2f, %.2f)\n", p->pos.y, p->pos.x, p->dir.x, p->dir.y);
 }
