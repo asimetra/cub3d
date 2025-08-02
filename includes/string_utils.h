@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_utils.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 14:49:27 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/27 12:01:36 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 15:10:15 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@ int		str_count(char *str, char c);
 int		find_chars_index(char *str, char *chars);
 
 int		str_to_rgb(char	*input);
-
 
 #endif

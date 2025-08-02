@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 12:02:09 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/27 14:03:30 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 15:08:32 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ typedef enum e_event_type
 	E_ESC = 65307,
 }	t_event_type;
 
-typedef struct s_event {
+typedef struct s_event
+{
 	int		up;
 	int		down;
 	int		left;
