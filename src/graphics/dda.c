@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 00:30:56 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/02 11:37:38 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 15:23:40 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_vector	get_delta(t_vector ray)
 
 t_point	get_step(t_vector ray)
 {
-	return ((t_point) {
+	return ((t_point){
 		.x = 2 * (ray.x > 0) - 1,
 		.y = 2 * (ray.y > 0) - 1
 	});
@@ -100,5 +100,3 @@ void	do_dda(t_ray *ray)
 	}
 	ray->perp_dist = get_side_distance(side_dist, delta, ray->hit_side);
 }
-
-

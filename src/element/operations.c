@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 12:25:33 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/02 10:10:36 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 15:20:20 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_element	**element_map_to_arr(t_element *e)
 
 	index = 0;
 	len = element_count(get_element(e, T_MAP), T_MAP);
-	arr = safe_malloc(sizeof(t_element*) * (len + 1));
+	arr = safe_malloc(sizeof(t_element *) * (len + 1));
 	while (index < len)
 	{
 		arr[index] = e;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_events.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:13:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/02 11:08:48 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 15:22:51 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	key_release_hook(int keycode, t_event *event)
 */
 t_vector	set_rotation(t_vector dir, double angle)
 {
-	return ((t_vector) {
+	return ((t_vector){
 		.x = dir.x * cos(angle) - dir.y * sin(angle),
 		.y = dir.x * sin(angle) + dir.y * cos(angle)
 	});
@@ -85,13 +85,13 @@ t_vector	set_position(t_vector pos, t_vector dir)
 {
 	t_vector	new_pos;
 
-	new_pos = (t_vector) {
+	new_pos = (t_vector){
 		.x = pos.x + dir.x * SPEED,
 		.y = pos.y + dir.y * SPEED
 	};
 	if (!is_valid_position(new_pos.x, new_pos.y))
-		return pos;
-	return new_pos;
+		return (pos);
+	return (new_pos);
 }
 
 /*
@@ -111,23 +111,21 @@ void	key_event_handler(void)
 	if (event->esc)
 		safe_exit(NULL, NULL, 0);
 	if (event->up)
-		p->pos = set_position(p->pos, (t_vector) { p->dir.x, p->dir.y});
+		p->pos = set_position(p->pos, (t_vector){p->dir.x, p->dir.y});
 	if (event->down)
-		p->pos = set_position(p->pos, (t_vector) { -p->dir.x, -p->dir.y});
+		p->pos = set_position(p->pos, (t_vector){-p->dir.x, -p->dir.y});
 	if (event->left)
-		p->pos = set_position(p->pos, (t_vector) { p->dir.y, -p->dir.x});
+		p->pos = set_position(p->pos, (t_vector){p->dir.y, -p->dir.x});
 	if (event->right)
-		p->pos = set_position(p->pos, (t_vector) { -p->dir.y, p->dir.x});
+		p->pos = set_position(p->pos, (t_vector){-p->dir.y, p->dir.x});
 	if (event->left_arrow)
 		p->dir = set_rotation(p->dir, -ROTATION_ANGLE);
 	if (event->right_arrow)
 		p->dir = set_rotation(p->dir, ROTATION_ANGLE);
 	if (event->left_arrow || event->right_arrow)
-		p->camera = (t_vector) {
+		p->camera = (t_vector){
 			.x = -p->dir.y * tan(FOV * PI / 360), /*XXX FOV/2 * PI/180 */
 			.y = p->dir.x * tan(FOV * PI / 360)
 		};
 	printf("Player Position: (%.2f, %.2f)   Dir: (%.2f, %.2f)\n", p->pos.y, p->pos.x, p->dir.x, p->dir.y);
 }
-
-
