@@ -6,11 +6,11 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/29 19:12:35 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 10:12:50 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memory_allocator.h"
+#include "../memory_allocator/memory_allocator.h"
 #include "cub3d.h"
 #include "element.h"
 #include <fcntl.h>

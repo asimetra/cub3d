@@ -6,13 +6,13 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:19:10 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/31 21:26:13 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 10:10:23 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include "libft.h"
-#include "memory_allocator.h"
+#include "memory_allocator/memory_allocator.h"
 #include "string_utils.h"
 
 

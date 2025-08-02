@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 #include "libft.h"
-#include "../../includes/memory_allocator.h"
+#include "../memory_allocator/memory_allocator.h"
 
 static int	letter_count(const char *s, char c)
 {

@@ -6,16 +6,16 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:52:02 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/31 21:26:08 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 10:10:55 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "element.h"
 #include <stdbool.h>
-#include "memory_allocator.h"
+#include "memory_allocator/memory_allocator.h"
 #include "cub3d.h"
 #include "validation.h"
-#include "get_next_line.h"
+#include "get_next_line/get_next_line.h"
 
 t_state	get_next_state(char *input)
 {

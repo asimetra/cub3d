@@ -6,11 +6,11 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 14:44:08 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/31 21:27:16 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 10:09:50 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memory_allocator.h"
+#include "../memory_allocator/memory_allocator.h"
 #include "libft.h"
 #include <unistd.h>
 #include "string_utils.h"

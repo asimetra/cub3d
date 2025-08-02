@@ -6,13 +6,13 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 17:20:36 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/31 21:27:33 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 10:10:28 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "element.h"
 #include "cub3d.h"
-#include "memory_allocator.h"
+#include "memory_allocator/memory_allocator.h"
 #include "string_utils.h"
 #include <math.h>
 #include "config.h"

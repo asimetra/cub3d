@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   key_events.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:13:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/01 19:42:27 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/08/02 11:08:48 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "memory_allocator.h"
+#include "../memory_allocator/memory_allocator.h"
 #include "config.h"
 #include <math.h>
 #include "validation.h"
-#include "stdio.h"
+#include "types.h"
+#include <stdio.h>
 
 int	key_press_hook(int keycode, t_event *event)
 {

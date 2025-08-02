@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:40:41 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/01 23:18:29 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 10:50:43 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,10 @@
 
 #include "element.h"
 #include "event.h"
+#include "types.h"
+#include "graphics.h"
 
 #define PI 3.14159265358979323846
-
-typedef struct s_mlx {
-	void	*mlx;
-	void	*mlx_win;
-	t_event	events;
-}	t_mlx;
-
-typedef struct s_image {
-	void	*ptr;
-	char	*data_addr;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
-	int 	width;
-	int 	height;
-}	t_image;
-
-typedef struct s_texture {
-	t_image	north;
-	t_image	east;
-	t_image	south;
-	t_image	west;
-}	t_texture;
-
-typedef struct s_color {
-	int 		floor;
-	int 		ceiling;
-}				t_color;
-
-typedef struct s_graphics {
-	t_mlx			mlx;
-	t_texture		textures;
-	t_color			colors;
-	t_image			frame;
-	unsigned long	frame_time;
-}					t_graphics;
 
 typedef struct s_map_line {
 	char	*line;
@@ -63,11 +29,6 @@ typedef struct s_map {
 	t_map_line	*lines;
 	int			len;
 }		t_map;
-
-typedef struct s_vector {
-	float	x;
-	float	y;
-}		t_vector;
 
 typedef struct s_player {
 	t_vector	dir;
@@ -81,22 +42,41 @@ typedef struct s_game {
 	t_player	player;
 }		t_game;
 
+typedef struct t_ray
+{
+	t_vector	dir;
+	int			hit_side;
+	double		perp_dist;
+	t_vector	origin;
+}	t_ray;
+
+typedef struct s_column_info
+{
+	int			x;
+	double		wall_height;
+	int			wall_start;
+	int			wall_end;
+	t_ray		ray;
+	t_image		*texture;
+	t_vector	tex;
+	double		step_y;
+}	t_column_info;
+
 void	safe_exit(char *message, char *line, int line_number);
 
 t_game	*game_object();
-void	fini_graphics();
-void	init_graphics(t_element *e);
 
-unsigned long	current_time_ms(void);
 int				game_loop(void *param);
 
 int				render_windows(void* pr);
-
 void 			render_frame();
 void			init_player(t_element *e);
 void			init_map(t_element *e);
 
 t_vector		get_ray_direction(int x, t_vector camera, t_vector dir);
-double				do_dda(t_vector p, t_vector ray, int* side);
+void			do_dda(t_ray *ray);
+void			init_column_info(t_column_info *c, int x);
+t_image			*get_wall_texture(int side, t_vector ray);
+void 			draw_line_to_frame(t_column_info *c);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 18:29:48 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/31 21:27:40 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 10:10:32 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memory_allocator.h"
+#include "memory_allocator/memory_allocator.h"
 #include "element.h"
 #include <stddef.h>
 

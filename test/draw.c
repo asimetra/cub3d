@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 15:26:09 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/01 19:11:03 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 11:19:48 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,12 @@ int render_windows(void* pr)
 	// draw_line(start, end, 0xFFFFFF); // White color
     for (int x = 0; x < WIDTH; x++)
     {
-        t_vector ray = get_ray_direction(x, game->player.camera, game->player.dir);
-        double distance = do_dda(game->player.pos, ray);
-        printf("%f\n", distance);
-        draw_wall((HEIGHT/distance), x);
+        t_ray ray = (t_ray) {
+            .dir = get_ray_direction(x, game->player.camera, game->player.dir),
+            .origin = game->player.pos,
+        };
+       do_dda(&ray);
+        draw_wall((HEIGHT / ray.perp_dist), x);
 
         // draw_line(start,
         //      (t_vector){start.x + ray.x * TS, start.y + ray.y * TS},

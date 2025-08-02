@@ -6,14 +6,14 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:07:22 by sdaban            #+#    #+#             */
-/*   Updated: 2025/07/29 18:27:27 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 10:11:10 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "element.h"
 #include "string_utils.h"
-#include "memory_allocator.h"
+#include "memory_allocator/memory_allocator.h"
 #include "limits.h"
 #include "cub3d.h"
 
@@ -37,16 +37,14 @@ int	is_valid_file_extension(char *file_path)
 {
 	return (ends_with(file_path, ".cub"));
 }
-#include "stdio.h"
+
 int	is_valid_position(int x, int y)
 {
 	t_map	*m;
 
 	m = &game_object()->map;
-	// printf ("%d\n",m->len);
-	// 	printf ("%d\n",m->lines[y].len);
-	// 	printf ("%d\n",m->lines[y].line[x] != '1');
 	return (m->len > y && y >= 0
 		&& m->lines[y].len > x && x >= 0
 		&& m->lines[y].line[x] != '1');
 }
+

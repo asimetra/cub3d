@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "../../includes/memory_allocator.h"
+#include "../memory_allocator/memory_allocator.h"
 
 int	get_len(int n)
 {

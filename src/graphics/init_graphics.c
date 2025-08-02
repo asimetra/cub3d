@@ -6,14 +6,14 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 09:07:00 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/02 00:16:33 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 10:11:13 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
 #include "../libs/minilibx/mlx.h"
 #include "element.h"
-#include "memory_allocator.h"
+#include "memory_allocator/memory_allocator.h"
 #include "cub3d.h"
 #include <stdlib.h>
 

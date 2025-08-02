@@ -6,11 +6,11 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:24:14 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/31 21:25:17 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 10:09:15 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/memory_allocator.h"
+#include "memory_allocator.h"
 #include <stdlib.h>
 
 t_fini *finalizer_func()
