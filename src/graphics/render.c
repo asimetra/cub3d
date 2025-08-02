@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:32:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/02 11:38:59 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 11:50:07 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	init_column_info(t_column_info *c, int x)
 	c->tex.x =	get_wall_x(c->ray) * c->texture->width;
 	c->step_y = c->texture->height / c->wall_height;
 	c->tex.y = (c->wall_start - HEIGHT / 2 + c->wall_height / 2) * c->step_y;
-
 }
 
 void	render(void)
