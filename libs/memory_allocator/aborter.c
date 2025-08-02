@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   aborter.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:24:14 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/02 10:09:15 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 15:18:23 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memory_allocator.h"
 #include <stdlib.h>
 
-t_fini *finalizer_func()
+t_fini	*finalizer_func(void)
 {
-	static t_fini finalizer = NULL;
+	static t_fini	fnl = NULL;
 
-	return (&finalizer);
+	return (&fnl);
 }
 
-void	safe_free()
+void	safe_free(void)
 {
 	t_memory_block	**head;
 	t_memory_block	*mem_block;
@@ -66,7 +66,7 @@ void	safe_free_ptr(void *ptr)
 	}
 }
 
-void register_finalizer_funct(t_fini finalizer)
+void	register_finalizer_funct(t_fini finalizer)
 {
 	*finalizer_func() = finalizer;
 }

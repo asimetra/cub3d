@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   allocator.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:24:09 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/02 10:09:08 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 15:18:44 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memory_allocator.h"
 #include <stdlib.h>
 
-t_memory_block	**get_memory_head()
+t_memory_block	**get_memory_head(void)
 {
 	static t_memory_block	*mem_block = {0};
 
