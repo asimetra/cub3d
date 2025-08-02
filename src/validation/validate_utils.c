@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:07:22 by sdaban            #+#    #+#             */
-/*   Updated: 2025/08/02 10:11:10 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 15:14:36 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int	is_valid_player_count(char *input)
 {
-	int index;
+	int	index;
 	int	p_count;
 
 	index = 0;
@@ -47,4 +47,3 @@ int	is_valid_position(int x, int y)
 		&& m->lines[y].len > x && x >= 0
 		&& m->lines[y].line[x] != '1');
 }
-

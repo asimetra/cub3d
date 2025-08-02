@@ -3,31 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 13:03:45 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/02 10:11:05 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/02 15:14:16 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "element.h"
 #include "memory_allocator/memory_allocator.h"
 
-int is_valid_floor_block(t_element **m, size_t x, size_t y)
+int	is_valid_floor_block(t_element **m, size_t x, size_t y)
 {
 	return (x > 0 && m[y]->value.content[x - 1] != ' '
-		&& x + 1 < m[y]->val_len  && m[y]->value.content[x + 1] != ' '
+		&& x + 1 < m[y]->val_len && m[y]->value.content[x + 1] != ' '
 		&& y > 0 && x < m[y - 1]->val_len
 		&& m[y - 1]->value.content[x] != ' '
 		&& m[y + 1] != NULL && x < m[y + 1]->val_len
 		&& m[y + 1]->value.content[x] != ' ');
 }
 
-int is_floor(char c)
+int	is_floor(char c)
 {
 	return (c == '0' || c == 'S' || c == 'N' || c == 'E' || c == 'W');
 }
-
 
 int	is_valid_map(t_element *element)
 {
