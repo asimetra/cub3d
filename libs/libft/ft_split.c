@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 #include "libft.h"
-#include "../../includes/memory_allocator.h"
+#include "../memory_allocator/memory_allocator.h"
 
 static int	letter_count(const char *s, char c)
 {
@@ -48,10 +48,17 @@ static char	**free_arr(char **arr, int i)
 {
 	while (i >= 0)
 	{
+<<<<<<< HEAD
 		safe_free_ptr(arr[i], TEMPORARY);
 		i--;
 	}
 	safe_free_ptr(arr, TEMPORARY);
+=======
+		safe_free_ptr(arr[i]);
+		i--;
+	}
+	safe_free_ptr(arr);
+>>>>>>> 0acf8bb
 	return (0);
 }
 
@@ -62,7 +69,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (0);
-	arr = (char **)safe_talloc(sizeof(char *) * (word_count(s, c) + 1));
+	arr = (char **)safe_malloc(sizeof(char *) * (word_count(s, c) + 1));
 	if (!arr)
 		return (0);
 	i = 0;

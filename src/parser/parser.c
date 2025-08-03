@@ -6,16 +6,27 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:52:02 by hsamir            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/07/24 12:13:42 by hsamir           ###   ########.fr       */
+=======
+/*   Updated: 2025/08/02 10:10:55 by hsamir           ###   ########.fr       */
+>>>>>>> 0acf8bb
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "element.h"
 #include <stdbool.h>
+<<<<<<< HEAD
 #include "memory_allocator.h"
 #include "cub3d.h"
 #include "validation.h"
 #include "get_next_line.h"
+=======
+#include "memory_allocator/memory_allocator.h"
+#include "cub3d.h"
+#include "validation.h"
+#include "get_next_line/get_next_line.h"
+>>>>>>> 0acf8bb
 
 t_state	get_next_state(char *input)
 {
@@ -59,7 +70,11 @@ t_element	*parse_file(int fd)
 		if (line == NULL)
 			break;
 		seen_mask |= parse_line(&elements,(t_line){line, ++line_number}, seen_mask);
+<<<<<<< HEAD
 		safe_free_ptr(line, TEMPORARY);
+=======
+		safe_free_ptr(line);
+>>>>>>> 0acf8bb
 	}
 	result = validate_elements(elements, seen_mask);
 	if (result.type == ERROR)

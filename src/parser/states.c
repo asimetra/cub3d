@@ -6,7 +6,11 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:50:39 by hsamir            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/07/24 13:02:08 by hsamir           ###   ########.fr       */
+=======
+/*   Updated: 2025/07/27 13:29:24 by hsamir           ###   ########.fr       */
+>>>>>>> 0acf8bb
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +18,17 @@
 #include "cub3d.h"
 #include "libft.h"
 #include "validation.h"
+<<<<<<< HEAD
 
+=======
+#include "string_utils.h"
+
+/*
+	I think my state machine is not good at dry principle.
+	Maybe I should use factory pattern to create elements.
+	Factory pattern: instead of create object directly, use a helper function to create it.
+*/
+>>>>>>> 0acf8bb
 t_element_type	texture_state(t_element **elements, t_line line, int s_mask)
 {
 	t_element	new_element;

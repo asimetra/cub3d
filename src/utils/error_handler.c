@@ -6,11 +6,15 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 23:21:25 by hsamir            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/07/24 11:55:11 by hsamir           ###   ########.fr       */
+=======
+/*   Updated: 2025/08/02 10:10:15 by hsamir           ###   ########.fr       */
+>>>>>>> 0acf8bb
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memory_allocator.h"
+#include "memory_allocator/memory_allocator.h"
 #include "libft.h"
 
 /*. When exit() is called, any open file descriptors belonging to the process are closed

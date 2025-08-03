@@ -6,13 +6,21 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:19:10 by hsamir            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/07/24 07:11:04 by hsamir           ###   ########.fr       */
+=======
+/*   Updated: 2025/08/02 10:10:23 by hsamir           ###   ########.fr       */
+>>>>>>> 0acf8bb
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include "libft.h"
+<<<<<<< HEAD
 #include "memory_allocator.h"
+=======
+#include "memory_allocator/memory_allocator.h"
+>>>>>>> 0acf8bb
 #include "string_utils.h"
 
 
@@ -74,6 +82,10 @@ int	str_to_rgb(char	*input)
 	}
 	if (index != 3)
 		return (-1);
+<<<<<<< HEAD
 	safe_free_ptr(rgb_str, TEMPORARY);
+=======
+	safe_free_ptr(rgb_str);
+>>>>>>> 0acf8bb
 	return (rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
 }

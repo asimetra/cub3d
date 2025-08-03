@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   config.h                                           :+:      :+:    :+:   */
+/*   time_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 13:43:59 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/03 20:37:41 by hsamir           ###   ########.fr       */
+/*   Created: 2025/07/24 22:30:29 by hsamir            #+#    #+#             */
+/*   Updated: 2025/07/24 22:31:14 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONFIG_H
-# define CONFIG_H
+#include <sys/time.h>
+#include <stddef.h>
 
-# define WIDHT 2500
-# define HEIGHT 1600
-# define FOV 90
+unsigned long	current_time_ms(void)
+{
+	struct timeval	tv;
 
-#endif
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000LL + (tv.tv_usec) / 1000);
+}

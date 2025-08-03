@@ -6,11 +6,15 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/07/24 14:45:20 by hsamir           ###   ########.fr       */
+=======
+/*   Updated: 2025/08/02 10:12:50 by hsamir           ###   ########.fr       */
+>>>>>>> 0acf8bb
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memory_allocator.h"
+#include "../memory_allocator/memory_allocator.h"
 #include "cub3d.h"
 #include "element.h"
 #include <fcntl.h>
@@ -19,6 +23,10 @@
 #include "validation.h"
 #include "minilibx/mlx.h"
 #include "string_utils.h"
+<<<<<<< HEAD
+=======
+#include <X11/X.h>
+>>>>>>> 0acf8bb
 
 const char *token_type_str(t_element_type t)
 {
@@ -61,6 +69,7 @@ t_game	*game_object()
 	return &game;
 }
 
+<<<<<<< HEAD
 int	get_player_angle(t_element_type player)
 {
 	if (player & T_NORTH)
@@ -109,6 +118,21 @@ void	cub_main(t_element *elements)
 
 int	main(int argc, char **argv)
 {
+=======
+#include "stdio.h"
+
+void	cub_main(t_element *elements)
+{
+	register_finalizer_funct(fini_graphics); //register mlx destroy function for aborter
+	init_graphics(elements);
+	init_map(elements);
+	init_player(elements);
+	init_mlx_event_hooks();
+}
+
+int	main(int argc, char **argv)
+{
+>>>>>>> 0acf8bb
 	t_element	*elements;
 	int		map_fd;
 
@@ -120,8 +144,11 @@ int	main(int argc, char **argv)
 	if (map_fd == -1)
 		safe_exit(INVALID_FILE_ERR, NULL, 0);
 	elements = parse_file(map_fd);
+<<<<<<< HEAD
 	if (elements == NULL)
 		safe_exit(INVALID_FILE_ERR, NULL, 0);
+=======
+>>>>>>> 0acf8bb
 	close(map_fd);
 	debug_tokens(elements);
 	cub_main(elements);

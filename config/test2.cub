@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 NO ./assets/path_to_the_north_texture.xpm
 SO ./assets/path_to_the_south_texture.xpm
 WE ./assets/path_to_the_west_texture.xpm
@@ -12,3 +13,20 @@ C 225,30    ,0
 111
 111
 111
+=======
+NO ./assets/path_to_the_south_texture.xpm
+SO ./assets/path_to_the_south_texture.xpm
+WE ./assets/path_to_the_south_texture.xpm
+EA ./assets/path_to_the_south_texture.xpm
+
+F 20, 0 ,00
+C 100,30    ,0
+
+1111111111111111111111111111111111111
+1000000000000000000000000000000000001
+1000000000000000000000000000000000001
+1000000000000000000000000000000000001
+1000000000000000000000000000000000001
+1000000000000000W00000000000000000001
+ 111111111111111111111111111111111111
+>>>>>>> 0acf8bb

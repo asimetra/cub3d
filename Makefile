@@ -7,6 +7,11 @@ SRC = libs/memory_allocator/allocator.c \
 	src/utils/string_utils/str_operations.c \
 	src/utils/error_handler.c \
 	src/utils/convertion_utils.c \
+<<<<<<< HEAD
+=======
+	src/utils/time_utils.c \
+	src/utils/init_utils.c \
+>>>>>>> 0acf8bb
 	src/element/element_list.c \
 	src/element/operations.c \
 	src/element/element_type.c \
@@ -17,11 +22,19 @@ SRC = libs/memory_allocator/allocator.c \
 	src/validation/validate_map.c \
 	src/validation/validate_utils.c \
 	src/graphics/init_graphics.c \
+<<<<<<< HEAD
+=======
+	src/graphics/render.c \
+	src/graphics/draw.c \
+	src/graphics/dda.c \
+	src/event/key_events.c \
+	src/event/init_events.c \
+	test/draw.c \
+>>>>>>> 0acf8bb
 	src/main.c \
 
 CC = cc
-CFLAGS = -Wall -Wextra -g -Werror  -I./libs -I./includes -I./libs/libft
-
+CFLAGS = -Wall -Wextra -g -Werror  -I./libs -I./includes -I./libs/libft #-fsanitize=address
 MINILBX = libs/minilibx/libmlx.a
 MINILBX_P = libs/minilibx
 MLXFLAG = -lXext -lX11 -lm

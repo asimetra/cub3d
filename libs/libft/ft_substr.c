@@ -12,7 +12,7 @@
 
 #include "libft.h"
 #include <stdlib.h>
-#include "../../includes/memory_allocator.h"
+#include "../memory_allocator/memory_allocator.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -26,7 +26,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	if (len > s_len - start)
 		len = s_len - start;
-	substr = (char *)safe_talloc(len + 1);
+	substr = (char *)safe_malloc(len + 1);
 	if (!substr)
 		return (0);
 	ft_memcpy(substr, s + start, len);
