@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:32:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/03 20:12:43 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/03 22:44:53 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,9 @@ double	get_wall_x(t_ray ray)
 	double	wall_x;
 
 	if (ray.hit_side == SIDE_X)
-		wall_x = ray.origin.x + ray.perp_dist * ray.dir.x;
-	else
 		wall_x = ray.origin.y + ray.perp_dist * ray.dir.y;
-
+	else
+		wall_x = ray.origin.x + ray.perp_dist * ray.dir.x;
 	return ((wall_x - floor(wall_x)));
 }
 
