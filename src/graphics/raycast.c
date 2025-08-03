@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 00:30:56 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/03 18:52:50 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/03 20:28:59 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,17 @@ t_ray	cast_ray(int x)
 {
 	t_game	*g;
 	t_ray	ray;
-	
+
 	g = game_object();
-	ray = (t_ray){
-		.dir = cal_ray_dir(x, g->player.camera, g->player.dir),
-		.hit_side = 0,
-		.origin = g->player.pos,
-	};
+
+	ray.dir = cal_ray_dir(x, g->player.camera, g->player.dir);
+		ray.hit_side = 0,
+		ray.origin = g->player.pos,
+
 	ray.map = (t_point){ray.origin.x, ray.origin.y};
 	ray.delta = cal_delta(ray.dir);
-	ray.side_dist = cal_side_dist(ray);
 	ray.step = cal_step(ray.dir);
+	ray.side_dist = cal_side_dist(ray);
 	ray.perp_dist = do_dda(&ray);
 	return (ray);
 }

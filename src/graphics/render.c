@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:32:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/03 18:51:56 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/03 20:12:43 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ double	get_wall_x(t_ray ray)
 void	init_column_info(t_column *c, int x)
 {
 	c->x = x;
-	c->wall_height = (HEIGHT / (c->ray.perp_dist)); // h = orginal_h * (1 / perp) k = 1 * 1 -> k = wall_prep * real_wall_height 
+	c->wall_height = (HEIGHT / (c->ray.perp_dist)); // h = orginal_h * (1 / perp) k = 1 * 1 -> k = wall_prep * real_wall_height
 	c->wall_start = (HEIGHT / 2) - (c->wall_height) / 2;
 	if (c->wall_start < 0)
 		c->wall_start = 0;
@@ -66,7 +66,7 @@ void	render(void)
 		x++;
 	}
 	mlx_put_image_to_window(
-		g->graphics.mlx.mlx, 
+		g->graphics.mlx.mlx,
 		g->graphics.mlx.mlx_win,
 		g->graphics.frame.ptr,
 		0, 0);
