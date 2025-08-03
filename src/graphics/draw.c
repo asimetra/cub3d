@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:34:53 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/02 10:08:37 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/03 18:47:24 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_image	*get_wall_texture(int side, t_vector ray)
 	}
 }
 
-void draw_line_to_frame(t_column_info *c)
+void draw_line_to_frame(t_column *c)
 {
 	int	y;
 

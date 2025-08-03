@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:32:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/02 11:50:07 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/03 18:51:56 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,36 +21,23 @@
 #include "minilibx/mlx.h"
 
 
-/*
-	value/size -> [0, 1],
-	2 × (value/size) – 1 -> [-1, 1]
-*/
-t_vector	get_ray_direction(int x, t_vector camera, t_vector dir)
-{
-	double	offset;
-
-	offset = 2 * x / (double)WIDTH - 1;
-	return ((t_vector) {
-		.x = dir.x + camera.x * offset,
-		.y = dir.y + camera.y * offset
-	});
-}
 
 double	get_wall_x(t_ray ray)
 {
 	double	wall_x;
 
 	if (ray.hit_side == SIDE_X)
-		wall_x = ray.origin.y + ray.perp_dist * ray.dir.y;
-	else
 		wall_x = ray.origin.x + ray.perp_dist * ray.dir.x;
+	else
+		wall_x = ray.origin.y + ray.perp_dist * ray.dir.y;
+
 	return ((wall_x - floor(wall_x)));
 }
 
-void	init_column_info(t_column_info *c, int x)
+void	init_column_info(t_column *c, int x)
 {
 	c->x = x;
-	c->wall_height = (HEIGHT / c->ray.perp_dist); // h = orginal_h * (1 / perp)
+	c->wall_height = (HEIGHT / (c->ray.perp_dist)); // h = orginal_h * (1 / perp) k = 1 * 1 -> k = wall_prep * real_wall_height 
 	c->wall_start = (HEIGHT / 2) - (c->wall_height) / 2;
 	if (c->wall_start < 0)
 		c->wall_start = 0;
@@ -65,25 +52,24 @@ void	init_column_info(t_column_info *c, int x)
 
 void	render(void)
 {
-	t_game			*g;
-	t_column_info	column_info;
-	int				x;
+	t_game		*g;
+	t_column	col;
+	int			x;
 
-	g = game_object();
 	x = 0;
+	g = game_object();
 	while (x < WIDTH)
     {
-		column_info.ray = (t_ray){
-		.dir = get_ray_direction(x, g->player.camera, g->player.dir),
-		.hit_side = 0,
-		.origin = g->player.pos
-		};
-		do_dda(&column_info.ray);
-        init_column_info(&column_info, x);
-		draw_line_to_frame(&column_info);
+		col.ray = cast_ray(x);
+        init_column_info(&col, x);
+		draw_line_to_frame(&col);
 		x++;
 	}
-	mlx_put_image_to_window(g->graphics.mlx.mlx, g->graphics.mlx.mlx_win, g->graphics.frame.ptr, 0, 0);
+	mlx_put_image_to_window(
+		g->graphics.mlx.mlx, 
+		g->graphics.mlx.mlx_win,
+		g->graphics.frame.ptr,
+		0, 0);
 }
 
 int game_loop(void *param)
@@ -94,3 +80,4 @@ int game_loop(void *param)
 	render();
 	return (0);
 }
+

@@ -21,7 +21,8 @@ SRC = libs/memory_allocator/allocator.c \
 	src/graphics/init_graphics.c \
 	src/graphics/render.c \
 	src/graphics/draw.c \
-	src/graphics/dda.c \
+	src/graphics/cal_utils.c \
+	src/graphics/raycast.c \
 	src/event/key_events.c \
 	src/event/init_events.c \
 	test/draw.c \

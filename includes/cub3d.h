@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:40:41 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/02 15:06:32 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/08/03 18:40:00 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,41 +46,16 @@ typedef struct s_game
 	t_player	player;
 }		t_game;
 
-typedef struct t_ray
-{
-	t_vector	dir;
-	int			hit_side;
-	double		perp_dist;
-	t_vector	origin;
-}	t_ray;
-
-typedef struct s_column_info
-{
-	int			x;
-	double		wall_height;
-	int			wall_start;
-	int			wall_end;
-	t_ray		ray;
-	t_image		*texture;
-	t_vector	tex;
-	double		step_y;
-}	t_column_info;
+void			init_player(t_element *e);
+void			init_map(t_element *e);
 
 void			safe_exit(char *message, char *line, int line_number);
 
 t_game			*game_object(void);
 
 int				game_loop(void *param);
-
 int				render_windows(void *pr);
 void			render_frame(void);
-void			init_player(t_element *e);
-void			init_map(t_element *e);
 
-t_vector		get_ray_direction(int x, t_vector camera, t_vector dir);
-void			do_dda(t_ray *ray);
-void			init_column_info(t_column_info *c, int x);
-t_image			*get_wall_texture(int side, t_vector ray);
-void			draw_line_to_frame(t_column_info *c);
 
 #endif
