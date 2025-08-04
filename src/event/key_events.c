@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:13:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 14:40:34 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/04 20:56:32 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ void	key_event_handler(void)
 	t_player	*p;
 	t_event		*event;
 
-	p = &game_object()->player;
-	event = &game_object()->graphics.mlx.events;
+	p = &game_obj()->player;
+	event = &game_obj()->graphics.mlx.events;
 	if (event->esc)
 		safe_abort(0);
 	if (event->up)

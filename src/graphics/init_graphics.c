@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_graphics.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 09:07:00 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/02 10:11:13 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/04 20:56:32 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	fini_graphics(void)
 {
 	t_graphics	*graphics;
 
-	graphics = &game_object()->graphics;
+	graphics = &game_obj()->graphics;
 	if (graphics->mlx.mlx)
 		mlx_destroy_window(graphics->mlx.mlx, graphics->mlx.mlx_win);
 	if (graphics->textures.north.ptr)
@@ -60,7 +60,7 @@ t_image	load_frame_object()
 
 	img = (t_image) {0};
 	img.ptr = mlx_new_image(
-		game_object()->graphics.mlx.mlx,
+		game_obj()->graphics.mlx.mlx,
 		WIDTH,
 		HEIGHT
 	);
@@ -81,7 +81,7 @@ t_image	load_image_object(t_element *e)
 
 	img = (t_image) {0};
 	img.ptr = mlx_xpm_file_to_image(
-		game_object()->graphics.mlx.mlx,
+		game_obj()->graphics.mlx.mlx,
 		e->value.content,
 		&img.width,
 		&img.height
@@ -101,7 +101,7 @@ void	init_graphics(t_element *e)
 {
 	t_graphics	*graphics;
 
-	graphics = &game_object()->graphics;
+	graphics = &game_obj()->graphics;
 	graphics->mlx = load_mlx_object();
 	graphics->textures = (t_texture){
 		.north = load_image_object(get_element(e, T_NORTH)),

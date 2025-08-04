@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:34:53 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 20:30:43 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/04 20:56:32 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@ void	put_pixel_to_frame(int x, int y, int pixel)
 	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
 		return ;
 
-	f = &game_object()->graphics.frame;
+	f = &game_obj()->graphics.frame;
 	byte_per_pixel = f->bits_per_pixel / 8;
 	addr = f->data_addr + f->size_line * y + byte_per_pixel * x;
 	ft_memcpy(addr, &pixel, byte_per_pixel);
 }
-	#include <stdio.h>
 
 int get_pixel_from_image(t_image *img, int x, int y)
 {
@@ -45,23 +44,21 @@ int get_pixel_from_image(t_image *img, int x, int y)
 	return (pixel);
 }
 
-
-
 t_image	*get_wall_texture(int side, t_vector ray)
 {
 	if (side == SIDE_X)
 	{
 		if (ray.x < 0)
-			return (&game_object()->graphics.textures.west);
+			return (&game_obj()->graphics.textures.west);
 		else
-			return (&game_object()->graphics.textures.east);
+			return (&game_obj()->graphics.textures.east);
 	}
 	else
 	{
 		if (ray.y < 0)
-			return (&game_object()->graphics.textures.north);
+			return (&game_obj()->graphics.textures.north);
 		else
-			return (&game_object()->graphics.textures.south);
+			return (&game_obj()->graphics.textures.south);
 	}
 }
 
@@ -73,9 +70,9 @@ void draw_line_to_frame(t_column *c)
 	while (y < HEIGHT)
 	{
 		if (y < c->wall_start)
-			put_pixel_to_frame(c->x, y, game_object()->graphics.colors.ceiling);
+			put_pixel_to_frame(c->x, y, game_obj()->graphics.colors.ceiling);
 		else if (y > c->wall_end)
-			put_pixel_to_frame(c->x, y, game_object()->graphics.colors.floor);
+			put_pixel_to_frame(c->x, y, game_obj()->graphics.colors.floor);
 		else
 		{
 			put_pixel_to_frame(c->x, y, get_pixel_from_image(c->texture, c->pixel.x, c->pixel.y));

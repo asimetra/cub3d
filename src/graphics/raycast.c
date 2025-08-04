@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 00:30:56 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 18:29:33 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/04 20:56:32 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	get_map_tile(int x, int y)
 {
 	t_map	*m;
 
-	m = &game_object()->map;
+	m = &game_obj()->map;
 	if (m->len > y && y >= 0 && m->lines[y].len > x && x >= 0)
 		return (m->lines[y].line[x]);
 	return ('\0');
@@ -52,7 +52,7 @@ t_ray	cast_ray(int x)
 	t_game	*g;
 	t_ray	ray;
 
-	g = game_object();
+	g = game_obj();
 	ray.dir = calc_ray_dir(x, g->player.camera, g->player.dir);
 	ray.hit_side = 0;
 	ray.map = (t_point){g->player.pos.x, g->player.pos.y};//ensure that is this var needed?

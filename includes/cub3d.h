@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:40:41 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/03 18:40:00 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/04 20:56:32 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void			init_map(t_element *e);
 
 void			safe_exit(char *message, char *line, int line_number);
 
-t_game			*game_object(void);
+t_game			*game_obj(void);
 
 int				game_loop(void *param);
 int				render_windows(void *pr);

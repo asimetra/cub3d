@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:07:22 by sdaban            #+#    #+#             */
-/*   Updated: 2025/08/02 15:14:36 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/08/04 20:56:32 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	is_valid_position(int x, int y)
 {
 	t_map	*m;
 
-	m = &game_object()->map;
+	m = &game_obj()->map;
 	return (m->len > y && y >= 0
 		&& m->lines[y].len > x && x >= 0
 		&& m->lines[y].line[x] != '1');

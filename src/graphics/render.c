@@ -6,19 +6,19 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:32:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 20:30:25 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/04 20:56:32 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "element.h"
+#include "config.h"
 #include "cub3d.h"
+#include "element.h"
+#include "math.h"
+#include "minilibx/mlx.h"
+#include "types.h"
+#include "validation.h"
 #include <stdio.h>
 #include <unistd.h>
-#include "math.h"
-#include "config.h"
-#include "validation.h"
-#include "types.h"
-#include "minilibx/mlx.h"
 
 double	get_wall_x(t_ray ray, t_vector pos)
 {
@@ -31,7 +31,8 @@ double	get_wall_x(t_ray ray, t_vector pos)
 	return ((wall_x - floor(wall_x)));
 }
 /*
-	wall_height =>  h = orginal_h * (1 / perp)   => k = 1 * 1 -> k = wall_prep * real_wall_height
+	wall_height =>  h = orginal_h * (1 / perp)   => k = 1 * 1 -> k = wall_prep
+		* real_wall_height
 */
 t_column	init_column_info(int x, t_ray ray, t_game *g)
 {
@@ -40,7 +41,7 @@ t_column	init_column_info(int x, t_ray ray, t_game *g)
 	int		wall_end;
 	double	step_y;
 	t_image	*texture;
-	
+
 	wall_height = HEIGHT / ray.perp_dist;
 	wall_start = HEIGHT / 2 - wall_height / 2;
 	if (wall_start < 0)
@@ -70,18 +71,14 @@ void	render(void)
 	t_column	col;
 
 	x = 0;
-	g = game_object();
+	g = game_obj();
 	while (x < WIDTH)
-    {
+	{
 		ray = cast_ray(x);
-        col = init_column_info(x, ray, g);
+		col = init_column_info(x, ray, g);
 		draw_line_to_frame(&col);
 		x++;
 	}
-	mlx_put_image_to_window(
-		g->graphics.mlx.mlx,
-		g->graphics.mlx.mlx_win,
-		g->graphics.frame.ptr,
-		0, 0);
+	mlx_put_image_to_window(g->graphics.mlx.mlx, g->graphics.mlx.mlx_win,
+		g->graphics.frame.ptr, 0, 0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 17:20:36 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 15:33:39 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/04 20:56:32 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	init_player(t_element *e)
 
 	p = get_element(e, FLAG_PLAYER);
 	map = get_element(e, T_MAP);
-	player = &game_object()->player;
+	player = &game_obj()->player;
 	*player = (t_player) {
 		.pos = (t_vector) {
 			 .x = find_chars_index(p->value.content, "NSWE") + 0.5,
@@ -75,7 +75,7 @@ void	init_player(t_element *e)
 
 void	init_map(t_element *e)
 {
-	game_object()->map = element_to_map(get_element(e, T_MAP));
+	game_obj()->map = element_to_map(get_element(e, T_MAP));
 }
 
 
