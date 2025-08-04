@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/02 10:12:50 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/04 18:33:08 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,14 @@ t_game	*game_object()
 }
 
 #include "stdio.h"
+
+int game_loop(void *param)
+{
+	(void)param;
+	key_event_handler();
+	render();
+	return (0);
+}
 
 void	cub_main(t_element *elements)
 {

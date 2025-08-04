@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:32:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 18:23:38 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/04 19:38:39 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,47 +20,61 @@
 #include "types.h"
 #include "minilibx/mlx.h"
 
-double	get_wall_x(t_ray ray)
+double	get_wall_x(t_ray ray, t_vector pos)
 {
-	t_game	*g;
 	double	wall_x;
 
-	g = game_object();
 	if (ray.hit_side == SIDE_X)
-		wall_x = g->player.pos.y + ray.perp_dist * ray.dir.y;
+		wall_x = pos.y + ray.perp_dist * ray.dir.y;
 	else
-		wall_x = g->player.pos.x + ray.perp_dist * ray.dir.x;
+		wall_x = pos.x + ray.perp_dist * ray.dir.x;
 	return ((wall_x - floor(wall_x)));
 }
-
-void	init_column_info(t_column *c, int x)
+/*
+	wall_height =>  h = orginal_h * (1 / perp)   => k = 1 * 1 -> k = wall_prep * real_wall_height
+*/
+t_column	init_column_info(int x, t_ray ray, t_game *g)
 {
-	c->x = x;
-	c->wall_height = (HEIGHT / (c->ray.perp_dist)); // h = orginal_h * (1 / perp) k = 1 * 1 -> k = wall_prep * real_wall_height
-	c->wall_start = (HEIGHT / 2) - (c->wall_height) / 2;
-	if (c->wall_start < 0)
-		c->wall_start = 0;
-	c->wall_end = (HEIGHT / 2) + (c->wall_height) / 2;
-	if (c->wall_end >= HEIGHT)
-		c->wall_end = HEIGHT - 1;
-	c->texture = get_wall_texture(c->ray.hit_side, c->ray.dir);
-	c->tex.x =	get_wall_x(c->ray) * c->texture->width;
-	c->step_y = c->texture->height / c->wall_height;
-	c->tex.y = (c->wall_start - HEIGHT / 2 + c->wall_height / 2) * c->step_y;
+	int		wall_height;
+	int		wall_start;
+	int		wall_end;
+	double	step_y;
+	t_image	*texture;
+	
+	wall_height = HEIGHT / ray.perp_dist;
+	wall_start = HEIGHT / 2 - wall_height / 2;
+	if (wall_start < 0)
+		wall_start = 0;
+	wall_end = HEIGHT / 2 + wall_height / 2;
+	if (wall_end >= HEIGHT)
+		wall_end = HEIGHT - 1;
+	texture = get_wall_texture(ray.hit_side, ray.dir);
+	step_y = 1.0 * texture->height / wall_height;
+	return ((t_column){
+		.x = x,
+		.wall_height = wall_height,
+		.wall_start = wall_start,
+		.wall_end = wall_end,
+		.texture = texture,
+		.step_y = step_y,
+		.tex.x = get_wall_x(ray, g->player.pos) * texture->width,
+		.tex.y = (wall_start - (HEIGHT / 2 - wall_height / 2)) * step_y,
+	});
 }
 
 void	render(void)
 {
-	t_game		*g;
-	t_column	col;
 	int			x;
+	t_game		*g;
+	t_ray		ray;
+	t_column	col;
 
 	x = 0;
 	g = game_object();
 	while (x < WIDTH)
     {
-		col.ray = cast_ray(x);
-        init_column_info(&col, x);
+		ray = cast_ray(x);
+        col = init_column_info(x, ray, g);
 		draw_line_to_frame(&col);
 		x++;
 	}
@@ -69,14 +83,5 @@ void	render(void)
 		g->graphics.mlx.mlx_win,
 		g->graphics.frame.ptr,
 		0, 0);
-}
-
-int game_loop(void *param)
-{
-	(void)param;
-	//render_frame();
-	key_event_handler();
-	render();
-	return (0);
 }
 

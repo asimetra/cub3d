@@ -6,17 +6,18 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 02:59:46 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 13:49:39 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/04 19:25:49 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRAPHICS_H
 # define GRAPHICS_H
 
-# include "event.h"
-# include "element.h"
+#include "event.h"
+#include "element.h"
 #include "types.h"
-#include "cub3d.h"
+
+typedef struct s_game t_game;
 
 typedef struct s_mlx
 {
@@ -74,7 +75,6 @@ typedef struct t_ray
 typedef struct s_column
 {
 	int			x;
-	t_ray		ray;
 	double		wall_height;
 	int			wall_start;
 	int			wall_end;
@@ -96,7 +96,7 @@ t_ray		cast_ray(int x);
 
 
 
-void			init_column_info(t_column *c, int x);
+t_column	init_column_info(int x, t_ray ray, t_game *g);
 void			draw_line_to_frame(t_column *c);
 t_image			*get_wall_texture(int side, t_vector ray);
 #endif
