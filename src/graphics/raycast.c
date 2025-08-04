@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 00:30:56 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/03 20:28:59 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/04 15:03:31 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ double	do_dda(t_ray *r)
 		if (get_map_tile(r->map.x, r->map.y) == '1')
 			break ;
 	}
-	return(cal_prep_dist(*r));
+	return(calc_perp_dist(r->hit_side, r->side_dist, r->delta));
 }
 
 t_ray	cast_ray(int x)
@@ -53,16 +53,14 @@ t_ray	cast_ray(int x)
 	t_ray	ray;
 
 	g = game_object();
-
-	ray.dir = cal_ray_dir(x, g->player.camera, g->player.dir);
-		ray.hit_side = 0,
-		ray.origin = g->player.pos,
-
-	ray.map = (t_point){ray.origin.x, ray.origin.y};
-	ray.delta = cal_delta(ray.dir);
-	ray.step = cal_step(ray.dir);
-	ray.side_dist = cal_side_dist(ray);
+	ray.dir = calc_ray_dir(x, g->player.camera, g->player.dir);
+	ray.hit_side = 0;
+	ray.map = (t_point){g->player.pos.x, g->player.pos.y};
+	ray.delta = calc_delta_of(ray.dir);
+	ray.step = calc_step_of(ray.dir);
+	ray.side_dist = calc_side_dist(ray.delta, g->player.pos, ray.step);
 	ray.perp_dist = do_dda(&ray);
+
 	return (ray);
 }
 

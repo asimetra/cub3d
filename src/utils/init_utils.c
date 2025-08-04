@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 17:20:36 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/02 10:10:28 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/04 14:41:20 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void	init_player(t_element *e)
 	player = &game_object()->player;
 	*player = (t_player) {
 		.pos = (t_vector) {
-			 .x = find_chars_index(p->value.content, "NSWE"),
-			 .y = p->line - map_line->line,
+			 .x = find_chars_index(p->value.content, "NSWE") + 0.5,
+			 .y = p->line - map_line->line + 0.5,
 		},
 		.dir = get_player_angle(p->type),
 	};

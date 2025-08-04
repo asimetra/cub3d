@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 02:59:46 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/03 20:21:04 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/04 13:49:39 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,11 @@ typedef struct t_ray
 {
 	t_vector	dir;
 	t_vector	delta;
-	t_vector	side_dist;
 	t_point		step;
+	t_vector	side_dist;
 	t_point		map;
 	int			hit_side;
 	double		perp_dist;
-	t_vector	origin;
 }	t_ray;
 
 
@@ -88,12 +87,11 @@ void	fini_graphics(void);
 void	init_graphics(t_element *e);
 void	render(void);
 
-t_vector	cal_delta(t_vector ray);
-t_vector	cal_side_dist(t_ray r);
-double		cal_prep_dist(t_ray r);
-t_vector	cal_ray_dir(int x, t_vector camera, t_vector dir);
-t_point		cal_step(t_vector ray);
-
+t_vector	calc_delta_of(t_vector ray);
+t_point		calc_step_of(t_vector ray);
+t_vector	calc_side_dist(t_vector delta, t_vector player, t_point step);
+double		calc_perp_dist(int hit_side, t_vector side_dist, t_vector delta);
+t_vector	calc_ray_dir(int x, t_vector camera, t_vector dir);
 t_ray		cast_ray(int x);
 
 
