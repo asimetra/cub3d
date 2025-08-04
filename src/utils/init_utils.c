@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 17:20:36 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 14:41:20 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/04 15:33:39 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,16 @@ t_map	element_to_map(t_element *e)
 void	init_player(t_element *e)
 {
 	t_element	*p;
-	t_element	*map_line;
+	t_element	*map;
 	t_player	*player;
 
 	p = get_element(e, FLAG_PLAYER);
-	map_line = get_element(e, T_MAP);
+	map = get_element(e, T_MAP);
 	player = &game_object()->player;
 	*player = (t_player) {
 		.pos = (t_vector) {
 			 .x = find_chars_index(p->value.content, "NSWE") + 0.5,
-			 .y = p->line - map_line->line + 0.5,
+			 .y = p->line - map->line + 0.5,
 		},
 		.dir = get_player_angle(p->type),
 	};

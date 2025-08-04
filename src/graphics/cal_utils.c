@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 18:14:56 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 14:45:43 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/04 15:19:20 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,7 @@ t_point	calc_step_of(t_vector ray)
 	});
 }
 
-t_vector	calc_side_dist(
-	t_vector delta,
-	t_vector player,
-	t_point step)
+t_vector	calc_side_dist(t_vector delta, t_vector player, t_point step)
 {
 	t_vector	side_dist;
 	t_point		coord;
@@ -76,10 +73,7 @@ t_vector	calc_side_dist(
 	return (side_dist);
 }
 
-double	calc_perp_dist(
-	int hit_side,
-	t_vector side_dist,
-	t_vector delta)
+double	calc_perp_dist(int hit_side, t_vector side_dist, t_vector delta)
 {
 	if (hit_side == SIDE_X)
 		return (side_dist.x - delta.x);

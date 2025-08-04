@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:32:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 15:13:35 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/04 18:23:38 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,8 @@ double	get_wall_x(t_ray ray)
 	g = game_object();
 	if (ray.hit_side == SIDE_X)
 		wall_x = g->player.pos.y + ray.perp_dist * ray.dir.y;
-
 	else
 		wall_x = g->player.pos.x + ray.perp_dist * ray.dir.x;
-
-
 	return ((wall_x - floor(wall_x)));
 }
 

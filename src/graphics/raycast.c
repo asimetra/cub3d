@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 00:30:56 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 15:03:31 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/04 18:29:33 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,10 @@ t_ray	cast_ray(int x)
 	g = game_object();
 	ray.dir = calc_ray_dir(x, g->player.camera, g->player.dir);
 	ray.hit_side = 0;
-	ray.map = (t_point){g->player.pos.x, g->player.pos.y};
+	ray.map = (t_point){g->player.pos.x, g->player.pos.y};//ensure that is this var needed?
 	ray.delta = calc_delta_of(ray.dir);
 	ray.step = calc_step_of(ray.dir);
 	ray.side_dist = calc_side_dist(ray.delta, g->player.pos, ray.step);
 	ray.perp_dist = do_dda(&ray);
-
 	return (ray);
 }
-
-
-
-
-
