@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:34:53 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 16:28:57 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/04 20:30:43 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void draw_line_to_frame(t_column *c)
 			put_pixel_to_frame(c->x, y, game_object()->graphics.colors.floor);
 		else
 		{
-			put_pixel_to_frame(c->x, y, get_pixel_from_image(c->texture, c->tex.x, c->tex.y));
-			c->tex.y += c->step_y;
+			put_pixel_to_frame(c->x, y, get_pixel_from_image(c->texture, c->pixel.x, c->pixel.y));
+			c->pixel.y += c->step_y;
 		}
 		y++;
 	}

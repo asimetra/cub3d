@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 02:59:46 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 19:25:49 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/04 20:30:14 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct s_column
 	int			wall_start;
 	int			wall_end;
 	t_image		*texture;
-	t_vector	tex;
+	t_vector	pixel;
 	double		step_y;
 }	t_column;
 

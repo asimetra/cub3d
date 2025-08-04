@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:32:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 19:38:39 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/04 20:30:25 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ t_column	init_column_info(int x, t_ray ray, t_game *g)
 		.wall_end = wall_end,
 		.texture = texture,
 		.step_y = step_y,
-		.tex.x = get_wall_x(ray, g->player.pos) * texture->width,
-		.tex.y = (wall_start - (HEIGHT / 2 - wall_height / 2)) * step_y,
+		.pixel.x = get_wall_x(ray, g->player.pos) * texture->width,
+		.pixel.y = (wall_start - (HEIGHT / 2 - wall_height / 2)) * step_y,
 	});
 }
 
