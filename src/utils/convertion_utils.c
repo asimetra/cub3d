@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convertion_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:19:10 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 16:03:16 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/05 06:20:22 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	str_to_ubyte(const char *str)
 	long	total;
 	int		i;
 
-	if (*str == '\0' && !is_all_digit(str))
+	if (*str == '\0' || !is_all_digit(str))
 			return (-1);
 	total = 0;
 	i = 0;
