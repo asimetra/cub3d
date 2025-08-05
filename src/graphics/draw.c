@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:34:53 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 20:56:32 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/05 06:16:04 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,25 +44,7 @@ int get_pixel_from_image(t_image *img, int x, int y)
 	return (pixel);
 }
 
-t_image	*get_wall_texture(int side, t_vector ray)
-{
-	if (side == SIDE_X)
-	{
-		if (ray.x < 0)
-			return (&game_obj()->graphics.textures.west);
-		else
-			return (&game_obj()->graphics.textures.east);
-	}
-	else
-	{
-		if (ray.y < 0)
-			return (&game_obj()->graphics.textures.north);
-		else
-			return (&game_obj()->graphics.textures.south);
-	}
-}
-
-void draw_line_to_frame(t_column *c)
+void draw_column(t_column *c)
 {
 	int	y;
 
@@ -81,5 +63,6 @@ void draw_line_to_frame(t_column *c)
 		y++;
 	}
 }
+
 
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:32:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 20:56:32 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/05 06:16:14 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,25 @@ double	get_wall_x(t_ray ray, t_vector pos)
 		wall_x = pos.x + ray.perp_dist * ray.dir.x;
 	return ((wall_x - floor(wall_x)));
 }
+
+t_image	*get_wall_texture(int side, t_vector ray)
+{
+	if (side == SIDE_X)
+	{
+		if (ray.x < 0)
+			return (&game_obj()->graphics.textures.west);
+		else
+			return (&game_obj()->graphics.textures.east);
+	}
+	else
+	{
+		if (ray.y < 0)
+			return (&game_obj()->graphics.textures.north);
+		else
+			return (&game_obj()->graphics.textures.south);
+	}
+}
+
 /*
 	wall_height =>  h = orginal_h * (1 / perp)   => k = 1 * 1 -> k = wall_prep
 		* real_wall_height
@@ -76,7 +95,7 @@ void	render(void)
 	{
 		ray = cast_ray(x);
 		col = init_column_info(x, ray, g);
-		draw_line_to_frame(&col);
+		draw_column(&col);
 		x++;
 	}
 	mlx_put_image_to_window(g->graphics.mlx.mlx, g->graphics.mlx.mlx_win,

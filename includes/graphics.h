@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 02:59:46 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 20:30:14 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/05 06:13:48 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,6 @@ t_ray		cast_ray(int x);
 
 
 t_column	init_column_info(int x, t_ray ray, t_game *g);
-void			draw_line_to_frame(t_column *c);
+void			draw_column(t_column *c);
 t_image			*get_wall_texture(int side, t_vector ray);
 #endif
