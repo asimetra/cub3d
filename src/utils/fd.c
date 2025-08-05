@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   config.h                                           :+:      :+:    :+:   */
+/*   fd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 13:43:59 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/05 12:23:13 by hsamir           ###   ########.fr       */
+/*   Created: 2025/08/05 14:29:58 by hsamir            #+#    #+#             */
+/*   Updated: 2025/08/05 14:40:53 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONFIG_H
-# define CONFIG_H
+#include <fcntl.h>
+#include <unistd.h>
 
-# define TITLE "Cub3D"
-# define WIDTH 1440
-# define HEIGHT 960
-# define FOV 66
-# define SPEED 0.05f
-# define ROTATION_ANGLE 0.04f
+int	*file_descripter()
+{
+	int static	fd = -1;
+ 
+	return (&fd);
+}
 
-#endif
+int	open_fd(char *file)
+{
+	int _fd;
+
+	_fd = open(file, O_RDONLY);
+	if (_fd != -1)
+		*file_descripter() = _fd;
+	return (_fd);
+}
+
+void	close_fd(char _fd)
+{
+	if (_fd != -1)
+		close(_fd);
+	*file_descripter() = -1;
+}

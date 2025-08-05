@@ -24,7 +24,7 @@ SRC = libs/memory_allocator/allocator.c \
 	src/graphics/raycast.c \
 	src/event/key_events.c \
 	src/event/init_events.c \
-	test/draw.c \
+	src/utils/fd.c \
 	src/main.c \
 
 CC = cc

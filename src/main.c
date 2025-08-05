@@ -6,20 +6,20 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 20:56:32 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/05 14:39:30 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../memory_allocator/memory_allocator.h"
 #include "cub3d.h"
 #include "element.h"
-#include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>
 #include "validation.h"
 #include "minilibx/mlx.h"
 #include "string_utils.h"
 #include <X11/X.h>
+#include "fd.h"
 
 const char *token_type_str(t_element_type t)
 {
@@ -90,11 +90,12 @@ int	main(int argc, char **argv)
 		safe_exit(USAGE_ERR, NULL, 0);
 	if (!is_valid_file_extension(argv[1]))
 		safe_exit(INVALID_EXT_ERR, NULL, 0);
-	map_fd = open(argv[1], O_RDONLY);
+	map_fd = open_fd(argv[1]);
 	if (map_fd == -1)
 		safe_exit(INVALID_FILE_ERR, NULL, 0);
+	file_descripter(map_fd);
 	elements = parse_file(map_fd);
-	close(map_fd);
+	close_fd(map_fd);
 	debug_tokens(elements);
 	cub_main(elements);
 	safe_abort(0);
