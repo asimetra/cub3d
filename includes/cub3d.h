@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:40:41 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/05 14:47:21 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/05 16:13:01 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,5 @@ t_game			*game_obj(void);
 int				game_loop(void *param);
 int				render_windows(void *pr);
 void			render_frame(void);
-
 
 #endif

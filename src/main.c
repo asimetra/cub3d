@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/05 16:08:36 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/05 16:11:59 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ void	debug_tokens(t_element *tokens)
 	printf("\x1b[34m└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘\x1b[0m\n");
 }
 
-t_game	*game_obj()
+t_game	*game_obj(void)
 {
-	static t_game game = {0};
+	static t_game	game = {0};
 
-	return &game;
+	return (&game);
 }
 
 int	game_loop(void *param)
@@ -72,7 +72,7 @@ int	game_loop(void *param)
 
 void	cub_main(t_element *elements)
 {
-	register_finalizer_funct(fini_graphics); //register mlx destroy function for aborter
+	register_finalizer_funct(fini_graphics);//register mlx destroy function for aborter
 	init_graphics(elements);
 	init_map(elements);
 	init_player(elements);
@@ -98,4 +98,3 @@ int	main(int argc, char **argv)
 	safe_abort(0);
 	return (0);
 }
-

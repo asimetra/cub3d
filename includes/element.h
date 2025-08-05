@@ -13,13 +13,13 @@
 #ifndef ELEMENT_H
 # define ELEMENT_H
 
-#include <stddef.h>
+# include <stddef.h>
 
-# define MAP_CHR	"01NSEW "
-# define PLAYER_CHR	"NSEW"
+# define MAP_CHR "01NSEW "
+# define PLAYER_CHR "NSEW"
 # define FLAG_TEXTURE (T_NORTH | T_SOUTH | T_WEST | T_EAST)
 # define FLAG_COLOR (T_FLOOR | T_CEIL)
-# define FLAG_ALL	(FLAG_TEXTURE | FLAG_COLOR | T_MAP)
+# define FLAG_ALL (FLAG_TEXTURE | FLAG_COLOR | T_MAP)
 # define FLAG_PLAYER (T_PLAYER_N | T_PLAYER_S | T_PLAYER_E | T_PLAYER_W)
 
 typedef enum e_element_type
@@ -37,57 +37,59 @@ typedef enum e_element_type
 	T_PLAYER_S = 1 << 9,
 	T_PLAYER_E = 1 << 10,
 	T_PLAYER_W = 1 << 11
-}					t_element_type;
+}						t_element_type;
 
 typedef union u_value
 {
-	char			*content;
-	int				color;
-}					t_value;
+	char				*content;
+	int					color;
+}						t_value;
 
 typedef struct s_element
 {
-	t_element_type	type;
-	t_value			value;
-	size_t			val_len;
-	int				line;
+	t_element_type		type;
+	t_value				value;
+	size_t				val_len;
+	int					line;
 	struct s_element	*next;
-}					t_element;
+}						t_element;
 
 typedef struct s_line
 {
-	char			*content;
-	int				number;
-}					t_line;
+	char				*content;
+	int					number;
+}						t_line;
 
-t_element			*create_element(t_element new_element);
-t_element			*reverse_element_list(t_element *head);
-t_element			*get_element(t_element *element, t_element_type type);
-t_element			**element_map_to_arr(t_element *e);
+t_element				*create_element(t_element new_element);
+t_element				*reverse_element_list(t_element *head);
+t_element				*get_element(t_element *element, t_element_type type);
+t_element				**element_map_to_arr(t_element *e);
 
-size_t				element_count(t_element *element, t_element_type type);
+size_t					element_count(t_element *element, t_element_type type);
 
-void				prepend_element(t_element **head, t_element *new_element);
+void					prepend_element(t_element **head,
+							t_element *new_element);
 
-int					is_texture(char *input);
-int					is_color(char *input);
-int					is_empty(char *input);
-int					is_map_start(char *input);
-int					is_map_chars(char *input);
-int					is_empty(char *input);
+int						is_texture(char *input);
+int						is_color(char *input);
+int						is_empty(char *input);
+int						is_map_start(char *input);
+int						is_map_chars(char *input);
+int						is_empty(char *input);
 
-t_element_type		get_texture_type(char *input);
-t_element_type		get_color_type(char *input);
-t_element_type		get_player_type(char *input);
+t_element_type			get_texture_type(char *input);
+t_element_type			get_color_type(char *input);
+t_element_type			get_player_type(char *input);
 
+typedef t_element_type	(*t_state)(t_element **head, t_line line, int s_mask);
 
-typedef t_element_type		(*t_state)(t_element **head, t_line line, int s_mask);
+t_element_type			texture_state(t_element **head, t_line line,
+							int s_mask);
+t_element_type			color_state(t_element **head, t_line line, int s_mask);
+t_element_type			map_state(t_element **head, t_line line, int s_mask);
+t_element_type			invalid_state(t_element **head, t_line line,
+							int s_mask);
 
-t_element_type				texture_state(t_element **head, t_line line, int s_mask);
-t_element_type				color_state(t_element **head, t_line line, int s_mask);
-t_element_type				map_state(t_element **head, t_line line, int s_mask);
-t_element_type				invalid_state(t_element **head, t_line line, int s_mask);
-
-t_element					*parse_file(int fd);
+t_element				*parse_file(int fd);
 
 #endif
