@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:34:53 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/05 06:16:04 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/05 07:53:56 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	put_pixel_to_frame(int x, int y, int pixel)
 	ft_memcpy(addr, &pixel, byte_per_pixel);
 }
 
-int get_pixel_from_image(t_image *img, int x, int y)
+int	get_pixel_from_image(t_image *img, int x, int y)
 {
 	int		byte_per_pixel;
 	char	*addr;
@@ -44,7 +44,7 @@ int get_pixel_from_image(t_image *img, int x, int y)
 	return (pixel);
 }
 
-void draw_column(t_column *c)
+void	draw_column(t_column *c)
 {
 	int	y;
 
