@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 09:07:00 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 20:56:32 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/05 12:08:30 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,10 @@ void	init_graphics(t_element *e)
 
 	graphics = &game_obj()->graphics;
 	graphics->mlx = load_mlx_object();
-	graphics->textures = (t_texture){
-		.north = load_image_object(get_element(e, T_NORTH)),
-		.south = load_image_object(get_element(e, T_SOUTH)),
-		.east = load_image_object(get_element(e, T_EAST)),
-		.west = load_image_object(get_element(e, T_WEST))
-	};
+	graphics->textures.north = load_image_object(get_element(e, T_NORTH));
+	graphics->textures.south = load_image_object(get_element(e, T_SOUTH));
+	graphics->textures.east = load_image_object(get_element(e, T_EAST));
+	graphics->textures.west = load_image_object(get_element(e, T_WEST));
 	graphics->frame = load_frame_object();
 	graphics->colors = (t_color){
 		.ceiling = get_element(e, T_CEIL)->value.color,
