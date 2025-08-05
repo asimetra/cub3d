@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 00:30:56 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 20:56:32 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/05 16:01:46 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ double	do_dda(t_ray *r)
 		if (get_map_tile(r->map.x, r->map.y) == '1')
 			break ;
 	}
-	return(calc_perp_dist(r->hit_side, r->side_dist, r->delta));
+	return (calc_perp_dist(r->hit_side, r->side_dist, r->delta));
 }
 
 t_ray	cast_ray(int x)

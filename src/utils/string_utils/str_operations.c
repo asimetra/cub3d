@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   str_operations.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 19:54:48 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/24 12:03:32 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/05 16:01:03 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,12 @@ int	ends_with(char *str, char *suffix)
 	if (str_len < suf_len)
 		return (0);
 	return (ft_strncmp(str + str_len - suf_len, suffix, str_len) == 0);
-
 }
 
 int	str_count(char *str, char c)
 {
-	int index;
-	int count;
+	int	index;
+	int	count;
 
 	index = 0;
 	count = 0;
@@ -71,7 +70,7 @@ int	str_count(char *str, char c)
 
 int	find_chars_index(char *str, char *chars)
 {
-	int index;
+	int	index;
 
 	index = 0;
 	while (str[index])
@@ -82,4 +81,3 @@ int	find_chars_index(char *str, char *chars)
 	}
 	return (-1);
 }
-

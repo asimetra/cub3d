@@ -3,29 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   classify.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 18:37:35 by hsamir            #+#    #+#             */
-/*   Updated: 2025/07/22 22:02:52 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/05 15:32:38 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "string_utils.h"
-#include "libft.h"
 #include "element.h"
+#include "libft.h"
+#include "string_utils.h"
 
 int	is_texture(char *input)
 {
-	return (ft_strncmp(input, "NO ", 3) == 0
-	|| ft_strncmp(input, "SO ", 3) == 0
-	|| ft_strncmp(input, "WE ", 3) == 0
-	|| ft_strncmp(input, "EA ", 3) == 0);
+	return (ft_strncmp(input, "NO ", 3) == 0 || ft_strncmp(input, "SO ", 3) == 0
+		|| ft_strncmp(input, "WE ", 3) == 0 || ft_strncmp(input, "EA ",
+			3) == 0);
 }
 
 int	is_color(char *input)
 {
-	return (ft_strncmp(input, "F ", 2) == 0
-	|| ft_strncmp(input, "C ", 2) == 0);
+	return (ft_strncmp(input, "F ", 2) == 0 || ft_strncmp(input, "C ", 2) == 0);
 }
 
 int	is_empty(char *input)
@@ -44,7 +42,7 @@ int	is_map_chars(char *input)
 	int	index;
 
 	index = 0;
-	while(input[index] && input[index] != '\n')
+	while (input[index] && input[index] != '\n')
 	{
 		if (!includes(MAP_CHR, input[index]))
 			return (0);
@@ -57,4 +55,3 @@ int	is_map_start(char *input)
 {
 	return (input[0] == '1' || input[0] == ' ');
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:52:02 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/02 10:10:55 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/05 15:41:32 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,22 @@ t_element	*parse_file(int fd)
 {
 	t_element	*elements;
 	char		*line;
-	int			line_number;
-	int			seen_mask;
+	int			ln;
+	int			s_mask;
 	t_result	result;
 
 	elements = NULL;
-	line_number = 0;
-	seen_mask = 0;
+	ln = 0;
+	s_mask = 0;
 	while (true)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
-			break;
-		seen_mask |= parse_line(&elements,(t_line){line, ++line_number}, seen_mask);
+			break ;
+		s_mask |= parse_line(&elements, (t_line){line, ++ln}, s_mask);
 		safe_free_ptr(line);
 	}
-	result = validate_elements(elements, seen_mask);
+	result = validate_elements(elements, s_mask);
 	if (result.type == ERROR)
 		safe_exit(result.err, NULL, 0);
 	return (reverse_element_list(elements));

@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 18:14:56 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/04 15:19:20 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/05 16:03:16 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_vector	calc_delta_of(t_vector ray)
 	if (ray.x == 0)
 		delta.x = 1e30;
 	else
-		delta.x = fabs(1 / ray.x); // delta_x = sqrt(1 + pow(ray.y/ray.x, 2)) we divide it  sqrt(pow(ray.x, 2) + pow(ray.y, 2)) due to directly calculate prep dist. 
+		delta.x = fabs(1 / ray.x); /* delta_x = sqrt(1 + pow(ray.y/ray.x, 2)) we divide it  sqrt(pow(ray.x, 2) + pow(ray.y, 2)) due to directly calculate prep dist. */
 	if (ray.y == 0)
 		delta.y = 1e30;
 	else
@@ -61,7 +61,7 @@ t_vector	calc_side_dist(t_vector delta, t_vector player, t_point step)
 	t_vector	side_dist;
 	t_point		coord;
 
-	coord = (t_point) {.x = (int)player.x, .y = (int)player.y};
+	coord = (t_point){.x = (int)player.x, .y = (int)player.y};
 	if (step.x < 0)
 		side_dist.x = (player.x - coord.x) * delta.x;
 	else
@@ -80,4 +80,3 @@ double	calc_perp_dist(int hit_side, t_vector side_dist, t_vector delta)
 	else
 		return (side_dist.y - delta.y);
 }
-

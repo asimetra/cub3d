@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/05 14:39:30 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/05 16:08:36 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,7 @@ t_game	*game_obj()
 	return &game;
 }
 
-#include "stdio.h"
-
-int game_loop(void *param)
+int	game_loop(void *param)
 {
 	(void)param;
 	key_event_handler();
@@ -84,7 +82,7 @@ void	cub_main(t_element *elements)
 int	main(int argc, char **argv)
 {
 	t_element	*elements;
-	int		map_fd;
+	int			map_fd;
 
 	if (argc != 2)
 		safe_exit(USAGE_ERR, NULL, 0);
@@ -93,7 +91,6 @@ int	main(int argc, char **argv)
 	map_fd = open_fd(argv[1]);
 	if (map_fd == -1)
 		safe_exit(INVALID_FILE_ERR, NULL, 0);
-	file_descripter(map_fd);
 	elements = parse_file(map_fd);
 	close_fd(map_fd);
 	debug_tokens(elements);

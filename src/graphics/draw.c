@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:34:53 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/05 07:53:56 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/05 16:05:21 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	put_pixel_to_frame(int x, int y, int pixel)
 
 	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
 		return ;
-
 	f = &game_obj()->graphics.frame;
 	byte_per_pixel = f->bits_per_pixel / 8;
 	addr = f->data_addr + f->size_line * y + byte_per_pixel * x;
@@ -47,6 +46,7 @@ int	get_pixel_from_image(t_image *img, int x, int y)
 void	draw_column(t_column *c)
 {
 	int	y;
+	int	pixel;
 
 	y = 0;
 	while (y < HEIGHT)
@@ -57,12 +57,10 @@ void	draw_column(t_column *c)
 			put_pixel_to_frame(c->x, y, game_obj()->graphics.colors.floor);
 		else
 		{
-			put_pixel_to_frame(c->x, y, get_pixel_from_image(c->texture, c->pixel.x, c->pixel.y));
+			pixel = get_pixel_from_image(c->texture, c->pixel.x, c->pixel.y);
+			put_pixel_to_frame(c->x, y, pixel);
 			c->pixel.y += c->step_y;
 		}
 		y++;
 	}
 }
-
-
-

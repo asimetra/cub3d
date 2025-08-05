@@ -6,23 +6,23 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 14:29:58 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/05 14:40:53 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/05 16:00:54 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <unistd.h>
 
-int	*file_descripter()
+int	*file_descripter(void)
 {
 	int static	fd = -1;
- 
+
 	return (&fd);
 }
 
 int	open_fd(char *file)
 {
-	int _fd;
+	int	_fd;
 
 	_fd = open(file, O_RDONLY);
 	if (_fd != -1)

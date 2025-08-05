@@ -6,7 +6,7 @@
 /*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 09:07:00 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/05 12:08:30 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/05 16:07:45 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	fini_graphics(void)
 	}
 }
 
-t_mlx	load_mlx_object()
+t_mlx	load_mlx_object(void)
 {
 	t_mlx	mlx;
 
@@ -54,24 +54,22 @@ t_mlx	load_mlx_object()
 	return (mlx);
 }
 
-t_image	load_frame_object()
+t_image	load_frame_object(void)
 {
 	t_image	img;
 
-	img = (t_image) {0};
+	img = (t_image){0};
 	img.ptr = mlx_new_image(
-		game_obj()->graphics.mlx.mlx,
-		WIDTH,
-		HEIGHT
-	);
+			game_obj()->graphics.mlx.mlx,
+			WIDTH,
+			HEIGHT);
 	if (img.ptr == NULL)
 		safe_exit("Failed to load frame", NULL, 0);
 	img.data_addr = mlx_get_data_addr(
-		img.ptr,
-		&img.bits_per_pixel,
-		&img.size_line,
-		&img.endian
-	);
+			img.ptr,
+			&img.bits_per_pixel,
+			&img.size_line,
+			&img.endian);
 	return (img);
 }
 
@@ -79,21 +77,19 @@ t_image	load_image_object(t_element *e)
 {
 	t_image	img;
 
-	img = (t_image) {0};
+	img = (t_image){0};
 	img.ptr = mlx_xpm_file_to_image(
-		game_obj()->graphics.mlx.mlx,
-		e->value.content,
-		&img.width,
-		&img.height
-	);
+			game_obj()->graphics.mlx.mlx,
+			e->value.content,
+			&img.width,
+			&img.height);
 	if (img.ptr == NULL)
 		safe_exit("Failed to load image", e->value.content, e->line);
 	img.data_addr = mlx_get_data_addr(
-		img.ptr,
-		&img.bits_per_pixel,
-		&img.size_line,
-		&img.endian
-	);
+			img.ptr,
+			&img.bits_per_pixel,
+			&img.size_line,
+			&img.endian);
 	return (img);
 }
 

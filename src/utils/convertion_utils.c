@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convertion_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:19:10 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/05 06:20:22 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/05 15:58:30 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "libft.h"
 #include "memory_allocator/memory_allocator.h"
 #include "string_utils.h"
-
 
 int	is_all_digit(const char *input)
 {
@@ -40,7 +39,7 @@ int	str_to_ubyte(const char *str)
 	int		i;
 
 	if (*str == '\0' || !is_all_digit(str))
-			return (-1);
+		return (-1);
 	total = 0;
 	i = 0;
 	while (str[i])
@@ -54,8 +53,8 @@ int	str_to_ubyte(const char *str)
 
 int	str_to_rgb(char	*input)
 {
-	char**	rgb_str;
-	char*	temp;
+	char	**rgb_str;
+	char	*temp;
 	int		index;
 	int		rgb[3];
 
@@ -67,7 +66,7 @@ int	str_to_rgb(char	*input)
 	{
 		temp = ft_strtrim(rgb_str[index], " ");
 		rgb[index] = str_to_ubyte(temp);
-		str_arr_free((char*[]) {temp, rgb_str[index]}, 2);
+		str_arr_free((char *[]){temp, rgb_str[index]}, 2);
 		if (rgb[index] == -1)
 			return (-1);  /*XXX we dont care about free cuz if is not valida we will call to safe_abort */
 		index++;

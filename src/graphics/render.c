@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:32:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/05 08:00:07 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/05 16:05:54 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ double	get_wall_x(t_ray ray, t_vector pos)
 	else
 		wall_x = pos.x + ray.perp_dist * ray.dir.x;
 	wall_x -= floor(wall_x);
-	if ((ray.hit_side == SIDE_X && ray.dir.x > 0) ||
-		(ray.hit_side == SIDE_Y && ray.dir.y < 0))
+	if ((ray.hit_side == SIDE_X && ray.dir.x > 0)
+		|| (ray.hit_side == SIDE_Y && ray.dir.y < 0))
 		wall_x = 1 - wall_x;
 	return (wall_x);
 }
