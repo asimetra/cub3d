@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 18:14:56 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/06 11:37:27 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/08/06 11:56:43 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 #include "config.h"
 #include "graphics.h"
 
-/*
-	value/size -> [0, 1],
-	2 × (value/size) – 1 -> [-1, 1]
-*/
 t_vector	calc_ray_dir(
 	int x,
 	t_vector camera,
@@ -40,11 +36,11 @@ t_vector	calc_delta_of(t_vector ray)
 	if (ray.x == 0)
 		delta.x = 1e30;
 	else
-		delta.x = fabs(1 / ray.x); /* delta_x = sqrt(1 + pow(ray.y/ray.x, 2)) we divide it  sqrt(pow(ray.x, 2) + pow(ray.y, 2)) due to directly calculate prep dist. */
+		delta.x = fabs(1 / ray.x);
 	if (ray.y == 0)
 		delta.y = 1e30;
 	else
-		delta.y = fabs(1 / ray.y); // delta_y = sqrt(1 + pow(ray.x/ray.y, 2));
+		delta.y = fabs(1 / ray.y);
 	return (delta);
 }
 

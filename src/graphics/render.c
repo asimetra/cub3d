@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:32:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/06 11:39:46 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/08/06 12:07:48 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,6 @@ t_image	*get_wall_texture(int side, t_vector ray)
 	}
 }
 
-/*
-	wall_height =>  h = orginal_h * (1 / perp)   => k = 1 * 1 -> k = wall_prep
-		* real_wall_height
-*/
 t_column	init_column_info(int x, t_ray ray, t_game *g)
 {
 	int		wall_height;

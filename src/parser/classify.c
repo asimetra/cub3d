@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 18:37:35 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/06 11:41:11 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/08/06 12:07:55 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,6 @@ int	is_empty(char *input)
 	return (str_equal(input, "\n"));
 }
 
-/* Valid Map Characters:
-	'0' for empty space,
-	'1' for wall,
-	'N','S','E','W' for player starting positions,
-	' ' space are valid part and are up to you to handle
-*/
 int	is_map_chars(char *input)
 {
 	int	index;

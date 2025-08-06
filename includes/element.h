@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 10:03:23 by sdaban            #+#    #+#             */
-/*   Updated: 2025/08/06 10:03:28 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/08/06 12:05:58 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 # define MAP_CHR "01NSEW "
 # define PLAYER_CHR "NSEW"
-# define FLAG_TEXTURE (T_NORTH | T_SOUTH | T_WEST | T_EAST)
-# define FLAG_COLOR (T_FLOOR | T_CEIL)
-# define FLAG_ALL (FLAG_TEXTURE | FLAG_COLOR | T_MAP)
-# define FLAG_PLAYER (T_PLAYER_N | T_PLAYER_S | T_PLAYER_E | T_PLAYER_W)
+# define FLAG_TEXTURE 15
+# define FLAG_COLOR 48
+# define FLAG_ALL 127
+# define FLAG_PLAYER 3840
 
 typedef enum e_element_type
 {
