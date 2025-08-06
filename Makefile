@@ -28,7 +28,7 @@ SRC = libs/memory_allocator/allocator.c \
 	src/main.c \
 
 CC = cc
-CFLAGS = -Wall -Wextra -g -Werror  -I./libs -I./includes -I./libs/libft #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror  -I./libs -I./includes -I./libs/libft
 MINILBX = libs/minilibx/libmlx.a
 MINILBX_P = libs/minilibx
 MLXFLAG = -lXext -lX11 -lm
