@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:13:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/06 11:33:17 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/08/06 12:38:11 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,6 @@ int	key_release_hook(int keycode, t_event *event)
 	return (0);
 }
 
-/*
-	LEFT_ARROW -> {
-		x′=cos(φ-θ) = cosφ * cosθ + sinφ * sinθ = x * cosθ + y * sinθ,si
-		y′=sin(φ-θ) = sinφ * cosθ - cosφ * sinθ= x * sinθ - y * cosθ.
-	},
-	RIGHT_ARROW -> {
-		x′=cos(φ+θ) = cosφ * cosθ - sinφ * sinθ = x * cosθ - y * sinθ,
-		y′=sin(φ+θ) = sinφ * cosθ + cosφ * sinθ= x * sinθ + y * cosθ.
-	}
-		cos is a even function, sin is an odd function so that,
-		 * cos(-θ) = cos(θ) and sin(-θ) = -sin(θ).
-	we can use one formule for both left and right arrow keys,
-	{
-		x′ = x * cos(rotation_speed) - y * sin(rotation_speed),
-		y′ = x * sin(rotation_speed) + y * cos(rotation_speed)
-	}
-*/
 t_vector	set_rotation(t_vector dir, double angle)
 {
 	return ((t_vector){
@@ -93,13 +76,6 @@ t_vector	set_position(t_vector pos, t_vector dir)
 	return (new_pos);
 }
 
-/*
-	UP  -> {x,-y},
-	DOWN  -> {-x,y} rotate 180 degrees,
-	LEFT  -> {-y,-x} rotate 90 degrees,
-	RIGHT -> {y,x} rotate -90 degrees,
-
-*/
 void	key_event_handler(void)
 {
 	t_player	*p;
@@ -123,7 +99,7 @@ void	key_event_handler(void)
 		p->dir = set_rotation(p->dir, ROTATION_ANGLE);
 	if (event->left_arrow || event->right_arrow)
 		p->camera = (t_vector){
-			.x = -p->dir.y * tan(FOV * PI / 360), /*XXX FOV/2 * PI/180 */
+			.x = -p->dir.y * tan(FOV * PI / 360),
 			.y = p->dir.x * tan(FOV * PI / 360)
 		};
 }

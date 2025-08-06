@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 14:29:58 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/05 16:00:54 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/06 12:11:31 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	*file_descripter(void)
 {
-	int static	fd = -1;
+	static int	fd = -1;
 
 	return (&fd);
 }
