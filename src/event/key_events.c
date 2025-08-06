@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_events.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:13:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/05 15:27:40 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/06 11:33:17 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <math.h>
 #include "validation.h"
 #include "types.h"
-#include <stdio.h>
 
 int	key_press_hook(int keycode, t_event *event)
 {
@@ -127,5 +126,4 @@ void	key_event_handler(void)
 			.x = -p->dir.y * tan(FOV * PI / 360), /*XXX FOV/2 * PI/180 */
 			.y = p->dir.x * tan(FOV * PI / 360)
 		};
-	printf("Player Position: (%.2f, %.2f)   Dir: (%.2f, %.2f)\n", p->pos.y, p->pos.x, p->dir.x, p->dir.y);
 }
