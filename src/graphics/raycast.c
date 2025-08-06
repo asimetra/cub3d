@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 00:30:56 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/05 16:01:46 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/06 11:37:12 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "types.h"
-#include "config.h"
-#include <math.h>
+#include "graphics.h"
 
 char	get_map_tile(int x, int y)
 {

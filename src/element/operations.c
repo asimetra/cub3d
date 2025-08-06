@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 12:25:33 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/02 15:20:20 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/08/06 11:40:37 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include "element.h"
 #include "memory_allocator/memory_allocator.h"
-#include "cub3d.h"
 
 size_t	element_count(t_element *element, t_element_type type)
 {

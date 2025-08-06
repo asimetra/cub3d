@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   str_arr_operations.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 14:45:30 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/02 10:10:06 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/06 11:44:23 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "memory_allocator/memory_allocator.h"
 #include <limits.h>
-#include <stdlib.h>
 
 char	*str_arr_join(char	**strings, int count)
 {

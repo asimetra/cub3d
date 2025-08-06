@@ -3,20 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   error_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 23:21:25 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/05 14:42:24 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/06 11:51:02 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memory_allocator/memory_allocator.h"
 #include "libft.h"
-#include <unistd.h>
 #include "fd.h"
 
-/*. When exit() is called, any open file descriptors belonging to the process are closed
-*/
 void	safe_exit(char *message, char *line, int line_number)
 {
 	int	fd;

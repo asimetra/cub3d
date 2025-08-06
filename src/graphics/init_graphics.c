@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_graphics.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 09:07:00 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/05 16:07:45 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/06 11:35:42 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
 #include "../libs/minilibx/mlx.h"
 #include "element.h"
-#include "memory_allocator/memory_allocator.h"
 #include "cub3d.h"
 #include <stdlib.h>
 

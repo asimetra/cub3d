@@ -3,22 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:32:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/05 16:05:54 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/06 11:39:46 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
 #include "cub3d.h"
-#include "element.h"
-#include "math.h"
+#include <math.h>
 #include "minilibx/mlx.h"
 #include "types.h"
-#include "validation.h"
-#include <stdio.h>
-#include <unistd.h>
 
 double	get_wall_x(t_ray ray, t_vector pos)
 {

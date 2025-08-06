@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cal_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 18:14:56 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/05 16:03:16 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/06 11:37:27 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
 #include "math.h"
-#include "cub3d.h"
 #include "config.h"
+#include "graphics.h"
 
 /*
 	value/size -> [0, 1],

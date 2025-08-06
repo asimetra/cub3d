@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convertion_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:19:10 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/05 15:58:30 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/06 11:45:05 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	str_to_rgb(char	*input)
 		rgb[index] = str_to_ubyte(temp);
 		str_arr_free((char *[]){temp, rgb_str[index]}, 2);
 		if (rgb[index] == -1)
-			return (-1);  /*XXX we dont care about free cuz if is not valida we will call to safe_abort */
+			return (-1);
 		index++;
 	}
 	if (index != 3)

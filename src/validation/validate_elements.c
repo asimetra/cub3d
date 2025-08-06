@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   validate_elements.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdaban <sdaban@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:54:04 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/02 15:15:44 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/08/06 11:52:43 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "element.h"
 #include "validation.h"
-#include "libft.h"
 #include "string_utils.h"
 
 t_result	validate_texture(t_element *element, int seen_mask)

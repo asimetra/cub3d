@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 17:20:36 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/05 15:54:04 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/06 11:52:19 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	init_player(t_element *e)
 	};
 	player->dir = get_player_angle(p->type);
 	player->camera = (t_vector){
-		.x = -player->dir.y * tan(FOV * PI / 360), /*XXX FOV/2 * PI/180 */
+		.x = -player->dir.y * tan(FOV * PI / 360),
 		.y = player->dir.x * tan(FOV * PI / 360)
 	};
 }

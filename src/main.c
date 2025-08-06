@@ -6,18 +6,14 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 00:21:31 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/06 11:31:55 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/08/06 11:54:58 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../memory_allocator/memory_allocator.h"
 #include "cub3d.h"
 #include "element.h"
-#include <unistd.h>
 #include "validation.h"
-#include "minilibx/mlx.h"
-#include "string_utils.h"
-#include <X11/X.h>
 #include "fd.h"
 
 t_game	*game_obj(void)

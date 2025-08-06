@@ -3,18 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   validate_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:07:22 by sdaban            #+#    #+#             */
-/*   Updated: 2025/08/04 20:56:32 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/06 11:53:41 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "element.h"
 #include "string_utils.h"
-#include "memory_allocator/memory_allocator.h"
-#include "limits.h"
 #include "cub3d.h"
 
 int	is_valid_player_count(char *input)

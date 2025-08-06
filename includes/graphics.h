@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 02:59:46 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/05 16:14:19 by hsamir           ###   ########.fr       */
+/*   Updated: 2025/08/06 11:36:33 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include "element.h"
 # include "event.h"
 # include "types.h"
+
+# define SIDE_X 0
+# define SIDE_Y 1
 
 typedef struct s_game	t_game;
 
