@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_events.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hsamir <hsamir@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:13:03 by hsamir            #+#    #+#             */
-/*   Updated: 2025/08/06 11:33:17 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/09/02 14:28:43 by hsamir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ t_vector	set_position(t_vector pos, t_vector dir)
 		.y = pos.y + dir.y * SPEED
 	};
 	if (!is_valid_position(new_pos.x, new_pos.y))
-		return (pos);
+		return (pos); /*XXX*/
 	return (new_pos);
 }
 
