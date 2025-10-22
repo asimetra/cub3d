@@ -8,6 +8,6 @@
 4. Build: `make`
 5. Run: `./cub3d config/test.map`
 
-***RESOURCE***
+## RESOURCE
 - https://www.studyplan.dev/sdl2/vectors-and-movement
 - https://lodev.org/cgtutor/raycasting.html
