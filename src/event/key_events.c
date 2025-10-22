@@ -78,8 +78,8 @@ t_vector	set_rotation(t_vector dir, double angle)
 
 	f_diff = get_time_diff_ms(game_obj()->graphics.frame_time) / 1000.0;
 	return ((t_vector){
-		.x = dir.x * cos(angle) * f_diff - dir.y * sin(angle) * f_diff,
-		.y = dir.x * sin(angle) * f_diff + dir.y * cos(angle) * f_diff
+		.x = dir.x * cos(angle * f_diff) - dir.y * sin(angle * f_diff),
+		.y = dir.x * sin(angle * f_diff) + dir.y * cos(angle * f_diff)
 	});
 }
 
