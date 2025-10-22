@@ -1,5 +1,5 @@
 ## Preview
-
+![alt text](image.png)
 
 ## Usage
 1. Clone this repository: `git clone git@github.com:asimetra/cub3d.git`
