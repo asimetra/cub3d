@@ -27,6 +27,7 @@ int	game_loop(void *param)
 {
 	(void)param;
 	key_event_handler();
+	game_obj()->graphics.frame_time = get_time_ms();
 	render();
 	return (0);
 }

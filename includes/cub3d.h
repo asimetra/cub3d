@@ -57,4 +57,7 @@ int				game_loop(void *param);
 int				render_windows(void *pr);
 void			render_frame(void);
 
+unsigned long	get_time_ms(void);
+unsigned long	get_time_diff_ms(unsigned long start_time);
+
 #endif

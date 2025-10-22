@@ -25,11 +25,12 @@ SRC = libs/memory_allocator/allocator.c \
 	src/event/key_events.c \
 	src/event/init_events.c \
 	src/utils/fd.c \
+	src/utils/time.c \
 	src/main.c \
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror  -I./libs -I./includes -I./libs/libft
-MINILBX = libs/minilibx/libmlx.a
+CFLAGS = -Wall -Wextra -Werror -I./libs -I./includes -I./libs/libft -Wno-incompatible-pointer-types -Wno-old-style-declaration
+MINILBX = libs/minilibx/libmlx_Linux.a
 MINILBX_P = libs/minilibx
 MLXFLAG = -lXext -lX11 -lm
 

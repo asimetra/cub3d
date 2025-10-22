@@ -14,10 +14,10 @@
 # define CONFIG_H
 
 # define TITLE "Cub3D"
-# define WIDTH 720
-# define HEIGHT 600
+# define WIDTH 1920 
+# define HEIGHT 1080
 # define FOV 66
-# define SPEED 0.05f
+# define SPEED 2.1f
 # define ROTATION_ANGLE 0.04f
 
 #endif

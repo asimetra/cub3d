@@ -74,19 +74,24 @@ int	key_release_hook(int keycode, t_event *event)
 */
 t_vector	set_rotation(t_vector dir, double angle)
 {
+	double		f_diff;
+
+	f_diff = get_time_diff_ms(game_obj()->graphics.frame_time) / 1000.0;
 	return ((t_vector){
-		.x = dir.x * cos(angle) - dir.y * sin(angle),
-		.y = dir.x * sin(angle) + dir.y * cos(angle)
+		.x = dir.x * cos(angle) * f_diff - dir.y * sin(angle) * f_diff,
+		.y = dir.x * sin(angle) * f_diff + dir.y * cos(angle) * f_diff
 	});
 }
 
 t_vector	set_position(t_vector pos, t_vector dir)
 {
 	t_vector	new_pos;
+	double		frame_diff;
 
+	frame_diff = get_time_diff_ms(game_obj()->graphics.frame_time) / 1000.0;
 	new_pos = (t_vector){
-		.x = pos.x + dir.x * SPEED,
-		.y = pos.y + dir.y * SPEED
+		.x = pos.x + dir.x * SPEED * frame_diff,
+		.y = pos.y + dir.y * SPEED * frame_diff
 	};
 	if (!is_valid_position(new_pos.x, new_pos.y))
 		return (pos); /*XXX*/
